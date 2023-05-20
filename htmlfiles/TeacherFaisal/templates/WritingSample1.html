@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='U1-ReadingComprehension1.css')}} ">
+  <link rel="stylesheet" href="{{ url_for('static' , filename ='readingComprehensionPage.css')}} ">
+  <script type="text/javascript" src="{{ url_for('static', filename='dropdownanimation.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='style.css')}} ">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="{{ url_for('static' , filename ='script.js')}} "></script>
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='categoriesPage.css')}} ">
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='dictionaryst.css')}} "> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Faisal</title>
+</head>
+<body>
+    <header>
+        <a href="who-we-are"><img class = "logo" src="{{ url_for('static', filename='1.png') }}" alt="Alt Text"></a>
+         <nav>
+             <ul class="nav_links">
+                 <li><a href="vocabulary">مفردات</a></li>
+                 <li><a href="dictionary">قاموس</a></li>
+                 <li><a href="chatbot">تكلم مع فيصل</a></li>
+                 <li><a href="who-we-are">من نحن؟</a></li>
+             </ul>
+         </nav>
+         <a class="cta" href="/base"><button>تواصل معنا</button></a>
+     </header>
+     <div class="sidebar">
+     </div>
+    {% if is_authenticated() %}
+        <style>
+            .login-button{
+                display: none;
+            }
+            .profile-details{
+                display: block;
+            }
+        </style>
+    {% endif %}
+
+    <a href="/loginPage"><button class="login-button">تسجيل الدخول</button></a>
+    <div class="profile-details" onclick="dropdown2()">
+        <img class="profile-picture" style="display:block" src="{{ profile_pic }}" alt="">
+        <p class="accountName">{{ googleAccname }}</p>
+        <div class="dropdown">
+            <a href="/logout" class="Logout"><ion-icon name="log-out-outline"></ion-icon>Logout</a>
+        </div>
+    </div>
+    
+
+<h3 class="Question">
+    1- Write an essay about: <br><br>
+(My future resolution: What do you hope you will be doing in ten years from now?) <br><br>
+You can use the following ideas: <br><br>
+    • Things you considered doing when you were young. <br><br>
+    • Discuss two or three ideas that you considered more recently. <br><br>
+    • Write about your present hopes and ideas. <br><br>
+    • Explain what you expect to do in order to reach your goals.</h3>
+<p class="the-passage">
+All of us agree that everyone has his own dreams and hopes. However, things may go well and one can achieve his goals, or may go wrong and changes his mind in the future, life is full of change and so is the human being.
+When I was young, I thought about doing many things. First, I wanted to be a well – known actor like the famous film starts I saw on the movies. Later, I dreamed of being a good teacher, but this idea disappeared quickly. At the age of fifteen, I was serious about becoming a clever journalist because press is a very interesting and challenging job. But I decided against it in the end because it is very dangerous and tiring. At that time, I began practicing football. I became crazy about being a footballer. I trained hard at school and at the club nearby. I enjoyed that period of time, but, gradually, I began thinking of something totally different – a doctor.
+I now hope to become a doctor, specialized in heart surgery. I dream of helping people who suffer from heart diseases. This will give me an opportunity to contribute to solving this serious health problem in my country. My parents encourage and motivate me to follow this direction in the coming years.
+As a result, I plan to do several things in order to reach my objectives. First of all, I have to get more than 90% in the Tawjihi exam. Secondly, I should improve my English skills because studying medicine will be in that language. Finally, I should be well – organized and avoid time wasters.
+</p>
+<footer>
+    <a href="/WritingSample2"><button class="next">Next ></button></a>
+    <a href="/WritingPage"><button class="home">Back To Writing Page</button></a>
+</footer>

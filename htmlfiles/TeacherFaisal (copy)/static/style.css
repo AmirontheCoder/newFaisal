@@ -1,0 +1,398 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@600&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin:0;
+    padding: 0;
+    color: #000000;
+}
+
+body{
+    background-color: #ffffff;
+}
+
+li , a{
+    font-family: "Noto Sans Arabic", sans-serif;
+    color: black;
+    text-decoration: none;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10%;
+    height: 100px;
+    background-color: #0088a9;
+}
+
+.logo{
+    position: relative;
+    right: 70px;
+    margin-right: 100px;
+    margin-bottom: 10px;
+    width: 90px;
+    height: 70px;
+    cursor: pointer;
+    top: 0.4rem;
+}
+
+.nav_links {
+    position: relative;
+    right: 50px;
+    list-style: none;   
+}
+
+.nav_links li{
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.nav_links li a {
+    transition: all 0.3s ease 0s;
+}
+
+.nav_links li a:hover{
+    color: #ffffff;
+}
+
+button{
+    padding: 9px 25px;
+    background-color: #d2b48c;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+button:hover{
+    background-color: white;
+}
+
+.video {
+    position: relative;
+    left: 650px;
+}
+
+.image-speech{
+    position: relative;
+    top: 100px;
+    width: 600px;
+    height: 650px;
+}
+
+.image-right{
+    float: right;
+}
+.image-left{
+    position: relative;
+    top: 100px;
+    float: left;
+}
+
+.courses {
+    position: relative;
+    top: 160px;
+    width: 100%;
+    height: auto;
+  }
+
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 500px;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+.flex-box {
+    box-sizing: border-box;
+    width: 450px;
+    height: 450px;
+    text-align: center;
+    background-color: #0088a9;
+    border-radius: 20px;
+    margin: 10px;
+}
+  
+.flex-box:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+  }
+
+.text-in-boxes{
+    position: relative;
+    line-height: 50px;
+    top: 20px;
+    left: 150px;
+    direction: rtl;
+    font-size: 17px;
+}
+
+.Our-tools{
+    position: relative;
+    top: 50em;
+    right: 20px;
+}
+
+.tool{
+    text-align: center;
+}
+
+.tool-right{
+    float: right;
+}
+
+.tool-left{
+    position: relative;
+    float: left;
+    left: 20px;
+}
+
+.vocabulary-box{
+    background-color: #0088a9;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    position: relative;
+    top: 200px;
+    width: 750px;
+    height: 750px;
+    border-radius: 20px;
+    font-size: 20px;  
+}
+
+.tool-caption{
+    background-color: #d2b48c;
+    position: absolute;
+    width: auto;
+    top: 250px;
+    left: 800px;
+    height: 700px;
+    font-size: 25px;
+    z-index: 999;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.vocabulary-description{
+    margin-top: 300px;
+    font-size: 37px;
+    direction: rtl;
+}
+
+.dict-tool-caption{
+    background-color: #d2b48c;
+    position: absolute;
+    width: auto;
+    top: 250px;
+    right: 800px;
+    height: 700px;
+    font-size: 25px;
+    z-index: 999;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.dictionary{
+    background-color: #0088a9;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    position: relative;
+    top: 200px;
+    width: 750px;
+    height: 750px;
+    border-radius: 20px;
+    font-size: 20px;  
+}
+
+.dictionaryplace{
+    position: relative;
+    top: 850px;
+}
+
+.pronounciation-tool{
+    background-color: #0088a9;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    position: relative;
+    top: 200px;
+    width: 750px;
+    height: 750px;
+    border-radius: 20px;
+    font-size: 20px;
+}
+
+.pron-tool-caption{
+    background-color: #d2b48c;
+    position: absolute;
+    width: auto;
+    top: 1000px;
+    left: 800px;
+    height: 700px;
+    font-size: 25px;
+    z-index: 999;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.pronounciation-toolplace{
+    position: relative;
+    top: 1000px;
+}
+
+.chatbot{
+    background-color: #0088a9;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    position: relative;
+    top: 200px;
+    width: 750px;
+    height: 750px;
+    border-radius: 20px;
+    font-size: 20px;
+}
+
+.chatbot-tool-caption{
+    background-color: #d2b48c;
+    position: absolute;
+    width: auto;
+    top: 1000px;
+    right: 800px;
+    height: 700px;
+    font-size: 25px;
+    z-index: 999;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.chatbot-place{
+    position: relative;
+    top: 1875px;
+}
+
+.certification{
+    background-color: #0088a9;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    position: relative;
+    top: 200px;
+    width: 750px;
+    height: 750px;
+    border-radius: 20px;
+    font-size: 20px;
+}
+
+.certification-tool-caption{
+    background-color: #d2b48c;
+    position: absolute;
+    width: auto;
+    top: 1700px;
+    left: 800px;
+    height: 700px;
+    font-size: 25px;
+    z-index: 999;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.certification-place{
+    position: relative;
+    top: 2000px;
+}
+
+.start-journey{
+    position: relative;
+    top: 1000px;
+}
+
+.login-button{
+    display: block;
+    float: right;
+    position: relative;
+    right: 40px;
+    bottom: 65px;
+}
+
+.accountName{
+    text-align: center;
+    border-radius: 20px;
+    font-size: 20px;
+    width: auto;
+    height: auto;
+    position: relative;
+    margin-left: 50px;
+    bottom: 45px;
+    z-index: 1000;
+}
+  
+.profile-details{
+    background-color: #d2b48c;
+    display: flex;
+    width: 180px;
+    height: 50px;
+    display: none;
+    float: right;
+    position: relative;
+    bottom: 70px;
+    padding: 10px;
+    border-radius: 20px;
+}
+  
+.profile-details .profile-picture{
+    display: block;
+    width: 3rem;
+    height: 3rem;
+    position: relative;
+    bottom: 8px;
+    border-radius: 50%;
+}  
+  
+.dropdown{
+    display: none;
+    position: relative;
+    bottom: 80%;
+    background-color: #d2b48c;
+}
+  
+
+ion-icon{
+    color: #0088a9;
+    margin-left: 15px;
+    margin-right: 10px;
+}
+
+.Logout{
+    color: #24252a;
+}
+
+::-webkit-scrollbar {
+    width: 1em;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #ffffff;
+    border-radius: 100vw;
+    margin-block: .5em;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #0088a9;
+    border-radius: 100vw;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    opacity: 0.5;
+}

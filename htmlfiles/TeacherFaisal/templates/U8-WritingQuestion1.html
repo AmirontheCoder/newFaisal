@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='U1-WritingQuestion1.css')}} ">
+  <link rel="stylesheet" href="{{ url_for('static' , filename ='readingComprehensionPage.css')}} ">
+  <script type="text/javascript" src="{{ url_for('static', filename='dropdownanimation.js') }}"></script>
+    <link rel="stylesheet" href="./style.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="./script.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Faisal</title>
+</head>
+<body>
+    <header>
+        <a href="who-we-are"><img class = "logo" src="{{ url_for('static', filename='1.png') }}" alt="Alt Text"></a>
+         <nav>
+             <ul class="nav_links">
+                 <li><a href="vocabulary">مفردات</a></li>
+                 <li><a href="dictionary">قاموس</a></li>
+                 <li><a href="chatbot">تكلم مع فيصل</a></li>
+                 <li><a href="who-we-are">من نحن؟</a></li>
+             </ul>
+         </nav>
+         <a class="cta" href="/base"><button>تواصل معنا</button></a>
+     </header>
+     <div class="sidebar">
+     </div>
+    {% if is_authenticated() %}
+        <style>
+            .login-button{
+                display: none;
+            }
+            .profile-details{
+                display: block;
+            }
+        </style>
+    {% endif %}
+
+    <a href="/loginPage"><button class="login-button">تسجيل الدخول</button></a>
+    <div class="profile-details" onclick="dropdown2()">
+        <img class="profile-picture" style="display:block" src="{{ profile_pic }}" alt="">
+        <p class="accountName">{{ googleAccname }}</p>
+        <div class="dropdown">
+            <a href="/logout" class="Logout"><ion-icon name="log-out-outline"></ion-icon>Logout</a>
+        </div>
+    </div>
+
+    <p id="countdown"></p>
+    <button id="pause-button" onclick="pause()">pause</button>
+<div id="center">
+    <h1 class="times-up">Time's up</h1>
+    <p class="times-up">Your Score is</p><p class="score">0</p>
+    <a href="/U1ReadingComprehension1"><button class="retry">retry</button></a>
+</div>
+<script>
+    const startingMinutes = 25;
+    let time = startingMinutes * 60;
+    let isPaused = false;
+    
+    const countdownEl = document.getElementById('countdown');
+    const pauseButton = document.getElementById('pause-button');
+    const statusDiv = document.getElementById('center');
+    
+    
+    setInterval(updateCountdown, 1000);
+    
+    function updateCountdown() {
+    if (isPaused) {
+        return;
+    }
+    const minutes = Math.floor(time / 60);
+    let seconds = time % 60;
+    
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+    
+    countdownEl.innerHTML = `${minutes}:${seconds}`;
+    time--;
+    
+    if (time == 0){
+        pause();
+        statusDiv.style.display = 'block';
+        pauseButton.disabled = "disabled";
+    }
+    }
+
+    function pause() {
+    isPaused = !isPaused;
+    }
+</script>
+<div class="ReadingComprehension">
+    <h3 class="Question">
+        1- You are Carlo Andretti, the purchasing manager at Kino Machine Tools. Write a letter to the Mr Ralph Allen, the manager of a foreign company enquiring about the possibility of purchasing a large number of electronic switches and asking about any significant details.<br><br>
+        2- You are James Peter, the manager of the Big Star Company. Write a short email to Miss Jane Carpenter. In this email:<br>
+        - Thank her for their company's co operation<br>
+        - Place an order of 50 laptops<br>
+        - Tell her you are looking forward to receiving the order<br>
+        - Say that you will pay on receipt.<br><br>
+        3- You have received a letter from Mr Jone Smith, asking about the reasons for not receiving the payment for your recent order which was delivered ten weeks ago. Write a reply to the letter. In your reply:<br>
+        - apologize  for the problem<br>
+        - give an explanation<br>
+        - say what you have done to solve the problem<br><br>
+    </h3>
+    <textarea oninput="autogrow(this) ; limitTextarea(this)" type="text" class="answer-field textarea" id="answer-field" name="input-field" placeholder="Start Writing Your Answer Right Here!" ></textarea>
+    <script type="text/javascript">
+      function autogrow(element) {
+        element.style.height = "5px";
+        element.style.height = (element.scrollHeight)+"px";
+        element.scrollTop = element.scrollHeight;
+      }
+
+    function limitTextarea(element) {
+    var maxChar = 200;
+    var currentValue = element.value;
+    var numberOfWords = currentValue.split(/\s+/).length;
+
+    if (numberOfWords > maxChar) {
+        element.value = currentValue.split(/\s+/, maxChar).join(" ");
+    }
+}
+
+    </script>
+    
+</div>

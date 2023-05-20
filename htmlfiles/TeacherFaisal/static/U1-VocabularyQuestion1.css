@@ -1,0 +1,421 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@600&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin:0;
+    padding: 0;
+    color: #edf0f1;
+}
+
+body{
+    background-color: #24252a;
+}
+
+li , a{
+    font-family: "Noto Sans Arabic", sans-serif;
+    color: #edf0f1;
+    text-decoration: none;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10%;
+    height: 130px;
+}
+
+.logo{
+    position: relative;
+    right: 50px;
+    width: 200px;
+    height: 90px;
+    cursor: pointer;
+}
+
+.nav_links {
+    position: relative;
+    right: 50px;
+    list-style: none;   
+}
+
+.nav_links li{
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.nav_links li a {
+    transition: all 0.3s ease 0s;
+}
+
+.nav_links li a:hover{
+    color: #0088a9;
+}
+
+button{
+    padding: 9px 25px;
+    background-color: rgba(0, 136, 196, 1);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.Question{
+    margin-top: 25px;
+    margin-bottom: 20px;
+    font-size: 23px;
+}
+
+.the-passage{
+    font-size: 27px;
+    margin-top: 25px;
+    margin-right: 50px;
+    margin-left: 50px;
+    line-height: 1.5em;
+}
+
+.sub-question{
+    font-size: 22px;
+}
+
+.answer-field{
+    margin: 10px 25px 10px 0px;
+    font-size: 23px;
+    background-color: #0088a9;
+    border-radius: 10px;
+    position: relative;
+    left: 20px;
+    width: auto;
+    height: 50px;
+}
+
+.answer-field::placeholder{
+    color: black;
+    text-align: center;
+    opacity: 0.5;
+}
+
+.fill-in-the-blanks-container , .True-Or-Flase , .word-definition{
+    display: flex;
+    flex-flow: row wrap;
+    margin-top: 30px;
+}
+
+.fill-in-the-blanks-container .answer-field , .True-Or-Flase .answer-field , .word-definition .answer-field {
+    position: relative;
+    bottom: 20px;
+}
+
+.break{
+    width: 100%;
+    height: 10px;
+}
+
+
+#bracket{
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.tr-fa-button{
+    width: 50px;
+    color: white;
+    border-radius: 10px;
+}
+
+.True{
+    background-color: #00A300;
+}
+
+.False{
+    background-color: #D10000;
+}
+
+.bold-word{
+    font-weight: bolder;
+    background-color: cadetblue;
+}
+
+
+.next{
+    float: right;
+    position: relative;
+    right: 10rem;
+    font-size: 20px;
+}
+
+.word-container{
+    margin: 0 auto;
+    display: flex;
+    background-color: #0088a9;
+    width: 500px;
+    height: 50px;
+    border-radius: 20px;
+}
+
+.word-container .sub-question{
+    position: relative;
+    top: 10px;
+    margin: 0 auto;
+}
+
+table , th , tr, td{
+    border: 1px solid white;
+}
+
+
+th{
+    font-size: 25px;
+}
+
+td{
+    width: 40em;
+    font-size: 20px;
+    text-align: center;
+    font-size: 30px;
+}
+
+td p{
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.answers-table{
+    margin-top: 60px;
+
+}
+
+.home{
+    position: relative;
+    margin: 0 auto;
+    top: 5rem;
+    font-size: 20px;
+}
+
+footer .home{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.previous{
+    float: left;
+    position: relative;
+    top: 5rem;
+    left: 10rem;
+    font-size: 20px;
+}
+
+#countdown{
+    color: #24252a;
+    background-color: white;
+    display: inline-flex;
+    width: 200px;
+    height: 70px;
+    font-size: 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+.times-up{
+    font-size: 100px;
+}
+
+#score{
+    font-size: 100px;
+    position: relative;
+    right: 125px;
+}
+
+.retry{
+    font-size: 50px;
+    height: 100px;
+    width: 200px;
+}
+
+#center{
+    display: none;
+    text-align: center;
+}
+
+.login-button{
+    display: block;
+    float: right;
+    position: relative;
+    right: 40px;
+    bottom: 80px;
+}
+
+.accountName{
+    text-align: center;
+    border-radius: 20px;
+    background-color: #0088a9;
+    font-size: 20px;
+    width: auto;
+    height: auto;
+    position: relative;
+    margin-left: 50px;
+    bottom: 45px;
+    z-index: 1000;
+}
+  
+.profile-details{
+    background-color: green;
+    display: flex;
+    width: 180px;
+    height: 50px;
+    display: none;
+    float: right;
+    position: relative;
+    bottom: 90px;
+    padding: 10px;
+    border-radius: 20px;
+}
+  
+.profile-details .profile-picture{
+    display: block;
+    width: 3rem;
+    height: 3rem;
+    position: relative;
+    bottom: 8px;
+    border-radius: 50%;
+}  
+  
+.dropdown{
+    display: none;
+    background-color: #edf0f1;
+}
+  
+
+ion-icon{
+    color: #0088a9;
+    margin-left: 15px;
+    margin-right: 10px;
+}
+
+.Logout{
+    color: #24252a;
+}
+
+.mark{
+    position: relative;
+    top: 10px;
+    font-size: 40px;
+}
+
+.correct-answers{
+    font-size: 20px;
+    padding: 10px;
+    background-color: #31CD16;
+    border-radius: 20px;
+    position: relative;
+    bottom: 1.5rem;
+}
+
+.table-and-reasons .correct-answers{
+    position: relative;
+    top: 0.1rem;
+    font-size: 20px;
+    padding: 10px;
+    background-color: #31CD16;
+    border-radius: 20px;
+}
+
+
+#correct-answer,
+#correct-answer2,
+#correct-answer3,
+#correct-answer4,
+#correct-answer5,
+#correct-answer6,
+#correct-answer7,
+#correct-answer8,
+#correct-answer9,
+#correct-answer10,
+#correct-answer11,
+#correct-answer12,
+#correct-answer13,
+#correct-answer14,
+#correct-answer15,
+#correct-answer16{
+    display: none;
+}
+
+
+
+#checkmark,
+#checkmark2,
+#checkmark3,
+#checkmark4,
+#checkmark5,
+#checkmark6,
+#checkmark7,
+#checkmark8,
+#checkmark9,
+#checkmark10,
+#checkmark11,
+#checkmark12,
+#checkmark13,
+#checkmark14,
+#checkmark15,
+#checkmark16{
+    display: none;
+    color: #31CD16;
+}
+
+#checkmark9,
+#checkmark10,
+#checkmark11,
+#checkmark12{
+    position: relative;
+    top: -3rem;
+    left: 75%;
+}
+
+#crossmark,
+#crossmark2,
+#crossmark3,
+#crossmark4,
+#crossmark5,
+#crossmark6,
+#crossmark7,
+#crossmark8,
+#crossmark9,
+#crossmark10,
+#crossmark11,
+#crossmark12,
+#crossmark13,
+#crossmark14,
+#crossmark15,
+#crossmark16{
+    display: none;
+    color: #A90305;
+}
+
+#crossmark9,
+#crossmark10,
+#crossmark11,
+#crossmark12{
+    position: relative;
+    top: -3rem;
+    left: 80%;
+}
+
+
+.exam-mark{
+    font-size: 100px;
+    position: relative;
+    bottom: 115px;
+}
+
+.Total-score{
+    text-align: center;
+}
+
+.fill-in-the-blanks-container .mark{
+    position: relative;
+    top: -0.2rem;
+}
+

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='score.css')}} ">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Faisal</title>
+</head>
+<body>
+    <header>
+        <img class = "logo" src="{{ url_for('static', filename='1.png') }}" alt="Alt Text">
+        <nav>
+            <ul class="nav_links">
+                <li><a href="#">تجربة مجانية</a></li>
+                <li><a href="vocabulary">مفردات</a></li>
+                <li><a href="#">قواعد</a></li>
+                <li><a href="dictionary">قاموس</a></li>
+                <li><a href="chatbot">تكلم مع فيصل</a></li>
+                <li><a href="#">معلومات عنا</a></li>
+            </ul>
+        </nav>
+        <a class="cta" href="{{ url_for('base')}}"><button>تواصل معنا</button></a>
+    </header>
+</body>
+<div class="center">
+    <h1 class="times-up">Time's up</h1>
+    <p class="score">0</p>
+    <a href="/U1ReadingComprehension1"><button class="retry">retry</button></a>
+</div>

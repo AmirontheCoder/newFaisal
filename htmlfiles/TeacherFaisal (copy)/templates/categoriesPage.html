@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='style.css')}} ">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="{{ url_for('static' , filename ='script.js')}} "></script>
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='categoriesPage.css')}} ">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Faisal</title>
+</head>
+<body>
+    <header>
+        <a href="who-we-are"><img class = "logo" src="{{ url_for('static', filename='1.png') }}" alt="Alt Text"></a>
+         <nav>
+             <ul class="nav_links">
+                 <li><a href="vocabulary">مفردات</a></li>
+                 <li><a href="dictionary">قاموس</a></li>
+                 <li><a href="chatbot">تكلم مع فيصل</a></li>
+                 <li><a href="who-we-are">من نحن؟</a></li>
+             </ul>
+         </nav>
+         <a class="cta" href="/base"><button>تواصل معنا</button></a>
+     </header>
+     <div class="sidebar">
+     </div>
+    {% if is_authenticated() %}
+        <style>
+            .login-button{
+                display: none;
+            }
+            .profile-details{
+                display: block;
+            }
+        </style>
+    {% endif %}
+
+    <a href="/loginPage"><button class="login-button">تسجيل الدخول</button></a>
+    <div class="profile-details" onclick="dropdown2()">
+        <img class="profile-picture" style="display:block" src="{{ profile_pic }}" alt="">
+        <p class="accountName">{{ googleAccname }}</p>
+        <div class="dropdown">
+            <a href="/logout" class="Logout"><ion-icon name="log-out-outline"></ion-icon>Logout</a>
+        </div>
+    </div>
+    <a href="/"><button class="back-arrow"> < </button></a>
+    <div class="courses flex-container">
+        <span class="reading-comprehension course begginer-course flex-box">
+            <a href="readingComprehensionPage">
+                <h1 class="headings long-text">Reading Comprehensions/ فهم المقروء</h1>
+            </a>
+
+        </span>
+        <span class="course intermediate-course flex-box">
+            <a href="/VocabularyPage"><h1 class="headings short-text">Vocabulary / معاني و مفردات</h1></a>
+        </span>
+        <span class="course advanced-course flex-box">
+            <a href="/GrammarPage"><h1 class="headings short-text">Grammar / القواعد</h1></a>
+        </span>
+        <span class="course tawjihi 3lmi flex-box">
+            <a href="/WritingPage"><h1 class="headings short-text">Writing / كتابة</h1></a>
+        </span>
+        <span class="course tawjihi adbi flex-box">
+            <a href="/SampleTest1"><h1 class="headings short-text">Sample Tests / امتحانات للتدريب</h1></a>
+        </span>
+        <span class="course tawjihi adbi flex-box">
+            <a href="/TawjihiTipsAndTricks"><h1 class="headings long-text">Tawjihi exam tips and tricks / نصائح وحيل لأمتحان التوجيهي </h1></a>
+        </span>
+    </div>
+    <div class="external-resources">
+        <hr>
+        <center><h1 class="title-external-resources">External Resources</h1></center><br><br>
+        <div class="box-contents">
+            <span class="course tawjihi online-lib flex-box">
+                <a href="https://www.youtube.com/playlist?list=PLI0Dv6JY8Q-Ky5ldzOuRe5pklykVYNW8a" target="_blank"><h1 class="headings short-text">Online Library/ مكتبة اونلاين</h1></a>
+            </span>
+            <span class="course tawjihi documentaries flex-box">
+                <a href="https://www.youtube.com/playlist?list=PLeCPQtbuJaPtLugP7UijMU-ozdNmkdNFO" target="_blank"><h1 class="headings short-text">Documentaries / أفلام وثائقية</h1></a>
+            </span>
+            <span class="course tawjihi quizez flex-box">
+                <a href="https://quizlet.com/607883169/english-tawjihi-flash-cards/?funnelUUID=b61dc2db-9d43-4db4-808b-02174cb01bdd" target="_blank"><h1 class="headings short-text">Quizez / اختبارات قصيرة </h1></a>
+            </span>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='U1-VocabularyQuestion1.css')}} ">
+  <script type="text/javascript" src="{{ url_for('static', filename='dropdownanimation.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='style.css')}} ">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="{{ url_for('static' , filename ='script.js')}} "></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Faisal</title>
+</head>
+<body>
+    <header>
+        <a href="who-we-are"><img class = "logo" src="{{ url_for('static', filename='1.png') }}" alt="Alt Text"></a>
+         <nav>
+             <ul class="nav_links">
+                 <li><a href="vocabulary">مفردات</a></li>
+                 <li><a href="dictionary">قاموس</a></li>
+                 <li><a href="chatbot">تكلم مع فيصل</a></li>
+                 <li><a href="who-we-are">من نحن؟</a></li>
+             </ul>
+         </nav>
+         <a class="cta" href="/base"><button>تواصل معنا</button></a>
+     </header>
+     <div class="sidebar">
+     </div>
+    {% if is_authenticated() %}
+        <style>
+            .login-button{
+                display: none;
+            }
+            .profile-details{
+                display: block;
+            }
+        </style>
+    {% endif %}
+
+    <a href="/loginPage"><button class="login-button">تسجيل الدخول</button></a>
+    <div class="profile-details" onclick="dropdown2()">
+        <img class="profile-picture" style="display:block" src="{{ profile_pic }}" alt="">
+        <p class="accountName">{{ googleAccname }}</p>
+        <div class="dropdown">
+            <a href="/logout" class="Logout"><ion-icon name="log-out-outline"></ion-icon>Logout</a>
+        </div>
+    </div>
+    
+    <p id="countdown"></p>
+<button id="pause-button" onclick="pause()">pause</button>
+<div id="center">
+    <h1 class="times-up">Time's up</h1>
+    <div class="Total-score">
+        <p class="times-up">Your Score is</p><p id="score">0</p><p class="exam-mark">/ 16</p>
+    </div>
+    <a href="/U1VocabularyQuestion1"><button class="retry">retry</button></a>
+</div>
+
+<div class="Vocabulary">
+    <h3 class="Question">1-Match the words and phrases in the box with their meanings below:</h3>
+    <div class="word-definition">
+        <div class="word-container">
+            <h5 class="sub-question">participate -</h5>
+            <h5 class="sub-question">field -</h5>
+            <h5 class="sub-question">optional -</h5>
+            <h5 class="sub-question">on show</h5>
+        </div>
+        <span class="break"></span>
+        <h5 class="sub-question">1) able to be seen </h5>
+        <input type="text" class="answer-field" id="answer-field1" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : on show
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">2) take part </h5>
+        <input type="text" class="answer-field" id="answer-field2" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark2" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark2" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer2">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : participate
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">3) not compulsry </h5>
+        <input type="text" class="answer-field" id="answer-field3" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark3" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark3" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer3">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : optional
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">4) area of interest </h5>
+        <input type="text" class="answer-field" id="answer-field4" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark4" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark4" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer4">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : field
+        </p>
+    </div>
+    <h3 class="Question">2) Finish the sentences with words from the box : </h3>
+    <div class="word-container">
+        <h5 class="sub-question">confident -</h5>
+        <h5 class="sub-question">routines -</h5>
+        <h5 class="sub-question">creative -</h5>
+        <h5 class="sub-question">set</h5>
+    </div>
+    <div class="fill-in-the-blanks-container">
+        <h5 class="sub-question">1) Doing the same </h5>
+        <input type="text" class="answer-field" id="answer-field5" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark5" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark5" name="close-outline"></ion-icon>
+        <h5 class="sub-question">is not always an advantage. It can make you get bored.</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer5">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : routines
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">2)Sarah is </h5>
+        <input type="text" class="answer-field" id="answer-field6" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <h5 class="sub-question">.</h5>
+        <ion-icon class="mark" id="checkmark6" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark6" name="close-outline"></ion-icon>
+        <h5 class="sub-question"> She may be a great painter one day. </h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer6">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : creative
+        </p>
+        
+        <span class="break"></span>
+        <h5 class="sub-question">3) I have done well in the exam. I'm </h5>
+        <input type="text" class="answer-field" id="answer-field7" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark7" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark7" name="close-outline"></ion-icon>
+        <h5 class="sub-question">I will get high marks.</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer7">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : confident
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">4)She could answer the first</h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question">of questions in a very short time.</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : set
+        </p>
+    </div>
+    <h3 class="Question">3) A: Match the words in the boxes to make fixed phrases:</h3>
+    <div class="matching">
+        <table>
+            <tr>
+              <td><p style="position: relative; left: 4px;">a)</p> societies</td>
+              <td><p>1)</p> zone</td>
+            </tr>
+            <tr>
+                <td><p style="position:relative; right: 20px;">b)</p> like</td>
+                <td><p  style="position: relative; left: 12px;">2)</p> course</td>
+            </tr>
+            <tr>
+                <td><p  style="position: relative; left: 1px;">c)</p>comfort</td>
+                <td><p  style="position: relative; right: 6px;">3)</p> fair</td>
+            </tr>
+            <tr>
+                <td><p style="position:relative; left: 30px; margin-right: 30px;">d)</p> foundation</td>
+                <td><p style="position: relative; left: 28px; margin-right: 30px;">4)</p> minded</td>
+            </tr>
+        </table>
+
+        <table class="answers-table">
+            <tr>
+                <th>a)</th>
+                <th>b)</th>
+                <th>c)</th>
+                <th>d)</th>
+            </tr>
+            <tr>
+                <td class="answer-table-fields"><input type="text" class="answer-field" id="answer-field9" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+                    <ion-icon class="mark" id="checkmark9" name="checkmark-outline"></ion-icon>
+                    <ion-icon class="mark" id="crossmark9" name="close-outline"></ion-icon>
+                    <span class="break"></span>
+                    <p class="correct-answers" id="correct-answer9">
+                    <ion-icon name="bulb-outline"></ion-icon>
+                    Correct Answer : fair
+                    </p>
+                </td>
+                <td class="answer-table-fields"><input type="text" class="answer-field" id="answer-field10" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+                    <ion-icon class="mark" id="checkmark10" name="checkmark-outline"></ion-icon>
+                    <ion-icon class="mark" id="crossmark10" name="close-outline"></ion-icon>
+                    <span class="break"></span>
+                    <p class="correct-answers" id="correct-answer10">
+                    <ion-icon name="bulb-outline"></ion-icon>
+                    Correct Answer : minded
+                    </p>
+                </td>
+                <td class="answer-table-fields"><input type="text" class="answer-field" id="answer-field11" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+                    <ion-icon class="mark" id="checkmark11" name="checkmark-outline"></ion-icon>
+                    <ion-icon class="mark" id="crossmark11" name="close-outline"></ion-icon>
+                    <span class="break"></span>
+                    <p class="correct-answers" id="correct-answer11">
+                        <ion-icon name="bulb-outline"></ion-icon>
+                        Correct Answer : zone
+                        </p>
+                </td>
+                <td class="answer-table-fields"><input type="text" class="answer-field" id="answer-field12" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+                    <ion-icon class="mark" id="checkmark12" name="checkmark-outline"></ion-icon>
+                    <ion-icon class="mark" id="crossmark12" name="close-outline"></ion-icon>
+                    <span class="break"></span>
+                    <p class="correct-answers" id="correct-answer12">
+                    <ion-icon name="bulb-outline"></ion-icon>
+                    Correct Answer : course
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <h3 class="Question">B: Use the fixed phrases above to complete the sentences below:</h3>
+    <div class="fill-in-the-blanks-container">
+        <h5 class="sub-question">1)You may need a </h5>
+        <input type="text" class="answer-field" id="answer-field13" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark13" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark13" name="close-outline"></ion-icon>
+        <h5 class="sub-question"> before going to university.</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer13">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : foundation course
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">2)It's a good idea to step out of your  </h5>
+        <input type="text" class="answer-field" id="answer-field14" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark14" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark14" name="close-outline"></ion-icon>
+        <h5 class="sub-question">and learn new things.</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer14">
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : comfort-zone
+            </p>
+        <span class="break"></span>
+        <h5 class="sub-question">3) Clubs and societies are the best places to meet</h5>
+        <input type="text" class="answer-field" id="answer-field15" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark15" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark15" name="close-outline"></ion-icon>
+        <h5 class="sub-question">people.</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer15">
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : like-minded
+            </p>
+        <span class="break"></span>
+        <h5 class="sub-question">4)</h5>
+        <input type="text" class="answer-field" id="answer-field16" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark16" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark16" name="close-outline"></ion-icon>
+        <h5 class="sub-question">is often held during the first week in the university.</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer16">
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : societies fair
+            </p>
+    </div>
+    <button id='submit-button' method="POST" onclick="checkAnswers()">submit</button>
+</body>
+<script>
+    const startingMinutes = 12;
+    let time = startingMinutes * 60;
+    let isPaused = false;
+
+    const countdownEl = document.getElementById('countdown');
+    const pauseButton = document.getElementById('pause-button');
+    const statusDiv = document.getElementById('center');
+
+
+    let timer = setInterval(updateCountdown, 1000);
+
+    function updateCountdown() {
+    if (isPaused) {
+        return;
+    }
+    const minutes = Math.floor(time / 60);
+    let seconds = time % 60;
+
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+
+    countdownEl.innerHTML = `${minutes}:${seconds}`;
+    time--;
+
+    if (time === 0){
+        pause();
+        statusDiv.style.display = 'block';
+        pauseButton.disabled = "disabled";
+        clearInterval(timer)
+        checkAnswers();
+    }
+    }
+
+    function pause() {
+    isPaused = !isPaused
+    }
+
+    function checkAnswers(){
+        const scoreElement = document.getElementById('score');
+        let score = parseInt(scoreElement.textContent);
+        const checkmark = document.getElementById('checkmark');
+        const crossmark = document.getElementById('crossmark');
+        const checkmark2 = document.getElementById('checkmark2');
+        const checkmark3 = document.getElementById('checkmark3');
+        const checkmark4 = document.getElementById('checkmark4');
+        const checkmark5 = document.getElementById('checkmark5');
+        const checkmark6 = document.getElementById('checkmark6');
+        const checkmark7 = document.getElementById('checkmark7');
+        const checkmark8 = document.getElementById('checkmark8');
+        const checkmark9 = document.getElementById('checkmark9');
+        const checkmark10 = document.getElementById('checkmark10');
+        const checkmark11 = document.getElementById('checkmark11');
+        const checkmark12 = document.getElementById('checkmark12');
+        const checkmark13 = document.getElementById('checkmark13');
+        const checkmark14 = document.getElementById('checkmark14');
+        const checkmark15 = document.getElementById('checkmark15');
+        const checkmark16 = document.getElementById('checkmark16');
+        const crossmark2 = document.getElementById('crossmark2');
+        const crossmark3 = document.getElementById('crossmark3');
+        const crossmark4 = document.getElementById('crossmark4');
+        const crossmark5 = document.getElementById('crossmark5');
+        const crossmark6 = document.getElementById('crossmark6');
+        const crossmark7 = document.getElementById('crossmark7');
+        const crossmark8 = document.getElementById('crossmark8');
+        const crossmark9 = document.getElementById('crossmark9');
+        const crossmark10 = document.getElementById('crossmark10');
+        const crossmark11 = document.getElementById('crossmark11');
+        const crossmark12 = document.getElementById('crossmark12');
+        const crossmark13 = document.getElementById('crossmark13');
+        const crossmark14 = document.getElementById('crossmark14');
+        const crossmark15 = document.getElementById('crossmark15');
+        const crossmark16 = document.getElementById('crossmark16');
+        const answerField1 = document.getElementById('answer-field1');
+        const answerField2 = document.getElementById('answer-field2');
+        const answerField3 = document.getElementById('answer-field3');
+        const answerField4 = document.getElementById('answer-field4');
+        const answerField5 = document.getElementById('answer-field5');
+        const answerField6 = document.getElementById('answer-field6');
+        const answerField7 = document.getElementById('answer-field7');
+        const answerField8 = document.getElementById('answer-field8');
+        const answerField9 = document.getElementById('answer-field9');
+        const answerField10 = document.getElementById('answer-field10');
+        const answerField11 = document.getElementById('answer-field11');
+        const answerField12 = document.getElementById('answer-field12');
+        const answerField13 = document.getElementById('answer-field13');
+        const answerField14 = document.getElementById('answer-field14');
+        const answerField15 = document.getElementById('answer-field15');
+        const answerField16 = document.getElementById('answer-field16');
+        const correctAnswer = document.getElementById('correct-answer');
+        const correctAnswer2 = document.getElementById('correct-answer2');
+        const correctAnswer3 = document.getElementById('correct-answer3');
+        const correctAnswer4 = document.getElementById('correct-answer4');
+        const correctAnswer5 = document.getElementById('correct-answer5');
+        const correctAnswer6 = document.getElementById('correct-answer6');
+        const correctAnswer7 = document.getElementById('correct-answer7');
+        const correctAnswer8 = document.getElementById('correct-answer8');
+        const correctAnswer9 = document.getElementById('correct-answer9');
+        const correctAnswer10 = document.getElementById('correct-answer10');
+        const correctAnswer11 = document.getElementById('correct-answer11');
+        const correctAnswer12 = document.getElementById('correct-answer12');
+        const correctAnswer13 = document.getElementById('correct-answer13');
+        const correctAnswer14 = document.getElementById('correct-answer14');
+        const correctAnswer15 = document.getElementById('correct-answer15');
+        const correctAnswer16 = document.getElementById('correct-answer16');
+        const submitButton = document.getElementById('submit-button')
+
+        statusDiv.style.display = 'block';
+        pause();
+        pauseButton.disabled = "disabled";
+
+        if (answerField1.value == "on show." || 
+        answerField1.value == "on show ." || 
+        answerField1.value == "on show" ||
+        answerField1.value == "On show" || 
+        answerField1.value == "On show." || 
+        answerField1.value == "On show ."){
+            answerField1.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField1.style.backgroundColor = '#31CD16';
+            checkmark.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField1.style.backgroundColor = '#A90305';
+            answerField1.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark.style.display = 'block';
+            correctAnswer.style.display = 'block';
+        }
+
+        if (answerField2.value == "participate" || 
+        answerField2.value == "participate." || 
+        answerField2.value == "participate ." || 
+        answerField2.value == "Participate" || 
+        answerField2.value == "Participate."||
+        answerField2.value == "Participate ."){
+            answerField2.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField2.style.backgroundColor = '#31CD16';
+            checkmark2.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField2.style.backgroundColor = '#A90305';
+            answerField2.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark2.style.display = 'block';
+            correctAnswer2.style.display = 'block';
+        }
+
+        if (answerField3.value == "optional" || 
+        answerField3.value == "optional."||
+        answerField3.value == "optional ."||
+        answerField3.value == "Optional"||
+        answerField3.value == "Optional."||
+        answerField3.value == "Optional ."){
+            answerField3.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField3.style.backgroundColor = '#31CD16';
+            checkmark3.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField3.style.backgroundColor = '#A90305';
+            answerField3.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark3.style.display = 'block';
+            correctAnswer3.style.display = 'block';
+        }
+
+        if (answerField4.value == "field" || 
+        answerField4.value == "field."||
+        answerField4.value == "field ."||
+        answerField4.value == "Field." ||
+        answerField4.value == "Field ."||
+        answerField4.value == "Field"){
+            answerField4.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField4.style.backgroundColor = '#31CD16';
+            checkmark4.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField4.style.backgroundColor = '#A90305';
+            answerField4.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark4.style.display = 'block';
+            correctAnswer4.style.display = 'block';
+        }
+
+        if (answerField5.value == "routines"){
+            answerField5.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField5.style.backgroundColor = '#31CD16';
+            checkmark5.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField5.style.backgroundColor = '#A90305';
+            answerField5.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark5.style.display = 'block';
+            correctAnswer5.style.display = 'block';
+        }
+
+        if (answerField6.value == "creative"){
+            answerField6.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField6.style.backgroundColor = '#31CD16';
+            checkmark6.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField6.style.backgroundColor = '#A90305';
+            answerField6.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark6.style.display = 'block';
+            correctAnswer6.style.display = 'block';
+        }
+
+        if (answerField7.value == "confident"
+        ){
+            answerField7.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField7.style.backgroundColor = '#31CD16';
+            checkmark7.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField7.style.backgroundColor = '#A90305';
+            answerField7.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark7.style.display = 'block';
+            correctAnswer7.style.display = 'block';
+        }
+
+        if (answerField8.value == "set"){
+            answerField8.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField8.style.backgroundColor = '#31CD16';
+            checkmark8.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField8.style.backgroundColor = '#A90305';
+            answerField8.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark8.style.display = 'block';
+            correctAnswer8.style.display = 'block';
+        }
+
+        if (answerField9.value == "fair"){
+            answerField9.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField9.style.backgroundColor = '#31CD16';
+            checkmark9.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField9.style.backgroundColor = '#A90305';
+            answerField9.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark9.style.display = 'block';
+            correctAnswer9.style.display = 'block';
+        }
+
+        if (answerField10.value == "minded"){
+            answerField10.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField10.style.backgroundColor = '#31CD16';
+            checkmark10.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField10.style.backgroundColor = '#A90305';
+            answerField10.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark10.style.display = 'block';
+            correctAnswer10.style.display = 'block';
+        }
+
+        if (answerField11.value == "zone"){
+            answerField11.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField11.style.backgroundColor = '#31CD16';
+            checkmark11.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField11.style.backgroundColor = '#A90305';
+            answerField11.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark11.style.display = 'block';
+            correctAnswer11.style.display = 'block';
+        }
+
+        if (answerField12.value == "course"){
+            answerField12.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField12.style.backgroundColor = '#31CD16';
+            checkmark12.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField12.style.backgroundColor = '#A90305';
+            answerField12.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark12.style.display = 'block';
+            correctAnswer12.style.display = 'block';
+        }
+
+        if (answerField13.value == "foundation-course"||
+        answerField13.value == "foundation course"){
+            answerField12.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField13.style.backgroundColor = '#31CD16';
+            checkmark13.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField13.style.backgroundColor = '#A90305';
+            answerField13.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark13.style.display = 'block';
+            correctAnswer13.style.display = 'block';
+        }
+
+        if (answerField14.value == "comfort zone"||
+        answerField14.value == "comfort-zone"){
+            answerField14.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField14.style.backgroundColor = '#31CD16';
+            checkmark13.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField14.style.backgroundColor = '#A90305';
+            answerField14.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark14.style.display = 'block';
+            correctAnswer14.style.display = 'block';
+        }
+
+        if (answerField15.value == "like-minded"){
+            answerField15.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField15.style.backgroundColor = '#31CD16';
+            checkmark15.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField15.style.backgroundColor = '#A90305';
+            answerField15.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark15.style.display = 'block';
+            correctAnswer15.style.display = 'block';
+        }
+
+        if (answerField16.value == "societies fair"){
+            answerField16.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField16.style.backgroundColor = '#31CD16';
+            checkmark16.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField16.style.backgroundColor = '#A90305';
+            answerField16.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark16.style.display = 'block';
+            correctAnswer16.style.display = 'block';
+        }
+    }
+</script>
+<footer>
+    <a href="U1ReadingComprehension1"><button class="previous"> < Previous</button></a>
+    <a href="/VocabularyPage"><button class="home">Back To Vocabulary Page</button></a>
+</footer>

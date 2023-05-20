@@ -1,0 +1,1698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='U1-VocabularyQuestion1.css')}}">
+  <script type="text/javascript" src="{{ url_for('static', filename='dropdownanimation.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='style.css')}}">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="{{ url_for('static' , filename ='script.js')}} "></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Faisal</title>
+</head>
+<body>
+    <header>
+        <a href="who-we-are"><img class = "logo" src="{{ url_for('static', filename='1.png') }}" alt="Alt Text"></a>
+         <nav>
+             <ul class="nav_links">
+                 <li><a href="vocabulary">مفردات</a></li>
+                 <li><a href="dictionary">قاموس</a></li>
+                 <li><a href="chatbot">تكلم مع فيصل</a></li>
+                 <li><a href="who-we-are">من نحن؟</a></li>
+             </ul>
+         </nav>
+         <a class="cta" href="/base"><button>تواصل معنا</button></a>
+     </header>
+     <div class="sidebar">
+     </div>
+    {% if is_authenticated() %}
+        <style>
+            .login-button{
+                display: none;
+            }
+            .profile-details{
+                display: block;
+            }
+        </style>
+    {% endif %}
+
+    <a href="/loginPage"><button class="login-button">تسجيل الدخول</button></a>
+    <div class="profile-details" onclick="dropdown2()">
+        <img class="profile-picture" style="display:block" src="{{ profile_pic }}" alt="">
+        <p class="accountName">{{ googleAccname }}</p>
+        <div class="dropdown">
+            <a href="/logout" class="Logout"><ion-icon name="log-out-outline"></ion-icon>Logout</a>
+        </div>
+    </div>
+    
+    <p id="countdown"></p>
+<button id="pause-button" onclick="pause()">pause</button>
+<div id="center">
+    <h1 class="times-up">Time's up</h1>
+    <div class="Total-score">
+        <p class="times-up">Your Score is</p><p id="score">0</p><p class="exam-mark">/ 16</p>
+    </div>
+    <a href="/U1VocabularyQuestion1"><button class="retry">retry</button></a>
+</div>
+
+<div class="Vocabulary">
+    <h3 class="Question">1: Write the words in the box beside its meaning below:</h3>
+    <div class="word-definition">
+        <div class="word-container">
+            <h5 class="sub-question">fees -</h5>
+            <h5 class="sub-question">aware of -</h5>
+            <h5 class="sub-question">point -</h5>
+            <h5 class="sub-question">on the market -</h5>
+            <h5 class="sub-question">convinced -</h5>
+            <h5 class="sub-question">reward -</h5>
+            <h5 class="sub-question">presevere</h5>
+        </div>
+        <span class="break"></span>
+        <h5 class="sub-question">1- unable to wait</h5>
+        <input type="text" class="answer-field" id="answer-field1" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : impatient
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">2- money you pay for a service</h5>
+        <input type="text" class="answer-field" id="answer-field2" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark2" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark2" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer2">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : fees
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">3- purpose</h5>
+        <input type="text" class="answer-field" id="answer-field3" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark3" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark3" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer3">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : point
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">4- starting to notice</h5>
+        <input type="text" class="answer-field" id="answer-field4" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark4" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark4" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer4">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : aware of
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">5- keep trying</h5>
+        <input type="text" class="answer-field" id="answer-field4" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark4" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark4" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer4">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : persevere
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">6- available to buy</h5>
+        <input type="text" class="answer-field" id="answer-field4" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark4" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark4" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer4">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : on the market
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">7- give something good</h5>
+        <input type="text" class="answer-field" id="answer-field4" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark4" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark4" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer4">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : reward
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">8- sure of certain that something is true</h5>
+        <input type="text" class="answer-field" id="answer-field4" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark4" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark4" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer4">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : convinced
+        </p>
+    </div>
+    <h3 class="Question">2: Replace the underlined parts of the sentences with words or phrases from the box:</h3>
+    <div class="word-definition">
+        <div class="word-container">
+            <h5 class="sub-question">point -</h5>
+            <h5 class="sub-question">reward -</h5>
+            <h5 class="sub-question">on the market -</h5>
+            <h5 class="sub-question">become aware of -</h5>
+            <h5 class="sub-question">persevere</h5>
+        </div>
+        <span class="break"></span>
+        <h5 class="sub-question">1- Teachers should give their students something good when they do well in the exams</h5>
+        <input type="text" class="answer-field" id="answer-field1" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : reward
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">2- Despite the difficulties of the new job, he decided not to give up.</h5>
+        <input type="text" class="answer-field" id="answer-field2" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark2" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark2" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer2">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : persevere
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">3- You should start to notice your own excuses if you want to make progress in life.</h5>
+        <input type="text" class="answer-field" id="answer-field3" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark3" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark3" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer3">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : become aware of
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">4- There are many new products available to buy nowadays.</h5>
+        <input type="text" class="answer-field" id="answer-field4" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark4" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark4" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer4">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : on the market
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">5- There is no purpose in trying to open the door. It's locked</h5>
+        <input type="text" class="answer-field" id="answer-field4" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark4" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark4" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer4">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : point
+        </p>
+    </div>
+    <h3 class="Question">3: Finish the sentences with suitable words from the box:</h3>
+    <div class="word-container">
+        <h5 class="sub-question">revision -</h5>
+        <h5 class="sub-question">nowadays -</h5>
+        <h5 class="sub-question">inenitable -</h5>
+        <h5 class="sub-question">fees -</h5>
+        <h5 class="sub-question">convinced</h5>
+    </div>
+    <div class="fill-in-the-blanks-container">
+        <h5 class="sub-question">1- We all face problems in life. It's </h5>
+        <input type="text" class="answer-field" id="answer-field5" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark5" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark5" name="close-outline"></ion-icon>
+        <h5 class="sub-question">that you do too.</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer5">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : inevitable
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">2. Many students are complaining about rising university </h5>
+        <input type="text" class="answer-field" id="answer-field6" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <h5 class="sub-question">.</h5>
+        <ion-icon class="mark" id="checkmark6" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark6" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer6">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : fees
+        </p>
+        
+        <span class="break"></span>
+        <h5 class="sub-question">3. Heba hasn't prepared well for the exam. I'm not really </h5>
+        <input type="text" class="answer-field" id="answer-field7" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark7" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark7" name="close-outline"></ion-icon>
+        <h5 class="sub-question">she will pass it.</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer7">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : convinced
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">4. It's important to do daily </h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question">if you really want to succeed.</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : revision
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">5. It's easier for people to communicate with each other </h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question">than in the past.</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : nowadays
+        </p>
+    </div>
+    <h3 class="Question">4: Fill in thefollowing sentences by replacing the words in brackets with words from the box:</h3>
+    <div class="word-container">
+        <h5 class="sub-question">on demand -</h5>
+        <h5 class="sub-question">inevitable -</h5>
+        <h5 class="sub-question">the highest priority -</h5>
+        <h5 class="sub-question">Nowadays -</h5>
+        <h5 class="sub-question">Revision</h5>
+    </div>
+    <div class="fill-in-the-blanks-container">
+        <h5 class="sub-question">1- </h5>
+        <input type="text" class="answer-field" id="answer-field5" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark5" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark5" name="close-outline"></ion-icon>
+        <h5 class="sub-question"> can be very stressful , but it's necessary.    (Studying before an exam )</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer5">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : Revision
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">2-There's nothing we can do to stop it happening , it's </h5>
+        <input type="text" class="answer-field" id="answer-field6" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <h5 class="sub-question">.</h5>
+        <ion-icon class="mark" id="checkmark6" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark6" name="close-outline"></ion-icon>
+        <h5 class="sub-question">  (impossible to avoid).</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer6">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : inevitable
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">3- </h5>
+        <input type="text" class="answer-field" id="answer-field7" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark7" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark7" name="close-outline"></ion-icon>
+        <h5 class="sub-question"> , students have more worries than they had in the past. (Around the present time) </h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer7">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : Nowadays
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">4-Most people think that health and happiness are </h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question"> ( the most important).</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : the highest priority
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">5-You can't always make your brain work </h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question"> ( when you want  )</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : on demand
+        </p>
+    </div>
+    <h3 class="Question">5: Complete the following sentences with words from the list:</h3>
+    <div class="word-container">
+        <h5 class="sub-question">personal -</h5>
+        <h5 class="sub-question">reward -</h5>
+        <h5 class="sub-question">priorities -</h5>
+        <h5 class="sub-question">persevere -</h5>
+        <h5 class="sub-question">convinced -</h5>
+        <h5 class="sub-question">disappointed</h5>
+    </div>
+    <div class="fill-in-the-blanks-container">
+        <h5 class="sub-question">1-His parents give him money as a </h5>
+        <input type="text" class="answer-field" id="answer-field5" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark5" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark5" name="close-outline"></ion-icon>
+        <h5 class="sub-question"> for passing his exams.</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer5">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : reward
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">2-There are some problems with this idea. I'm not really </h5>
+        <input type="text" class="answer-field" id="answer-field6" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <h5 class="sub-question">.</h5>
+        <ion-icon class="mark" id="checkmark6" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark6" name="close-outline"></ion-icon>
+        <h5 class="sub-question"> it will work.</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer6">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : convinced
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">3-The form asks for a lot of </h5>
+        <input type="text" class="answer-field" id="answer-field7" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark7" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark7" name="close-outline"></ion-icon>
+        <h5 class="sub-question"> details like age and nationality.</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer7">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : personal
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">4-Samy was </h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question"> because he thought he would get a better results than he did.</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : disappointed
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">5-They don’t know any English . But if they </h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question"> , they will become good students.</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : persevere
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">6-She decided to go to the party instead of studying . Where are her </h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question"> ?</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : priorities
+        </p>
+    </div>
+    <h3 class="Question">6:  Complete the following sentences with words from the list:</h3>
+    <div class="word-container">
+        <h5 class="sub-question">inevitable -</h5>
+        <h5 class="sub-question">impatient -</h5>
+        <h5 class="sub-question">aware of -</h5>
+        <h5 class="sub-question">point -</h5>
+        <h5 class="sub-question">on demand -</h5>
+        <h5 class="sub-question">on the market</h5>
+    </div>
+    <div class="fill-in-the-blanks-container">
+        <h5 class="sub-question">1-Young babies expect to be given food </h5>
+        <input type="text" class="answer-field" id="answer-field5" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark5" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark5" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer5">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : on demand
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">2-It's </h5>
+        <input type="text" class="answer-field" id="answer-field6" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <h5 class="sub-question">.</h5>
+        <ion-icon class="mark" id="checkmark6" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark6" name="close-outline"></ion-icon>
+        <h5 class="sub-question"> that things don't always go as well as you expect them to.</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer6">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : inevitable
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">3-There are lots of books about time management </h5>
+        <input type="text" class="answer-field" id="answer-field7" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark7" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark7" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer7">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : on the market
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">4-Don't be </h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question"> , I'll finish soon.</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : impatient
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">5-She's becoming </h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question"> the impact of things that she says and does on other people.</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : aware of
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">6-What’s the </h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question"> of phoning her again?</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : point
+        </p>
+    </div>    
+    <h3 class="Question">7: Complete the following sentences with words from the list: </h3>
+    <div class="word-container">
+        <h5 class="sub-question">fees -</h5>
+        <h5 class="sub-question">revision -</h5>
+        <h5 class="sub-question">aware of -</h5>
+        <h5 class="sub-question">nowadays -</h5>
+        <h5 class="sub-question">persevere -</h5>
+        <h5 class="sub-question">personal -</h5>
+        <h5 class="sub-question">point</h5>
+    </div>
+    <div class="fill-in-the-blanks-container">
+        <h5 class="sub-question">1-I don't see the </h5>
+        <input type="text" class="answer-field" id="answer-field5" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark5" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark5" name="close-outline"></ion-icon>
+        <h5 class="sub-question">of doing this , it will never work.</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer5">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : point
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">2-Many students are complaining about rising university </h5>
+        <input type="text" class="answer-field" id="answer-field6" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <h5 class="sub-question">.</h5>
+        <ion-icon class="mark" id="checkmark6" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark6" name="close-outline"></ion-icon>
+        <h5 class="sub-question"> .</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer6">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : fees
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">3-It's important to do daily </h5>
+        <input type="text" class="answer-field" id="answer-field7" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark7" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark7" name="close-outline"></ion-icon>
+        <h5 class="sub-question"> if you really want to succeed.</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer7">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : revision
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">4-Despite the difficulties of the new job , he decided  to </h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : persevere
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">5-It's easier for people to communicate with each other </h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question"> than in the past.</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : nowadays
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">6-Are you </h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question"> the risks involved in this job?</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : aware of
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">7-My </h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question"> view is that students should do more work outside the classroom.</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : personal
+        </p>
+    </div>
+    <h3 class="Question">8: Complete the following sentences with words from the box: </h3>
+    <div class="word-container">
+        <h5 class="sub-question">personal  -</h5>
+        <h5 class="sub-question">fees -</h5>
+        <h5 class="sub-question">purpose -</h5>
+        <h5 class="sub-question">inevitable -</h5>
+        <h5 class="sub-question">disappointed -</h5>
+        <h5 class="sub-question">convinced</h5>
+    </div>
+    <div class="fill-in-the-blanks-container">
+        <h5 class="sub-question">1-They cancelled the meeting as there was no </h5>
+        <input type="text" class="answer-field" id="answer-field5" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark5" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark5" name="close-outline"></ion-icon>
+        <h5 class="sub-question">in continuing the conversation. </h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer5">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : purpose
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">2-Please ensure  you take all </h5>
+        <input type="text" class="answer-field" id="answer-field6" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark6" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark6" name="close-outline"></ion-icon>
+        <h5 class="sub-question"> belongings with you when you leave the train . </h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer6">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : personal
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">3-She was </h5>
+        <input type="text" class="answer-field" id="answer-field7" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark7" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark7" name="close-outline"></ion-icon>
+        <h5 class="sub-question"> that sooner or later she would fulfill her dreams . </h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer7">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : convinced
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">4-At universities today , </h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question">are too high for students to pay . </h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : fees 
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">5-A rise in prices seems </h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question"> after the war . </h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : inevitable 
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">6-I’m really </h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question"> in you – I really thought I could trust you . </h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : disappointed
+        </p>
+    </div>
+    <h3 class="Question">9 : Complete the following sentences with words from the box: </h3>
+    <div class="word-container">
+        <h5 class="sub-question">reward -</h5>
+        <h5 class="sub-question">aware of -</h5>
+        <h5 class="sub-question">convinced -</h5>
+        <h5 class="sub-question">point -</h5>
+        <h5 class="sub-question">impatient -</h5>
+        <h5 class="sub-question">inevitable</h5>
+    </div>
+    <div class="fill-in-the-blanks-container">
+        <h5 class="sub-question">1-He’s very </h5>
+        <input type="text" class="answer-field" id="answer-field5" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark5" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark5" name="close-outline"></ion-icon>
+        <h5 class="sub-question">and always interrupts me mid sentences .</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer5">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : impatient 
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">2-He says he is doing it for benefits . Hum, I’m still not </h5>
+        <input type="text" class="answer-field" id="answer-field6" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark6" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark6" name="close-outline"></ion-icon>
+        <h5 class="sub-question">about his intentions. </h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer6">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : convinced 
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">3-I’m not going to this afternoon’s session . I don’t see the </h5>
+        <input type="text" class="answer-field" id="answer-field7" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark7" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark7" name="close-outline"></ion-icon>
+        <h5 class="sub-question"> of it.</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer7">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : point
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">4-The most frequent flights were taken by those who were</h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question">environmental issues .</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer :  aware of 
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">5-The company has given him a</h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question">for his years of service and a farewell party .</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : reward  
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">6-It’s</h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question">that some changes will take place .</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : inevitable 
+        </p>
+    </div>
+    <h3 class="Question">10: Complete the following with words from the box : </h3>
+    <div class="word-container">
+        <h5 class="sub-question">convinced -</h5>
+        <h5 class="sub-question">impatient -</h5>
+        <h5 class="sub-question">persevere -</h5>
+        <h5 class="sub-question">nowadays -</h5>
+        <h5 class="sub-question">inevitable -</h5>
+        <h5 class="sub-question">disappointed</h5>
+    </div>
+    <div class="fill-in-the-blanks-container">
+        <h5 class="sub-question">1-When you are working such long hours , it’s</h5>
+        <input type="text" class="answer-field" id="answer-field5" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark5" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark5" name="close-outline"></ion-icon>
+        <h5 class="sub-question">that you will feel tired  .</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer5">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : inevitable  
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">2-Children challenge their parent’s authority far more </h5>
+        <input type="text" class="answer-field" id="answer-field6" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark6" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark6" name="close-outline"></ion-icon>
+        <h5 class="sub-question">than they did in the past .</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer6">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : nowadays 
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">3-She was</h5>
+        <input type="text" class="answer-field" id="answer-field7" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark7" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark7" name="close-outline"></ion-icon>
+        <h5 class="sub-question"> to see her essay returned with a mass of correction in red ink . </h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer7">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : disappointed 
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">4-Huda might have</h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question"> herself that she wanted a simple lifestyle . </h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer :  convinced  
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">5-You must </h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question"> if you want to accomplish anything great . </h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : persevere  
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">6-She is</h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question"> . She is always in hurry .</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : impatient  
+        </p>
+    </div>
+    <h3 class="Question">11: Match the words in the box to make phrases . Then complete the sentences : </h3>
+    <div class="word-container">
+        <h5 class="sub-question">exam -</h5>
+        <h5 class="sub-question">high -</h5>
+        <h5 class="sub-question">financial -</h5>
+        <h5 class="sub-question">time</h5>
+    </div>
+    <div class="word-container">
+        <h5 class="sub-question">priority -</h5>
+        <h5 class="sub-question">revision -</h5>
+        <h5 class="sub-question">management -</h5>
+        <h5 class="sub-question">problems</h5>
+    </div>
+    <div class="fill-in-the-blanks-container">
+        <h5 class="sub-question">1-Tawjihi students must pay attention to the</h5>
+        <input type="text" class="answer-field" id="answer-field5" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark5" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark5" name="close-outline"></ion-icon>
+        <h5 class="sub-question">before the final exam . </h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer5">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : exam revision  
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">2-Nowadays ,many young people face </h5>
+        <input type="text" class="answer-field" id="answer-field6" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark6" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark6" name="close-outline"></ion-icon>
+        <h5 class="sub-question">in their lives . </h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer6">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : financial problems 
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">3-The </h5>
+        <input type="text" class="answer-field" id="answer-field7" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark7" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark7" name="close-outline"></ion-icon>
+        <h5 class="sub-question">for students now is to pass all exams successfully.</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer7">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : highest priority 
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">4-It’s believed that</h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question">is the secret of success in life . </h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer :  time management  
+        </p>
+    </div>
+    <h3 class="Question">12: Match the words in the boxes to make fixed phrases .Then use the phrases to complete the sentences: </h3>
+    <div class="matching">
+        <table>
+            <tr>
+                <td>A</td>
+                <td>B</td>
+                <td>Fixed phrases</td>
+            </tr>
+            <tr>
+                <td>time</td>
+                <td>priority</td>
+                <td class="answer-table-fields"><input type="text" class="answer-field" id="answer-field9" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+                    <ion-icon class="mark" id="checkmark9" name="checkmark-outline"></ion-icon>
+                    <ion-icon class="mark" id="crossmark9" name="close-outline"></ion-icon>
+                    <span class="break"></span>
+                    <p class="correct-answers" id="correct-answer9">
+                    <ion-icon name="bulb-outline"></ion-icon>
+                    Correct Answer : Time management
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>job</td>
+                <td>statement</td>
+                <td class="answer-table-fields"><input type="text" class="answer-field" id="answer-field9" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+                    <ion-icon class="mark" id="checkmark9" name="checkmark-outline"></ion-icon>
+                    <ion-icon class="mark" id="crossmark9" name="close-outline"></ion-icon>
+                    <span class="break"></span>
+                    <p class="correct-answers" id="correct-answer9">
+                    <ion-icon name="bulb-outline"></ion-icon>
+                    Correct Answer :  Job market
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>personal</td>
+                <td>market</td>
+                <td class="answer-table-fields"><input type="text" class="answer-field" id="answer-field9" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+                    <ion-icon class="mark" id="checkmark9" name="checkmark-outline"></ion-icon>
+                    <ion-icon class="mark" id="crossmark9" name="close-outline"></ion-icon>
+                    <span class="break"></span>
+                    <p class="correct-answers" id="correct-answer9">
+                    <ion-icon name="bulb-outline"></ion-icon>
+                    Correct Answer : Personal statement
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>highest</td>
+                <td>timetable</td>
+                <td class="answer-table-fields"><input type="text" class="answer-field" id="answer-field9" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+                    <ion-icon class="mark" id="checkmark9" name="checkmark-outline"></ion-icon>
+                    <ion-icon class="mark" id="crossmark9" name="close-outline"></ion-icon>
+                    <span class="break"></span>
+                    <p class="correct-answers" id="correct-answer9">
+                    <ion-icon name="bulb-outline"></ion-icon>
+                    Correct Answer : Highest priority 
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>revision</td>
+                <td>management</td>
+                <td class="answer-table-fields"><input type="text" class="answer-field" id="answer-field9" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+                    <ion-icon class="mark" id="checkmark9" name="checkmark-outline"></ion-icon>
+                    <ion-icon class="mark" id="crossmark9" name="close-outline"></ion-icon>
+                    <span class="break"></span>
+                    <p class="correct-answers" id="correct-answer9">
+                    <ion-icon name="bulb-outline"></ion-icon>
+                    Correct Answer : Revision timetable 
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="fill-in-the-blanks-container">
+        <h5 class="sub-question">1 - Many universities  and colleges ask for a</h5>
+        <input type="text" class="answer-field" id="answer-field5" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark5" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark5" name="close-outline"></ion-icon>
+        <h5 class="sub-question">together with every application. </h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer5">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer :  personal statement   
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">2-The article contains many tips about</h5>
+        <input type="text" class="answer-field" id="answer-field6" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark6" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark6" name="close-outline"></ion-icon>
+        <h5 class="sub-question">for students . </h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer6">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : time management 
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">3-Nowadays , there is more and more pressure on young people because of changes in the</h5>
+        <input type="text" class="answer-field" id="answer-field7" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark7" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark7" name="close-outline"></ion-icon>
+        <h5 class="sub-question">.</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer7">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer :  job market 
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">4-Most people say health and happiness have  the</h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question">. </h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer :  highest priority   
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">5-To organize your time ,it is a good idea to make a</h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question">. </h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer :  revision timetable     
+        </p>
+    </div>
+    <h3 class="Question">13:  Complete the sentences with (on+ noun) from the box:</h3>
+    <div class="word-container">
+        <h5 class="sub-question">request -</h5>
+        <h5 class="sub-question">time -</h5>
+        <h5 class="sub-question">duty -</h5>
+        <h5 class="sub-question">business -</h5>
+        <h5 class="sub-question">the way -</h5>
+        <h5 class="sub-question">purpose</h5>
+    </div>
+    <div class="fill-in-the-blanks-container">
+        <h5 class="sub-question">1. More details will be sent </h5>
+        <input type="text" class="answer-field" id="answer-field5" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark5" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark5" name="close-outline"></ion-icon>
+        <h5 class="sub-question">. </h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer5">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : on request  
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">2. Please remind me to buy some sugar </h5>
+        <input type="text" class="answer-field" id="answer-field6" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark6" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark6" name="close-outline"></ion-icon>
+        <h5 class="sub-question">home. </h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer6">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : on the way 
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">3. Ali has travelled to China for two weeks</h5>
+        <input type="text" class="answer-field" id="answer-field7" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark7" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark7" name="close-outline"></ion-icon>
+        <h5 class="sub-question">.</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer7">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : on business 
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">4. We are late and the train always arrives</h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question">. </h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer :  on time  
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">5. Soldiers are not allowed to leave their places while they are </h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question">. </h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer :  on duty  
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">6. I don't believe it was an accident. He made it</h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question">. </h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer :  on purpose  
+        </p>
+    </div>
+    <h3 class="Question">14: Complete the sentences with the prepositions in the box: </h3>
+    <div class="word-container">
+        <h5 class="sub-question">of -</h5>
+        <h5 class="sub-question">up -</h5>
+        <h5 class="sub-question">about -</h5>
+        <h5 class="sub-question">on -</h5>
+        <h5 class="sub-question">with</h5>
+    </div>
+    <div class="fill-in-the-blanks-container">
+        <h5 class="sub-question">1-That was no accident . I'm sure he did it</h5>
+        <input type="text" class="answer-field" id="answer-field5" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark5" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark5" name="close-outline"></ion-icon>
+        <h5 class="sub-question">purpose. </h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer5">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : on  
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">2-There are various things that young worry </h5>
+        <input type="text" class="answer-field" id="answer-field6" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark6" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark6" name="close-outline"></ion-icon>
+        <h5 class="sub-question">. </h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer6">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : about
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">3-There might be another one like this but if so , I'm not aware</h5>
+        <input type="text" class="answer-field" id="answer-field7" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark7" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark7" name="close-outline"></ion-icon>
+        <h5 class="sub-question">it.</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer7">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : of 
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">4- I sometimes think it's all too hard and want to give</h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question">. </h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer :  up  
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">5- Rising university fees make it inevitable that many students graduate from university </h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question">huge debts. </h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer :  with
+        </p>
+    </div>
+    <h3 class="Question">15: Choose the correct answer :</h3>
+    <div class="fill-in-the-blanks-container">
+        <h5 class="sub-question">1-The doctor is </h5>
+        <input type="text" class="answer-field" id="answer-field5" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark5" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark5" name="close-outline"></ion-icon>
+        <h5 class="sub-question">duty from 9to 4pm.  ( in / on ) </h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer5">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : on  
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">2-Fire fighters and paramedics usually wear special clothes when they are </h5>
+        <input type="text" class="answer-field" id="answer-field6" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark6" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark6" name="close-outline"></ion-icon>
+        <h5 class="sub-question">( on duty / on purpose )</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer6">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : on duty
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">3-I didn’t do it</h5>
+        <input type="text" class="answer-field" id="answer-field7" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark7" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark7" name="close-outline"></ion-icon>
+        <h5 class="sub-question">. It was an accident .  ( on way / on purpose )</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer7">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer : on purpose 
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">4-You can’t make people do what you want on</h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question">( demand  / request )</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer :  demand  
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">5-The witness said that the driver ran over the boy on</h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question"> ( time / purpose )</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer :  purpose
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">6-I’m not </h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question">with the project ,so I can’t share in it. ( disappointed / convinced ) </h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer :  convinced
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">7-With all the products</h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question">, it’s very hard to decide which to buy. ( inevitable / on the market ) </h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer :  on the market
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">8-Youths have more interests</h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question">than they had in the past . ( impatient / nowadays ) </h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer :  nowadays
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">9-My father usually  goes to America</h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question">( on business / on order ) </h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer :  on business
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">10-Our</h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question">is to get water and food for refugees camp . (financial problem – high priority ) </h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer :  high priority
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">11-I spilled  my drink on</h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question"> I needed an excuse to leave the room . ( the market – purpose ) </h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer :  purpose
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">12-There’s nothing we can do to stop it from happening ;it’s</h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question">( personal – inevitable ) </h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer :  inevitable
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">13-You have to pay your bill</h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question">( on time – on the market ) </h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer :  on time
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">14-The laptop you need is</h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question"> it will be here next week . ( on purpose – on order ) </h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer :  on order
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">15-The patient was getting worse , so the nurse</h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question">called for the doctor. ( on duty – on business)</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer :  on duty
+        </p>
+        <span class="break"></span>
+        <h5 class="sub-question">16-</h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question">at the hospital , please go to the reception desk .   ( On arrival – On duty ) </h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8">
+        <ion-icon name="bulb-outline"></ion-icon>
+        Correct Answer :  On arrival
+        </p>
+    </div>
+
+    <button id='submit-button' method="POST" onclick="checkAnswers()">submit</button>
+</body>
+<script>
+    const startingMinutes = 12;
+    let time = startingMinutes * 60;
+    let isPaused = false;
+
+    const countdownEl = document.getElementById('countdown');
+    const pauseButton = document.getElementById('pause-button');
+    const statusDiv = document.getElementById('center');
+
+
+    let timer = setInterval(updateCountdown, 1000);
+
+    function updateCountdown() {
+    if (isPaused) {
+        return;
+    }
+    const minutes = Math.floor(time / 60);
+    let seconds = time % 60;
+
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+
+    countdownEl.innerHTML = `${minutes}:${seconds}`;
+    time--;
+
+    if (time === 0){
+        pause();
+        statusDiv.style.display = 'block';
+        pauseButton.disabled = "disabled";
+        clearInterval(timer)
+        checkAnswers();
+    }
+    }
+
+    function pause() {
+    isPaused = !isPaused
+    }
+
+    function checkAnswers(){
+        const scoreElement = document.getElementById('score');
+        let score = parseInt(scoreElement.textContent);
+        const checkmark = document.getElementById('checkmark');
+        const crossmark = document.getElementById('crossmark');
+        const checkmark2 = document.getElementById('checkmark2');
+        const checkmark3 = document.getElementById('checkmark3');
+        const checkmark4 = document.getElementById('checkmark4');
+        const checkmark5 = document.getElementById('checkmark5');
+        const checkmark6 = document.getElementById('checkmark6');
+        const checkmark7 = document.getElementById('checkmark7');
+        const checkmark8 = document.getElementById('checkmark8');
+        const checkmark9 = document.getElementById('checkmark9');
+        const checkmark10 = document.getElementById('checkmark10');
+        const checkmark11 = document.getElementById('checkmark11');
+        const checkmark12 = document.getElementById('checkmark12');
+        const checkmark13 = document.getElementById('checkmark13');
+        const checkmark14 = document.getElementById('checkmark14');
+        const checkmark15 = document.getElementById('checkmark15');
+        const checkmark16 = document.getElementById('checkmark16');
+        const crossmark2 = document.getElementById('crossmark2');
+        const crossmark3 = document.getElementById('crossmark3');
+        const crossmark4 = document.getElementById('crossmark4');
+        const crossmark5 = document.getElementById('crossmark5');
+        const crossmark6 = document.getElementById('crossmark6');
+        const crossmark7 = document.getElementById('crossmark7');
+        const crossmark8 = document.getElementById('crossmark8');
+        const crossmark9 = document.getElementById('crossmark9');
+        const crossmark10 = document.getElementById('crossmark10');
+        const crossmark11 = document.getElementById('crossmark11');
+        const crossmark12 = document.getElementById('crossmark12');
+        const crossmark13 = document.getElementById('crossmark13');
+        const crossmark14 = document.getElementById('crossmark14');
+        const crossmark15 = document.getElementById('crossmark15');
+        const crossmark16 = document.getElementById('crossmark16');
+        const answerField1 = document.getElementById('answer-field1');
+        const answerField2 = document.getElementById('answer-field2');
+        const answerField3 = document.getElementById('answer-field3');
+        const answerField4 = document.getElementById('answer-field4');
+        const answerField5 = document.getElementById('answer-field5');
+        const answerField6 = document.getElementById('answer-field6');
+        const answerField7 = document.getElementById('answer-field7');
+        const answerField8 = document.getElementById('answer-field8');
+        const answerField9 = document.getElementById('answer-field9');
+        const answerField10 = document.getElementById('answer-field10');
+        const answerField11 = document.getElementById('answer-field11');
+        const answerField12 = document.getElementById('answer-field12');
+        const answerField13 = document.getElementById('answer-field13');
+        const answerField14 = document.getElementById('answer-field14');
+        const answerField15 = document.getElementById('answer-field15');
+        const answerField16 = document.getElementById('answer-field16');
+        const correctAnswer = document.getElementById('correct-answer');
+        const correctAnswer2 = document.getElementById('correct-answer2');
+        const correctAnswer3 = document.getElementById('correct-answer3');
+        const correctAnswer4 = document.getElementById('correct-answer4');
+        const correctAnswer5 = document.getElementById('correct-answer5');
+        const correctAnswer6 = document.getElementById('correct-answer6');
+        const correctAnswer7 = document.getElementById('correct-answer7');
+        const correctAnswer8 = document.getElementById('correct-answer8');
+        const correctAnswer9 = document.getElementById('correct-answer9');
+        const correctAnswer10 = document.getElementById('correct-answer10');
+        const correctAnswer11 = document.getElementById('correct-answer11');
+        const correctAnswer12 = document.getElementById('correct-answer12');
+        const correctAnswer13 = document.getElementById('correct-answer13');
+        const correctAnswer14 = document.getElementById('correct-answer14');
+        const correctAnswer15 = document.getElementById('correct-answer15');
+        const correctAnswer16 = document.getElementById('correct-answer16');
+        const submitButton = document.getElementById('submit-button')
+
+        statusDiv.style.display = 'block';
+        pause();
+        pauseButton.disabled = "disabled";
+
+        if (answerField1.value == "on show." || 
+        answerField1.value == "on show ." || 
+        answerField1.value == "on show" ||
+        answerField1.value == "On show" || 
+        answerField1.value == "On show." || 
+        answerField1.value == "On show ."){
+            answerField1.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField1.style.backgroundColor = '#31CD16';
+            checkmark.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField1.style.backgroundColor = '#A90305';
+            answerField1.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark.style.display = 'block';
+            correctAnswer.style.display = 'block';
+        }
+
+        if (answerField2.value == "participate" || 
+        answerField2.value == "participate." || 
+        answerField2.value == "participate ." || 
+        answerField2.value == "Participate" || 
+        answerField2.value == "Participate."||
+        answerField2.value == "Participate ."){
+            answerField2.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField2.style.backgroundColor = '#31CD16';
+            checkmark2.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField2.style.backgroundColor = '#A90305';
+            answerField2.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark2.style.display = 'block';
+            correctAnswer2.style.display = 'block';
+        }
+
+        if (answerField3.value == "optional" || 
+        answerField3.value == "optional."||
+        answerField3.value == "optional ."||
+        answerField3.value == "Optional"||
+        answerField3.value == "Optional."||
+        answerField3.value == "Optional ."){
+            answerField3.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField3.style.backgroundColor = '#31CD16';
+            checkmark3.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField3.style.backgroundColor = '#A90305';
+            answerField3.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark3.style.display = 'block';
+            correctAnswer3.style.display = 'block';
+        }
+
+        if (answerField4.value == "field" || 
+        answerField4.value == "field."||
+        answerField4.value == "field ."||
+        answerField4.value == "Field." ||
+        answerField4.value == "Field ."||
+        answerField4.value == "Field"){
+            answerField4.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField4.style.backgroundColor = '#31CD16';
+            checkmark4.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField4.style.backgroundColor = '#A90305';
+            answerField4.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark4.style.display = 'block';
+            correctAnswer4.style.display = 'block';
+        }
+
+        if (answerField5.value == "routines"){
+            answerField5.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField5.style.backgroundColor = '#31CD16';
+            checkmark5.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField5.style.backgroundColor = '#A90305';
+            answerField5.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark5.style.display = 'block';
+            correctAnswer5.style.display = 'block';
+        }
+
+        if (answerField6.value == "creative"){
+            answerField6.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField6.style.backgroundColor = '#31CD16';
+            checkmark6.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField6.style.backgroundColor = '#A90305';
+            answerField6.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark6.style.display = 'block';
+            correctAnswer6.style.display = 'block';
+        }
+
+        if (answerField7.value == "confident"
+        ){
+            answerField7.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField7.style.backgroundColor = '#31CD16';
+            checkmark7.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField7.style.backgroundColor = '#A90305';
+            answerField7.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark7.style.display = 'block';
+            correctAnswer7.style.display = 'block';
+        }
+
+        if (answerField8.value == "set"){
+            answerField8.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField8.style.backgroundColor = '#31CD16';
+            checkmark8.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField8.style.backgroundColor = '#A90305';
+            answerField8.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark8.style.display = 'block';
+            correctAnswer8.style.display = 'block';
+        }
+
+        if (answerField9.value == "fair"){
+            answerField9.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField9.style.backgroundColor = '#31CD16';
+            checkmark9.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField9.style.backgroundColor = '#A90305';
+            answerField9.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark9.style.display = 'block';
+            correctAnswer9.style.display = 'block';
+        }
+
+        if (answerField10.value == "minded"){
+            answerField10.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField10.style.backgroundColor = '#31CD16';
+            checkmark10.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField10.style.backgroundColor = '#A90305';
+            answerField10.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark10.style.display = 'block';
+            correctAnswer10.style.display = 'block';
+        }
+
+        if (answerField11.value == "zone"){
+            answerField11.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField11.style.backgroundColor = '#31CD16';
+            checkmark11.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField11.style.backgroundColor = '#A90305';
+            answerField11.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark11.style.display = 'block';
+            correctAnswer11.style.display = 'block';
+        }
+
+        if (answerField12.value == "course"){
+            answerField12.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField12.style.backgroundColor = '#31CD16';
+            checkmark12.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField12.style.backgroundColor = '#A90305';
+            answerField12.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark12.style.display = 'block';
+            correctAnswer12.style.display = 'block';
+        }
+
+        if (answerField13.value == "foundation-course"||
+        answerField13.value == "foundation course"){
+            answerField12.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField13.style.backgroundColor = '#31CD16';
+            checkmark13.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField13.style.backgroundColor = '#A90305';
+            answerField13.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark13.style.display = 'block';
+            correctAnswer13.style.display = 'block';
+        }
+
+        if (answerField14.value == "comfort zone"||
+        answerField14.value == "comfort-zone"){
+            answerField14.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField14.style.backgroundColor = '#31CD16';
+            checkmark13.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField14.style.backgroundColor = '#A90305';
+            answerField14.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark14.style.display = 'block';
+            correctAnswer14.style.display = 'block';
+        }
+
+        if (answerField15.value == "like-minded"){
+            answerField15.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField15.style.backgroundColor = '#31CD16';
+            checkmark15.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField15.style.backgroundColor = '#A90305';
+            answerField15.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark15.style.display = 'block';
+            correctAnswer15.style.display = 'block';
+        }
+
+        if (answerField16.value == "societies fair"){
+            answerField16.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField16.style.backgroundColor = '#31CD16';
+            checkmark16.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField16.style.backgroundColor = '#A90305';
+            answerField16.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark16.style.display = 'block';
+            correctAnswer16.style.display = 'block';
+        }
+    }
+</script>
+<footer>
+    <a href="U1ReadingComprehension1"><button class="previous"> < Previous</button></a>
+    <a href="/VocabularyPage"><button class="home">Back To Vocabulary Page</button></a>
+</footer>

@@ -1,0 +1,172 @@
+<h5 class="sub-question">3)The weather is terrible outside. It</h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="verb" class="radio-circle" value="has rained">
+        </span>
+        <p class="option">has rained</p>
+        </label>
+        
+        <h5 class="sub-question"> / </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="verb" class="radio-circle" value="has been raining">
+        </span>
+        <p class="option">has been raining</p>
+        </label>
+        <h5 class="sub-question">for more than five hours.</h5>
+
+        <span class="break"></span>
+        <h5 class="sub-question">4)I</h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="verb" class="radio-circle" value="have known">
+        </span>
+        <p class="option">have known</p>
+        </label>
+        <h5 class="sub-question"> / </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="verb" class="radio-circle" value="have been knowing">
+        </span>
+        <p class="option">have been knowing</p>
+        </label>
+        <h5 class="sub-question">Mona for five years and we are close friends now.</h5>
+
+        <span class="break"></span>
+        <h5 class="sub-question">5)You are out of breath!</h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="verb" class="radio-circle" value="Have you run">
+        </span>
+        <p class="option">Have you run</p>
+        </label>
+        <h5 class="sub-question"> / </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="verb" class="radio-circle" value="Have you been running">
+        </span>
+        <p class="option">Have you been running</p>
+        </label>
+        <h5 class="sub-question">?</h5>
+
+        <span class="break"></span>
+        <h5 class="sub-question">6)She has never </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="verb" class="radio-circle" value="travelled">
+        </span>
+        <p class="option">travelled</p>
+        </label>
+        <h5 class="sub-question"> / </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="verb" class="radio-circle" value="been travelling">
+        </span>
+        <p class="option">been travelling</p>
+        </label>
+        <h5 class="sub-question">by ship. She enjoys flying.</h5>
+
+        <span class="break"></span>
+        <h5 class="sub-question">7)My uncle </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="verb" class="radio-circle" value="has bought">
+        </span>
+        <p class="option">has bought</p>
+        </label>
+        <h5 class="sub-question"> / </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="verb" class="radio-circle" value="has been buying">
+        </span>
+        <p class="option">has been buying</p>
+        </label>
+        <h5 class="sub-question">a new car recently.</h5>
+        <span class="break"></span>
+
+        <h5 class="sub-question">8)She </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="verb" class="radio-circle" value="has written">
+        </span>
+        <p class="option">has written</p>
+        </label>
+        <h5 class="sub-question"> / </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="verb" class="radio-circle" value="has been writing">
+        </span>
+        <p class="option">has been writing</p>
+        </label>
+        <h5 class="sub-question">five poems so far.</h5>
+
+        <h5 class="sub-question">9)I think someone</h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="verb" class="radio-circle" value="has used">
+        </span>
+        <p class="option">has used</p>
+        </label>
+        <h5 class="sub-question"> / </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="verb" class="radio-circle" value="has been using">
+        </span>
+        <p class="option">has been using</p>
+        </label>
+        <h5 class="sub-question">my laptop. The battery is nearly dead.</h5>
+
+        <h5 class="sub-question">10)I think someone</h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="verb" class="radio-circle" value="has taken">
+        </span>
+        <p class="option">has taken</p>
+        </label>
+        <h5 class="sub-question"> / </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="verb" class="radio-circle" value="has been taking">
+        </span>
+        <p class="option">has been taking</p>
+        </label>
+        <h5 class="sub-question">my laptop. The battery is nearly dead.</h5>
+
+            # Check if any files were uploaded
+            if 'files[]' not in request.files:
+                flash('No file uploaded')
+                return redirect(request.url)
+                
+            files = request.files.getlist('files[]')
+            
+            # Check if any files were uploaded
+            if not files:
+                flash('No file uploaded')
+                return redirect(request.url)
+            
+            # Check if any file is of invalid type
+            allowed_extensions = set(['png', 'jpg', 'jpeg', 'pdf'])
+            for file in files:
+                if file.filename.split('.')[-1] not in allowed_extensions:
+                    flash('Invalid file type: ' + file.filename)
+                    return redirect(request.url)
+                
+            # Save the files to the database
+            mycursor = mydb.cursor()
+            for file in files:
+                sql = "INSERT INTO ImageAndWord (Unit, File_Type, File) VALUES (%s, %s, %s)"
+                val = (selected_unit, file.filename.split('.')[-1], file.read())
+                mycursor.execute(sql, val)
+                mycursor.execute("SELECT File FROM vocabularydb.ImageAndWord WHERE Id = 10")
+                fetchedData = mycursor.fetchall()
+                mydb.commit()
+
+            return render_template("readingComprehensionPage.html" , fetchedData = fetchedData, googleAccname=googleAccountName, profile_pic=profile_pic_url)
+
+
+
+            {% if fETCHED %}
+<img src="data:image/{{ FileType }};base64,{{ encoded_file_contents }}" alt="Image">
+{% else %}
+<p>No image to display</p>
+{% endif %}

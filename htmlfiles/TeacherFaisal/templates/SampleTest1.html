@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='SampleTest1.css')}} ">
+    <script type="text/javascript" src="{{ url_for('static', filename='dropdownanimation.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='sampleTest.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='style.css')}} ">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="{{ url_for('static' , filename ='script.js')}} "></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Faisal</title>
+</head>
+<body>
+    <header>
+        <a href="who-we-are"><img class = "logo" src="{{ url_for('static', filename='1.png') }}" alt="Alt Text"></a>
+         <nav>
+             <ul class="nav_links">
+                 <li><a href="vocabulary">مفردات</a></li>
+                 <li><a href="dictionary">قاموس</a></li>
+                 <li><a href="chatbot">تكلم مع فيصل</a></li>
+                 <li><a href="who-we-are">من نحن؟</a></li>
+             </ul>
+         </nav>
+         <a class="cta" href="/base"><button>تواصل معنا</button></a>
+     </header>
+     <div class="sidebar">
+     </div>
+    {% if is_authenticated() %}
+        <style>
+            .login-button{
+                display: none;
+            }
+            .profile-details{
+                display: block;
+            }
+        </style>
+    {% endif %}
+
+    <a href="/loginPage"><button class="login-button">تسجيل الدخول</button></a>
+    <div class="profile-details" onclick="dropdown2()">
+        <img class="profile-picture" style="display:block" src="{{ profile_pic }}" alt="">
+        <p class="accountName">{{ googleAccname }}</p>
+        <div class="dropdown">
+            <a href="/logout" class="Logout"><ion-icon name="log-out-outline"></ion-icon>Logout</a>
+        </div>
+    </div>
+    <p id="countdown"></p>
+    <button id="pause-button" onclick="pause()">pause</button>
+    <div id="center">
+        <h1 class="times-up">Time's up</h1>
+        <div class="Total-score">
+            <p class="times-up">Your Score is</p><p id="score">0</p><p class="exam-mark">/ 25</p>
+        </div>
+        <a href="/SampleTest1"><button class="retry">retry</button></a>
+    </div>
+    <h3 class="Question">Question Number One: (25 points) Read the text and complete the tasks below:</h3>
+    <p class="the-passage">
+        We often hear people say, ‘It’s a small world, isn’t it?’ It’s usually when they’ve just experienced one of those strange coincidences that seem to happen in nearly everyone’s lives. You know the kind of thing: you’re on holiday in another country and you run into a person you know from home, even though <span class="bold-word">neither of you</span> knew that the other was going there too. People often think experiences like this are evidence of something mysterious happening, some kind of hidden plan outside our knowledge. The scientific
+explanation is less exciting, and perhaps that’s why some people are reluctant to accept <span class="bold-word">it</span>.Coincidences are events that unexpectedly happen at the same time for no clear reason, or finding an unexpected connection between seemingly random things or people. A very common example of <span class="bold-word">the latter</span> is talking to a complete stranger and finding that you have the same birthday. What are the chances of that happening? Actually, the chances are better than you might think, and there’s a mathematical way to prove it. It has been calculated that the number of people you need to have a <span class="bold-word">50%</span> chance of two of them sharing a birthday is 23. And when there are 48 people in a room, the probability goes up to 95%. To put it another way, if there are only 50 people reading these words (and I hope there are more!), one of them will almost certainly have the same birthday as me. The other part of the scientific explanation for coincidences is simply that there are so many events in people’s lives. Just think of the number of people that you have had any kind of connection with during your life. There are probably over <span class="bold-word">10,000</span>, and the older you get, <span class="bold-word">the more</span> there will be. If you are the kind of person who talks to strangers, you will definitely come across coincidences. Basically, when you think about how complex our lives are, especially nowadays with the Internet, the only surprising thing is
+that coincidences don’t happen more often.
+    </p>
+    <h3 class="Question">A. Answer the following questions (6 points) :</h3>
+    <div class="question-container">
+        <h5 class="sub-question">1) How are strange coincidences explained by science?</h5>
+        <h5 class="sub-question">a)</h5><input type="text" class="answer-field" id="answer-field1" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">   
+        <ion-icon class="mark" id="checkmark" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : Coincidences are events that unexpectedly happen at the same time for no clear reason. /
+            Finding an unexpected connection between seemingly random things or people.</p>
+        <span class="break"></span>
+        <h5 class="sub-question">b)</h5><input type="text" class="answer-field" id="answer-field2" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">   
+        <ion-icon class="mark" id="checkmark2" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark2" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer2"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer :Coincidences are events that unexpectedly happen at the same time for no clear reason. /
+            Finding an unexpected connection between seemingly random things or people.</p>
+        <span class="break"></span>
+        <h5 class="sub-question">2) What do unexpected meetings indicate for many people ?</h5>
+        <input type="text" class="answer-field" id="answer-field3" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark3" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark3" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer3"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : They are evidence of something mysterious happening, some kind of hidden plan outside our knowledge.</p>
+        <span class="break"></span>
+        <h5 class="sub-question">3)Why are some people reluctant to accept scientific explanations?</h5>
+        <input type="text" class="answer-field" id="answer-field4" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark4" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark4" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer4"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : Because it is less exciting.</p>
+        <span class="break"></span>
+        <h5 class="sub-question">4)What is the other part of the scientific explanation?</h5>
+        <input type="text" class="answer-field" id="answer-field5" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark5" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark5" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer5"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer :The other part of the scientific explanation is simply that there are so many events in people's lives .</p>
+        <span class="break"></span>
+        <h5 class="sub-question">5)What is the writer’s conclusion about coincidences?</h5>
+        <input type="text" class="answer-field" id="answer-field6" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark6" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark6" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer6"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer :The writer's conclusion about coincidences is that they don't happen more often.</p>
+        <span class="break"></span>
+    </div>
+    <h3 class="Question">B) Decide whether each of the following statements is True (T) or False (F):	(5 points):</h3>
+    <div class="True-Or-Flase">
+        <h5 class="sub-question" id="bracket">(</h5>
+        <label class="circle-tag False">
+        <span class="circle">
+            <input type="radio" id="False1" value="False" name="TF1" >
+        </span>
+        <p class="option">False</p>
+        </label>
+        <label class="circle-tag True">
+        <span class="circle">
+            <input type="radio" id="True1" value="True" name="TF1">
+        </span>
+        <p class="option">True</p>
+        </label>
+        <h5 class="sub-question" id="bracket">)</h5>
+        <ion-icon class="mark" id="checkmark7" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark7" name="close-outline"></ion-icon>
+        <h5 class="sub-question">1) Coincidences are expected events that happen systemically.</h5>
+        <span class="break"></span>
+        <h5 class="sub-question" id="bracket">(</h5>
+        <label class="circle-tag False">
+        <span class="circle">
+            <input type="radio" id="False2" value="False" name="TF2" >
+        </span>
+        <p class="option">False</p>
+        </label>
+        <label class="circle-tag True">
+        <span class="circle">
+            <input type="radio" id="True2" value="True" name="TF2">
+        </span>
+        <p class="option">True</p>
+        </label>
+        <h5 class="sub-question" id="bracket">)</h5>
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question">2) Having more contacts with people causes more coincidences in your life. </h5>
+        <span class="break"></span>
+        <h5 class="sub-question" id="bracket">(</h5>
+        <label class="circle-tag False">
+        <span class="circle">
+            <input type="radio" id="False3" value="False" name="TF3" >
+        </span>
+        <p class="option">False</p>
+        </label>
+        <label class="circle-tag True">
+        <span class="circle">
+            <input type="radio" id="True3" value="True" name="TF3">
+        </span>
+        <p class="option">True</p>
+        </label>
+        <h5 class="sub-question" id="bracket">)</h5>
+        <ion-icon class="mark" id="checkmark9" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark9" name="close-outline"></ion-icon>
+        <h5 class="sub-question">3) Maths can help us in proving coincidences.</h5>
+        <span class="break"></span>
+        <h5 class="sub-question" id="bracket">(</h5>
+        <label class="circle-tag False">
+        <span class="circle">
+            <input type="radio" id="False4" value="False" name="TF4" >
+        </span>
+        <p class="option">False</p>
+        </label>
+        <label class="circle-tag True">
+        <span class="circle">
+            <input type="radio" id="True4" value="True" name="TF4">
+        </span>
+        <p class="option">True</p>
+        </label>
+        <h5 class="sub-question" id="bracket">)</h5>
+        <ion-icon class="mark" id="checkmark10" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark10" name="close-outline"></ion-icon>
+        <h5 class="sub-question">4) The internet doesn't have impact on increasing coincidences. </h5>
+        <span class="break"></span>
+        <h5 class="sub-question" id="bracket">(</h5>
+        <label class="circle-tag False">
+        <span class="circle">
+            <input type="radio" id="False5" value="False" name="TF5" >
+        </span>
+        <p class="option">False</p>
+        </label>
+        <label class="circle-tag True">
+        <span class="circle">
+            <input type="radio" id="True5" value="True" name="TF5">
+        </span>
+        <p class="option">True</p>
+        </label>
+        <h5 class="sub-question" id="bracket">)</h5>
+        <ion-icon class="mark" id="checkmark11" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark11" name="close-outline"></ion-icon>
+        <h5 class="sub-question">5) The only surprising thing is that coincidences don’t happen as often as we think.</h5>
+        <span class="break"></span>
+    </div>
+    <div class="choose-the-right-answer">
+        <h3 class="Question">C) Choose the best answer to the questions. Circle A, B or C.</h3>
+        <span class="break"></span>
+        <h5 class="sub-question">1)The coincidences happen in</h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q1" class="radio-circle" value=" all people's live.">
+        </span>
+        <p class="option">a) all people's live.</p>
+        </label>
+        <h5 class="sub-question"> / </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q1" class="radio-circle" value="some people’s live">
+        </span>
+        <p class="option">b) some people’s live</p>
+        </label> 
+        <h5 class="sub-question"> / </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q1" class="radio-circle" value="almost people's live.">
+        </span>
+        <p class="option">c) almost people's live.</p>
+        </label>
+        <span class="break"></span>
+
+        <h5 class="sub-question">2)Sometimes you</h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q2" class="radio-circle" value="happen in">
+        </span>
+        <p class="option">a)happen in</p>
+        </label>
+        <h5 class="sub-question"> / </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q2" class="radio-circle" value="run into">
+        </span>
+        <p class="option">b)run into</p>
+        </label> 
+        <h5 class="sub-question"> / </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q2" class="radio-circle" value="put up">
+        </span>
+        <p class="option">c)put up</p>
+        </label>
+        <h5 class="sub-question">someone you know and neither expected it.</h5>
+        <span class="break"></span>
+
+        <h5 class="sub-question">3)If there are 30 people in a room, what is the probability that two of them have the same birthday?</h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q3" class="radio-circle" value="55% or more">
+        </span>
+        <p class="option">a)55% or more</p>
+        </label>
+        <h5 class="sub-question"> / </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q3" class="radio-circle" value=" 80% or more">
+        </span>
+        <p class="option">b)80% or more</p>
+        </label> 
+        <h5 class="sub-question"> / </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q3" class="radio-circle" value="50% or less">
+        </span>
+        <p class="option">c)50% or less</p>
+        </label>
+        <span class="break"></span>
+
+        <h5 class="sub-question">4)Some people believe that coincidences are</h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q4" class="radio-circle" value="hidden">
+        </span>
+        <p class="option">a)hidden</p>
+        </label>
+        <h5 class="sub-question"> / </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q4" class="radio-circle" value="mysterious">
+        </span>
+        <p class="option">b)mysterious</p>
+        </label> 
+        <h5 class="sub-question"> / </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q4" class="radio-circle" value="50% or less">
+        </span>
+        <p class="option">c)unintended</p>
+        </label>
+        <span class="break"></span>
+    </div>
+    <div>
+        <h3 class="Question">D)Complete the following sentences: (2 points)</h3>
+        <span class="break"></span>
+        <h5 class="sub-question">1) You will absolutely come across coincidences if </h5>
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">   
+        <span class="break"></span>
+        <h5 class="sub-question">2) To get chance 95% of two people having the same birthday is</h5>
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">   
+    </div>
+    <div>
+    <h3 class="Question">E) What do these pronouns refer to :</h3>
+    <div class="word-definition">
+        <h5 class="sub-question">1) neither of you ( line 2)</h5>
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <span class="break"></span>
+        <h5 class="sub-question">2) it (line 4)</h5>
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <h5 class="sub-question">3) the latter ( line 5)</h5>
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <span class="break"></span>
+        <h5 class="sub-question">4) the more ( line 11 )</h5>
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <span class="break"></span>
+    </div>
+    <h3 class="Question">F) Say what these numbers refer to : (2 points)</h3>
+    <div class="word-definition">
+        <h5 class="sub-question">1) 50 ( line 7)</h5>
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <span class="break"></span>
+        <h5 class="sub-question">2) 10,000 (line 10)</h5>
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+    </div>
+    <h3 class="Question">G) Write down the sentence which indicates that: (2 points)</h3>
+    <div class="word-definition">
+        <h5 class="sub-question">1) People frequently believe experiments such as this are a proof of something unknown.</h5>
+        <span class="break"></span>
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <span class="break"></span>
+        <h5 class="sub-question">2) It's normal when people have already tried one of unexpected events.</h5>
+        <span class="break"></span>
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+    </div>
+</div>
+<div>
+    <h3 class="Question">Question Number Two: Passage Two:</h3>
+    <h3 class="Question">Read the following passage carefully then answer the questions that follow.</h3>
+    <h5 class="sub-question">Starting a business involves planning, making key financial decisions and completing a series of legal activities. These four easy steps can help you plan, prepare and manage your business .</h5>
+    <p class="the-passage">
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        It’s really important that you deeply enjoy what you do. Make sure you are on the right track by asking yourself these three questions before you do anything else. Are you willing to work hard? Do you really want to operate independently? Do you have the self-confidence and self – discipline?
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        The main reason for doing a business plan first when you are thinking of starting a business is that it can help you avoid wasting your time and money for starting a business that will not succeed. Starting a business without it is just foolish. <br>
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        you need a support system while you are starting a business and afterwards. A family member or a friend that you can bounce ideas off and who will listen to the latest business start up crises is invaluable. When you are starting a business, experienced guidance is the best support system of all .
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        Save up if you have to approach potential investors and lenders. Figure your financial fall back plan. Don’t expect to start a business and then walk into a bank and get the amount you need.
+    </p>
+    <h3 class="Question">A) Read the text then choose the best title (1—4) for each tip and put it in the answer field.</h3>
+    <h5 class="sub-question">1)Don’t do it alone</h5>
+    <h5 class="sub-question">2)Be passionate about what you do</h5>
+    <h5 class="sub-question">3)Get the money</h5>
+    <h5 class="sub-question">4)Write a business plan</h5>
+    <div class="diagram">
+        <h3 class="Question">B) fill in the gaps in the following diagram .</h3>
+        <h5 class="sub-question diagram-center">inquiries to check whether you are on the right path</h5>
+        <h5 class="sub-question"><ion-icon class="up-arrow" name="arrow-forward-outline"></ion-icon></h5>
+        <h5 class="sub-question"><ion-icon class="forward-arrow" name="arrow-forward-outline"></ion-icon></h5>
+        <h5 class="sub-question"><ion-icon class="down-arrow" name="arrow-forward-outline"></ion-icon></h5>
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> <br>
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> <br>
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> <br>
+        <h5 class="sub-question diagram-bottom">The importance of making business plan</h5>
+        <input type="text" class="answer-field" id="answer-field-bottom" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> <br>
+    </div>
+    <h3 class="Question">C) Decide whether each of the following statements is True (T) or False (F):	(5 points):</h3>
+    <div class="True-Or-Flase">
+        <h5 class="sub-question">1) It is a bit important to enjoy what you do</h5>
+        <h5 class="sub-question" id="bracket">(</h5>
+        <input type="button" value="True" class="tr-fa-button True">
+        <input type="button" value="False" class="tr-fa-button False">
+        <h5 class="sub-question" id="bracket">)</h5>
+        <span class="break"></span>
+        <h5 class="sub-question">2)Starting anew business without a plan is stupid </h5>
+        <h5 class="sub-question" id="bracket">(</h5>
+        <input type="button" value="True" class="tr-fa-button True">
+        <input type="button" value="False" class="tr-fa-button False">
+        <h5 class="sub-question" id="bracket">)</h5>
+        <span class="break"></span>
+        <h5 class="sub-question">3) According to the writer, if you are starting up a business, you can get the best support from a friend who	knows the latest business start up crises</h5>
+        <h5 class="sub-question" id="bracket">(</h5>
+        <input type="button" value="True" class="tr-fa-button True">
+        <input type="button" value="False" class="tr-fa-button False">
+        <h5 class="sub-question" id="bracket">)</h5>
+        <span class="break"></span>
+    </div>
+    <h3 class="Question">D)Find in the passage the same meaning of the following words :</h3>
+    <div class="word-definition">
+        <h5 class="sub-question">1)relating to law </h5>
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <span class="break"></span>
+        <h5 class="sub-question">2) financial institutions that make funds available to another </h5>
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+    </div>
+</div>
+<div class="Vocabulary">
+    <h3 class="Question section-heading">Vocabulary</h3>
+    <h3 class="Question">1) Fill in the following by replacing the words in brackets with appropriate words from the box :	( 5 points)</h3>
+    <div class="word-container">
+        <h5 class="sub-question">neglect -</h5>
+        <h5 class="sub-question">potential  -</h5>
+        <h5 class="sub-question">reluctant -</h5>
+        <h5 class="sub-question">persevere -</h5>
+        <h5 class="sub-question">conform </h5>
+    </div>
+    <div class="fill-in-the-blanks-container">
+        <span class="break"></span>
+        <h5 class="sub-question">1)Since she was a child , she has never wanted to </h5>
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <h5 class="sub-question">( be the same as others )</h5><br>
+        <span class="break"></span>
+        <h5 class="sub-question">2)Don't  </h5>
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <h5 class="sub-question">your studies even if you have much time . ( ignore)</h5>
+        <span class="break"></span>
+        <h5 class="sub-question">3) Most people are </h5>
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <h5 class="sub-question">to answer questions about their age.( not willing)</h5>
+        <span class="break"></span>
+        <h5 class="sub-question">4) The boy has a great</h5>
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <h5 class="sub-question">as a pianist .( possibility for future )</h5>
+        <span class="break"></span>
+        <h5 class="sub-question">5)If you find that you've hit a wall ,</h5>
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <h5 class="sub-question">.( don't give up )</h5>
+    </div>
+    <h3 class="Question">2) Complete the sentences with word from the box :	( 5 points)</h3>
+    <div class="word-container">
+        <h5 class="sub-question">patted -</h5>
+        <h5 class="sub-question">stuck  -</h5>
+        <h5 class="sub-question">contreversial -</h5>
+        <h5 class="sub-question">optional -</h5>
+        <h5 class="sub-question">inevitable </h5>
+        </div>
+        <div class="fill-in-the-blanks-container">
+            <h5 class="sub-question">1)This part of the exam is</h5>
+            <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+            <h5 class="sub-question">you don’t have to answer it .</h5>
+            <span class="break"></span>
+            <h5 class="sub-question">2)Abortion is a highly.</h5>
+            <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+            <h5 class="sub-question">issue in the world.</h5>
+            <span class="break"></span>
+            <h5 class="sub-question">3) The teacher.</h5>
+            <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+            <h5 class="sub-question">the student on his head to motivate him</h5>
+            <span class="break"></span>
+            <h5 class="sub-question">4)The car wheels were completely . </h5>
+            <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+            <h5 class="sub-question">in the soft ground.</h5>
+            <span class="break"></span>
+            <h5 class="sub-question">5)There's nothing we can do to stop it happening; it's</h5>
+            <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+            <h5 class="sub-question">.</h5>
+    </div>
+    <h3 class="Question">3)Complete the sentences using the words in the box with ( co – mis ):	(4 points)</h3>
+    <div class="word-container">
+        <h5 class="sub-question">pilot -</h5>
+        <h5 class="sub-question">lead  -</h5>
+        <h5 class="sub-question">ordinated -</h5>
+        <h5 class="sub-question">understanding -</h5>
+        </div>
+    <div class="fill-in-the-blanks-container">
+        <h5 class="sub-question">1)The UNRWA has a </h5>
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <h5 class="sub-question">program for helping the Palestinian refugees.</h5>
+        <span class="break"></span>
+        <h5 class="sub-question">2)</h5>
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <h5 class="sub-question">happen when people get the wrong idea.</h5>
+        <span class="break"></span>
+        <h5 class="sub-question">3) Don't allow him to</h5>
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <h5 class="sub-question">by his smile, he's not very friendly really.</h5>
+        <span class="break"></span>
+        <h5 class="sub-question">4)He flew the plane alone .without a </h5>
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <h5 class="sub-question">in the soft ground.</h5>
+        <span class="break"></span>
+        <h5 class="sub-question">5)There's nothing we can do to stop it happening; it's</h5>
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <h5 class="sub-question">.</h5>
+</div>
+<h3 class="Question">4)Use the nouns in the box to make other ( in / on ) noun phrases in the sentences below: (2 points)</h3>
+<div class="word-container">
+    <h5 class="sub-question">advance -</h5>
+    <h5 class="sub-question">business  -</h5>
+    <h5 class="sub-question">purpose -</h5>
+    <h5 class="sub-question">reciept</h5>
+    </div>
+<div class="fill-in-the-blanks-container">
+    <h5 class="sub-question">1)Please let me know</h5>
+    <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+    <h5 class="sub-question">if you're going to visit me.</h5>
+    <span class="break"></span>
+    <h5 class="sub-question">2) My father has been</h5>
+    <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+    <h5 class="sub-question">since 2012.</h5>
+    <span class="break"></span>
+    <h5 class="sub-question">3) You can pay for the goods</h5>
+    <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+    <h5 class="sub-question">You don't need to pay in advance.</h5>
+    <span class="break"></span>
+    <h5 class="sub-question">4)I don't believe it was an accident. I think he did it</h5>
+    <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+    <h5 class="sub-question">.</h5>
+</div>
+<h3 class="Question">5)Complete the sentences with phrasal verbs from the box (2 points)</h3>
+<div class="word-container">
+    <h5 class="sub-question">stand by-</h5>
+    <h5 class="sub-question">hand over -</h5>
+    <h5 class="sub-question">breaks down -</h5>
+    <h5 class="sub-question">carry on -</h5>
+    </div>
+<div class="fill-in-the-blanks-container">
+    <h5 class="sub-question">1)The</h5>
+    <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+    <h5 class="sub-question">period between the old manager and the new one was difficult time.</h5>
+    <span class="break"></span>
+    <h5 class="sub-question">2) We need to have another plan as a</h5>
+    <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+    <h5 class="sub-question">in case the of problems.</h5>
+    <span class="break"></span>
+    <h5 class="sub-question">3) I'm sorry for interrupting. Please</h5>
+    <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+    <h5 class="sub-question">.</h5>
+    <span class="break"></span>
+    <h5 class="sub-question">4) What will we do if the car</h5>
+    <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+    <h5 class="sub-question">suddenly on our way there to the airport?</h5>
+    <span class="break"></span>
+</div>
+<h3 class="Question">6) Choose the correct answer: (2 points)</h3>
+<div class="choose-the-right-answer">
+    <h5 class="sub-question">1)His great</h5>
+    <label class="circle-tag">
+    <span class="circle">
+        <input type="radio" name="q1" class="radio-circle" value="break through">
+     </span>
+    <p class="option">break through</p>
+    </label>
+    <h5 class="sub-question"> / </h5>
+    <label class="circle-tag">
+    <span class="circle">
+        <input type="radio" name="q1" class="radio-circle" value="breakthrough">
+    </span>
+    <p class="option">breakthrough</p>
+    </label> 
+    <h5 class="sub-question">was when he attended a 'start-up weekend'.</h5>
+    <span class="break"></span>
+
+    <h5 class="sub-question">2)You can't always make your brain work on </h5>
+    <label class="circle-tag">
+    <span class="circle">
+        <input type="radio" name="q2" class="radio-circle" value="demand">
+     </span>
+    <p class="option">demand</p>
+    </label>
+    <h5 class="sub-question"> / </h5>
+    <label class="circle-tag">
+    <span class="circle">
+        <input type="radio" name="q2" class="radio-circle" value="the way">
+    </span>
+    <p class="option">the way</p>
+    </label> 
+    <span class="break"></span>
+
+    <h5 class="sub-question">3)I</h5>
+    <label class="circle-tag">
+    <span class="circle">
+        <input type="radio" name="q3" class="radio-circle" value="came across">
+     </span>
+    <p class="option">came across</p>
+    </label>
+    <h5 class="sub-question"> / </h5>
+    <label class="circle-tag">
+    <span class="circle">
+        <input type="radio" name="q3" class="radio-circle" value="ran into">
+    </span>
+    <p class="option">ran into</p>
+    </label> 
+    <h5 class="sub-question">this book while I was looking for my dictionary.</h5>
+    <span class="break"></span>
+
+    <h5 class="sub-question">4) Her job </h5>
+    <label class="circle-tag">
+    <span class="circle">
+        <input type="radio" name="q4" class="radio-circle" value="description">
+     </span>
+    <p class="option">description</p>
+    </label>
+    <h5 class="sub-question"> / </h5>
+    <label class="circle-tag">
+    <span class="circle">
+        <input type="radio" name="q4" class="radio-circle" value="prospects">
+    </span>
+    <p class="option">prospects</p>
+    </label> 
+    <h5 class="sub-question">allows her to ask about these matters.</h5>
+    <span class="break"></span>
+</div>
+<div class="Language">
+    <h3 class="Question section-heading">Language</h3>
+    <h3 class="Question">Section A :Question Number Four:</h3>
+    <h3 class="Question">1.A:Complete the sentences with the correct tense of the verbs in brackets: ( 3 points)</h3>
+    <div class="fill-in-the-blanks-container">
+        <h5 class="sub-question">1)I only started this book yesterday and I</h5>
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <h5 class="sub-question">50 pages so far. ( read )</h5><br>
+        <span class="break"></span>
+        <h5 class="sub-question">2)Mary can't join us in this trip because she</h5>
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <h5 class="sub-question">an important project. ( do )</h5><br>
+        <span class="break"></span>
+        <h5 class="sub-question">3)We</h5>
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <h5 class="sub-question">. downtown when the car suddenly</h5><br>
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <h5 class="sub-question"> ( drive / break down ) </h5><br>
+    </div>
+    <h3 class="Question">B:Choose the correct answer: ( 2 points)</h3>
+    <div class="choose-the-right-answer">
+        <h5 class="sub-question">1)You obviously </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q1" class="radio-circle" value="won't">
+        </span>
+        <p class="option">won't</p>
+        </label>
+        <h5 class="sub-question"> / </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q1" class="radio-circle" value="might">
+        </span>
+        <p class="option">might</p>
+        </label> 
+        <h5 class="sub-question">make any progress if you don't manage your time properly.</h5>
+        <span class="break"></span>
+
+        <h5 class="sub-question">2)We can't make any plans. The weather </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q2" class="radio-circle" value="could">
+        </span>
+        <p class="option">could</p>
+        </label>
+        <h5 class="sub-question"> / </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q2" class="radio-circle" value="may ">
+        </span>
+        <p class="option">may </p>
+        </label> 
+        <h5 class="sub-question">not be fine tomorrow.</h5>
+        <span class="break"></span>
+
+        <h5 class="sub-question">3)He says he is </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q3" class="radio-circle" value="getting">
+        </span>
+        <p class="option">getting</p>
+        </label>
+        <h5 class="sub-question"> / </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q3" class="radio-circle" value="going to get">
+        </span>
+        <p class="option">going to get</p>
+        </label> 
+        <h5 class="sub-question">a new job . He's not satisfied with his present one.</h5>
+
+        <h5 class="sub-question">4)If you give me 30$ reduction on the price of this phone , I </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q4" class="radio-circle" value="will buy">
+        </span>
+        <p class="option">will buy</p>
+        </label>
+        <h5 class="sub-question"> / </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q4" class="radio-circle" value="am going to buy">
+        </span>
+        <p class="option">am going to buy</p>
+        </label> 
+        <h5 class="sub-question">it soon .</h5>
+        <span class="break"></span>
+    </div>
+    <h3 class="Question">2)A: Report the following: ( 2 points)</h3>
+    <div class="fill-in-the-blanks-container">
+        <h5 class="sub-question">1) Why are you shouting at us like that? </h5>
+        <span class="break"></span>
+        <h5 class="sub-question">They asked the old woman</h5>
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <span class="break"></span>
+        <h5 class="sub-question">2) Did you enjoy the trip yesterday? </h5>
+        <span class="break"></span>
+        <h5 class="sub-question">They asked the old woman</h5>
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+    </div>
+    <h3 class="Question">2)B. Circle the correct answer: ( 3 points)</h3>
+    <div class="choose-the-right-answer">
+        <h5 class="sub-question">1)Would you mind </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q1" class="radio-circle" value="to go">
+        </span>
+        <p class="option">to go</p>
+        </label>
+        <h5 class="sub-question"> / </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q1" class="radio-circle" value="going">
+        </span>
+        <p class="option">going</p>
+        </label> 
+        <h5 class="sub-question">out with us?</h5>
+        <span class="break"></span>
+
+        <h5 class="sub-question">2)Did you remember</h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q2" class="radio-circle" value="to bring">
+        </span>
+        <p class="option">to bring </p>
+        </label>
+        <h5 class="sub-question"> / </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q2" class="radio-circle" value="bringing">
+        </span>
+        <p class="option">bringing </p>
+        </label> 
+        <h5 class="sub-question">your passport?</h5>
+        <span class="break"></span>
+
+        <h5 class="sub-question">3)while we were driving home, we stopped</h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q3" class="radio-circle" value="to buy">
+        </span>
+        <p class="option">to buy</p>
+        </label>
+        <h5 class="sub-question"> / </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q3" class="radio-circle" value="buying">
+        </span>
+        <p class="option"> buying</p>
+        </label> 
+        <h5 class="sub-question">a drink.</h5>
+
+        <h5 class="sub-question">4)The children enjoyed</h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q4" class="radio-circle" value="to play">
+        </span>
+        <p class="option">to play</p>
+        </label>
+        <h5 class="sub-question"> / </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q4" class="radio-circle" value="playing">
+        </span>
+        <p class="option">playing</p>
+        </label> 
+        <h5 class="sub-question">with the cat.</h5>
+        <span class="break"></span>
+
+        <h5 class="sub-question">5) I remember</h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q5" class="radio-circle" value="to meet ">
+        </span>
+        <p class="option">to meet </p>
+        </label>
+        <h5 class="sub-question"> / </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q5" class="radio-circle" value="meeting">
+        </span>
+        <p class="option">meeting</p>
+        </label> 
+        <h5 class="sub-question">the president last year.</h5>
+        <span class="break"></span>
+
+        <h5 class="sub-question">6) If you lend me your phone, I promise</h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q5" class="radio-circle" value="not to lose">
+        </span>
+        <p class="option">not to lose</p>
+        </label>
+        <h5 class="sub-question"> / </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q5" class="radio-circle" value="not losing">
+        </span>
+        <p class="option">not losing</p>
+        </label> 
+        <h5 class="sub-question">the president last year.</h5>
+        <span class="break"></span>
+    </div>
+    <h3 class="Question">Section B :Question Number Five:</h3>
+    <h3 class="Question">1.A: Add question tags to the sentences below: ( 3 points)</h3>
+    <div class="fill-in-the-blanks-container">
+        <h5 class="sub-question">1) You put us up in your house when the rain flooded our house, </h5>
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <h5 class="sub-question">?</h5>
+        <span class="break"></span>
+        <h5 class="sub-question">2) I'm afraid he won't pass this interview,</h5>
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <h5 class="sub-question">?</h5>
+        <span class="break"></span>        
+        <h5 class="sub-question">3) He's read five novels so far,  </h5>
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <h5 class="sub-question">?</h5>
+    </div>
+    <h3 class="Question">B: Rewrite the sentences replacing the underlined part with a causative structure ( have/get +object+ past participle: ( 2 points)</h3>
+    <div class="rewrite-the-question">
+        <h5 class="sub-question">1)He took the car to the garage and paid them to repair it.</h5>
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <span class="break"></span>
+        <h5 class="sub-question">2)You should ask someone to paint the flat before you move to it .</h5>
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+    </div>
+    <h3 class="Question">3)A: Correct the following sentences: (There is only one mistake in each sentence) (3 points)</h3>
+    <div class="fill-in-the-blanks-container">
+        <h5 class="sub-question">1) There is something strange about Ahmad, he is looking very sad.</h5>
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <span class="break"></span>
+        <h5 class="sub-question">2) They accused me about not telling the truth.</h5>
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <span class="break"></span>
+        <h5 class="sub-question">3) Who objects to have a rest for 15 minutes? </h5>
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+    </div>
+    <h3 class="Question">B:Join the sentences below using the words in brackets.</h3>
+    <div class="sentences-joining">
+        <h5 class="sub-question">1)The president made a speech , Later , we left the place ( until )</h5>
+        <span class="break"></span>
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <span class="break"></span>
+        <h5 class="sub-question">2)I didn’t hear her words . I watched the film . ( because )</h5>
+        <span class="break"></span>
+        <input type="text" class="answer-field" id="answer-field" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+    </div>
+</div>
+<div class="Writing">
+    <h3 class="Question section-heading">Writing</h3>
+    <div class="ReadingComprehension">
+        <h3 class="Question">Question Number six : Write only one of the following:</h3>
+        <label class="circle-tag">
+            <span class="circle">
+                <input type="radio" name="q5" class="radio-circle" value="paragraph1">
+            </span>
+            <h3 class="Question">
+                1. Write a short essay of about ( 100 / 150 ) words on "Communication  <br><br>
+                Technology" Paragraph One: Introduction on the importance of communication<br><br>
+                Technology. Paragraph Two: Advantages of communication technology.<br><br>
+                Paragraph three: Disadvantages of communication technology.<br><br>
+                Paragraph Four: State your opinion<br><br>
+            </h3>
+            </label>
+            <label class="circle-tag">
+                <span class="circle">
+                    <input type="radio" name="q5" class="radio-circle" value="paragraph2">
+                </span>
+                <h3 class="Question">
+                    <h3 class="Question">
+                        2.The debate of the importance of Science and Arts subjects and which one outweighs the other is an eternal one. Write about Education including the following items<br><br>
+                        Paragraph one :- mention the importance of education<br><br>
+                        Paragraph two : mention the benefits of Science and Arts subjects<br><br>
+                        Paragraph Three : What's the relation between your stream and your dream job?<br><br>
+                    </h3>
+                </h3>
+                </label>
+        <textarea oninput="autogrow(this) ; limitTextarea(this)" type="text" class="answer-field textarea" id="answer-field" name="input-field" placeholder="Start Writing Your Answer Right Here!" ></textarea>
+        <button id='submit-button' method="POST" onclick="checkAnswers()">submit</button>
+        <script>
+            function autogrow(element) {
+  element.style.height = "5px";
+  element.style.height = (element.scrollHeight)+"px";
+  element.scrollTop = element.scrollHeight;
+}
+
+function limitTextarea(element) {
+var maxChar = 150;
+var currentValue = element.value;
+var numberOfWords = currentValue.split(/\s+/).length;
+
+if (numberOfWords > maxChar) {
+  element.value = currentValue.split(/\s+/, maxChar).join(" ");
+}
+}
+
+const startingMinutes = 0.1;
+    let time = startingMinutes * 60;
+    let isPaused = false;
+
+    const countdownEl = document.getElementById('countdown');
+    const pauseButton = document.getElementById('pause-button');
+    const statusDiv = document.getElementById('center');
+
+
+    let timer = setInterval(updateCountdown, 1000);
+
+    function updateCountdown() {
+    if (isPaused) {
+        return;
+    }
+    const minutes = Math.floor(time / 60);
+    let seconds = time % 60;
+
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+
+    countdownEl.innerHTML = `${minutes}:${seconds}`;
+    time--;
+
+    if (time === 0){
+        pause();
+        statusDiv.style.display = 'block';
+        pauseButton.disabled = "disabled";
+        checkAnswers();
+        clearInterval(timer);
+    }
+    }
+
+    function pause() {
+    isPaused = !isPaused
+    }
+
+    function checkAnswers(){
+        const scoreElement = document.getElementById('score');
+        let score = parseInt(scoreElement.textContent);
+        const checkmark = document.getElementById('checkmark');
+        const crossmark = document.getElementById('crossmark');
+        const checkmark2 = document.getElementById('checkmark2');
+        const checkmark3 = document.getElementById('checkmark3');
+        const checkmark4 = document.getElementById('checkmark4');
+        const checkmark5 = document.getElementById('checkmark5');
+        const checkmark6 = document.getElementById('checkmark6');
+        const checkmark7 = document.getElementById('checkmark7');
+        const checkmark8 = document.getElementById('checkmark8');
+        const checkmark9 = document.getElementById('checkmark9');
+        const checkmark10 = document.getElementById('checkmark10');
+        const checkmark11 = document.getElementById('checkmark11');
+        const checkmark12 = document.getElementById('checkmark12');
+        const checkmark13 = document.getElementById('checkmark13');
+        const checkmark14 = document.getElementById('checkmark14');
+        const checkmark15 = document.getElementById('checkmark15');
+        const checkmark16 = document.getElementById('checkmark16');
+        const checkmark17 = document.getElementById('checkmark17');
+        const checkmark18 = document.getElementById('checkmark18');
+        const crossmark2 = document.getElementById('crossmark2');
+        const crossmark3 = document.getElementById('crossmark3');
+        const crossmark4 = document.getElementById('crossmark4');
+        const crossmark5 = document.getElementById('crossmark5');
+        const crossmark6 = document.getElementById('crossmark6');
+        const crossmark7 = document.getElementById('crossmark7');
+        const crossmark8 = document.getElementById('crossmark8');
+        const crossmark9 = document.getElementById('crossmark9');
+        const crossmark10 = document.getElementById('crossmark10');
+        const crossmark11 = document.getElementById('crossmark11');
+        const crossmark12 = document.getElementById('crossmark12');
+        const crossmark13 = document.getElementById('crossmark13');
+        const crossmark14 = document.getElementById('crossmark14');
+        const crossmark15 = document.getElementById('crossmark15');
+        const crossmark16 = document.getElementById('crossmark16');
+        const crossmark17 = document.getElementById('crossmark17');
+        const crossmark18 = document.getElementById('crossmark18');
+        const answerField1 = document.getElementById('answer-field1');
+        const answerField2 = document.getElementById('answer-field2');
+        const answerField3 = document.getElementById('answer-field3');
+        const answerField4 = document.getElementById('answer-field4');
+        const answerField5 = document.getElementById('answer-field5');
+        const answerField6 = document.getElementById('answer-field6');
+        const answerField7 = document.getElementById('answer-field7');
+        const answerField8 = document.getElementById('answer-field8');
+        const answerField9 = document.getElementById('answer-field9');
+        const answerField10 = document.getElementById('answer-field10');
+        const answerField11 = document.getElementById('answer-field11');
+        const answerField12 = document.getElementById('answer-field12');
+        const answerField13 = document.getElementById('answer-field13');
+        const answerField14 = document.getElementById('answer-field14');
+        const correctAnswer = document.getElementById('correct-answer');
+        const correctAnswer2 = document.getElementById('correct-answer2');
+        const correctAnswer3 = document.getElementById('correct-answer3');
+        const correctAnswer4 = document.getElementById('correct-answer4');
+        const correctAnswer5 = document.getElementById('correct-answer5');
+        const correctAnswer6 = document.getElementById('correct-answer6');
+        const correctAnswer7 = document.getElementById('correct-answer7');
+        const correctAnswer8 = document.getElementById('correct-answer8');
+        const correctAnswer9 = document.getElementById('correct-answer9');
+        const correctAnswer10 = document.getElementById('correct-answer10');
+        const correctAnswer11 = document.getElementById('correct-answer11');
+        const correctAnswer12 = document.getElementById('correct-answer12');
+        const correctAnswer13 = document.getElementById('correct-answer13');
+        const correctAnswer14 = document.getElementById('correct-answer14');
+        const submitButton = document.getElementById('submit-button')
+
+        statusDiv.style.display = 'block';
+        pause();
+        pauseButton.disabled = "disabled";
+
+        if (answerField1.value == "Coincidences are events that unexpectedly happen at the same time for no clear reason." || 
+        answerField1.value == "Finding an unexpected connection between seemingly random things or people." || 
+        answerField1.value == "Coincidences are events that unexpectedly happen at the same time for no clear reason ." ||
+        answerField1.value == "Coincidences are events that unexpectedly happen at the same time for no clear reason" || 
+        answerField1.value == "Finding an unexpected connection between seemingly random things or people ." || 
+        answerField1.value == "Finding an unexpected connection between seemingly random things or people"){
+            answerField1.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField1.style.backgroundColor = '#31CD16';
+            checkmark.style.display = 'block';
+            score += 1.5;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField1.style.backgroundColor = '#A90305';
+            answerField1.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark.style.display = 'block';
+            correctAnswer.style.display = 'block';
+        }
+        if (answerField2.value == "Coincidences are events that unexpectedly happen at the same time for no clear reason." || 
+        answerField2.value == "Finding an unexpected connection between seemingly random things or people." || 
+        answerField2.value == "Coincidences are events that unexpectedly happen at the same time for no clear reason ." ||
+        answerField2.value == "Coincidences are events that unexpectedly happen at the same time for no clear reason" || 
+        answerField2.value == "Finding an unexpected connection between seemingly random things or people ." || 
+        answerField2.value == "Finding an unexpected connection between seemingly random things or people"){
+            answerField2.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField2.style.backgroundColor = '#31CD16';
+            checkmark2.style.display = 'block';
+            score += 1.5;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField2.style.backgroundColor = '#A90305';
+            answerField2.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark2.style.display = 'block';
+            correctAnswer2.style.display = 'block';
+        }
+
+        if (answerField3.value == "They are evidence of something mysterious happening, some kind of hidden plan outside our knowledge." || 
+        answerField3.value == "They are evidence of something mysterious happening, some kind of hidden plan outside our knowledge ." || 
+        answerField3.value == "They are evidence of something mysterious happening, some kind of hidden plan outside our knowledge"|| 
+        answerField3.value == "Unexpected meetings are evidence of something mysterious happening, some kind of hidden plan outside our knowledge." ||
+        answerField3.value == "Unexpected meetings are evidence of something mysterious happening, some kind of hidden plan outside our knowledge ." ||
+        answerField3.value == "Unexpected meetings are evidence of something mysterious happening, some kind of hidden plan outside our knowledge" ||
+        answerField3.value == "These unexpected meetings are evidence of something mysterious happening, some kind of hidden plan outside our knowledge ." || 
+        answerField3.value == "These unexpected meetings are evidence of something mysterious happening, some kind of hidden plan outside our knowledge." ||
+        answerField3.value == "These unexpected meetings are evidence of something mysterious happening, some kind of hidden plan outside our knowledge"){
+            answerField3.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField3.style.backgroundColor = '#31CD16';
+            checkmark3.style.display = 'block';
+            score += 1.5;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField3.style.backgroundColor = '#A90305';
+            answerField3.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark3.style.display = 'block';
+            correctAnswer3.style.display = 'block';
+        }
+
+        if (answerField4.value == "Because it is less exciting." || 
+        answerField4.value == "Because it is less exciting ." || 
+        answerField4.value == "Because the scientific explaination is less exciting."|| 
+        answerField4.value == "Because the scientific explaination is less exciting ." ||
+        answerField4.value == "The scientific explaination is less exciting." ||
+        answerField4.value == "The scientific explaination is less exciting ."){
+            answerField4.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField4.style.backgroundColor = '#31CD16';
+            checkmark4.style.display = 'block';
+            score += 1.5;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField4.style.backgroundColor = '#A90305';
+            answerField4.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark4.style.display = 'block';
+            correctAnswer4.style.display = 'block';
+        }
+
+        if (answerField4.value == "Because it is less exciting." || 
+        answerField4.value == "Because it is less exciting ." || 
+        answerField4.value == "Because the scientific explaination is less exciting."|| 
+        answerField4.value == "Because the scientific explaination is less exciting ." ||
+        answerField4.value == "The scientific explaination is less exciting." ||
+        answerField4.value == "The scientific explaination is less exciting ."){
+            answerField4.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField4.style.backgroundColor = '#31CD16';
+            checkmark4.style.display = 'block';
+            score += 1.5;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField4.style.backgroundColor = '#A90305';
+            answerField4.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark4.style.display = 'block';
+            correctAnswer4.style.display = 'block';
+        }
+
+        if (answerField5.value == "The other part of the scientific explanation is simply that there are so many events in people's lives ." || 
+        answerField5.value == "The other part of the scientific explanation is simply that there are so many events in people's lives." || 
+        answerField5.value == "The other part of the scientific explanation is simply that there are so many events in people's lives"|| 
+        answerField5.value == "There are so many events in people's lives"||
+        answerField5.value == "There are so many events in people's lives."||
+        answerField5.value == "There are so many events in people's lives ."||
+        answerField5.value == "Is simply that there are so many events in people's lives."||
+        answerField5.value == "Is simply that there are so many events in people's lives ."||
+        answerField5.value == "Is simply that there are so many events in people's lives"){
+            answerField5.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField5.style.backgroundColor = '#31CD16';
+            checkmark5.style.display = 'block';
+            score += 1.5;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField5.style.backgroundColor = '#A90305';
+            answerField5.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark5.style.display = 'block';
+            correctAnswer5.style.display = 'block';
+        }
+
+        if (answerField6.value == "The writer's conclusion about coincidences is that they don't happen more often." || 
+        answerField6.value == "The writer's conclusion about coincidences is that they don't happen more often ." || 
+        answerField6.value == "The writer's conclusion about coincidences is that they don't happen more often"|| 
+        answerField6.value == "The only surprising thing is that coincidences don’t happen more often"||
+        answerField6.value == "The only surprising thing is that coincidences don’t happen more often."||
+        answerField6.value == "The only surprising thing is that coincidences don’t happen more often ."||
+        answerField6.value == "Coincidences don’t happen more often."||
+        answerField6.value == "Coincidences don’t happen more often ."||
+        answerField6.value == "Coincidences don’t happen more often"||
+        answerField6.value == "They don’t happen more often."||
+        answerField6.value == "They don’t happen more often ."||
+        answerField6.value == "They don’t happen more often"){
+            answerField6.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField6.style.backgroundColor = '#31CD16';
+            checkmark6.style.display = 'block';
+            score += 1.5;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField6.style.backgroundColor = '#A90305';
+            answerField6.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark6.style.display = 'block';
+            correctAnswer6.style.display = 'block';
+        }
+
+        document.getElementsByName('TF1')
+        .forEach(radio => {
+            if(radio.checked){
+                if(radio.value == 'False'){
+                    submitButton.disabled = 'disabled';
+                    checkmark7.style.display = 'block';
+                    score ++;
+                    scoreElement.textContent = score.toString();
+                }else{
+                    submitButton.disabled = 'disabled';
+                    crossmark7.style.display = 'block';
+                }
+            }
+        });
+
+        document.getElementsByName('TF2')
+        .forEach(radio => {
+            if(radio.checked){
+                if(radio.value == 'True'){
+                    submitButton.disabled = 'disabled';
+                    checkmark8.style.display = 'block';
+                    score ++;
+                    scoreElement.textContent = score.toString();
+                }else{
+                    submitButton.disabled = 'disabled';
+                    crossmark8.style.display = 'block';
+                }
+            }
+        });
+
+        document.getElementsByName('TF3')
+        .forEach(radio => {
+            if(radio.checked){
+                if(radio.value == 'True'){
+                    submitButton.disabled = 'disabled';
+                    checkmark9.style.display = 'block';
+                    score ++;
+                    scoreElement.textContent = score.toString();
+                }else{
+                    submitButton.disabled = 'disabled';
+                    crossmark9.style.display = 'block';
+                }
+            }
+        });
+
+        document.getElementsByName('TF4')
+        .forEach(radio => {
+            if(radio.checked){
+                if(radio.value == 'False'){
+                    submitButton.disabled = 'disabled';
+                    checkmark10.style.display = 'block';
+                    score ++;
+                    scoreElement.textContent = score.toString();
+                }else{
+                    submitButton.disabled = 'disabled';
+                    crossmark10.style.display = 'block';
+                }
+            }
+        });
+
+        document.getElementsByName('TF5')
+        .forEach(radio => {
+            if(radio.checked){
+                if(radio.value == 'True'){
+                    submitButton.disabled = 'disabled';
+                    checkmark11.style.display = 'block';
+                    score ++;
+                    scoreElement.textContent = score.toString();
+                }else{
+                    submitButton.disabled = 'disabled';
+                    crossmark11.style.display = 'block';
+                }
+            }
+        });
+    }
+        </script>
+        
+    </div>
+</div>

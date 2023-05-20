@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="{{ url_for('static' , filename ='readingComprehensionPage.css')}} ">
+  <script type="text/javascript" src="{{ url_for('static', filename='dropdownanimation.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='style.css')}} ">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="{{ url_for('static' , filename ='script.js')}} "></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Faisal</title>
+</head>
+<body>
+  <header>
+    <a href="who-we-are"><img class = "logo" src="{{ url_for('static', filename='1.png') }}" alt="Alt Text"></a>
+     <nav>
+         <ul class="nav_links">
+             <li><a href="vocabulary">مفردات</a></li>
+             <li><a href="dictionary">قاموس</a></li>
+             <li><a href="chatbot">تكلم مع فيصل</a></li>
+             <li><a href="who-we-are">من نحن؟</a></li>
+         </ul>
+     </nav>
+     <a class="cta" href="/base"><button>تواصل معنا</button></a>
+ </header>
+ <div class="sidebar">
+ </div>
+    {% if is_authenticated() %}
+        <style>
+            .login-button{
+                display: none;
+            }
+            .profile-details{
+                display: block;
+            }
+        </style>
+    {% endif %}
+
+    <a href="/loginPage"><button class="login-button">تسجيل الدخول</button></a>
+    <div class="profile-details" onclick="dropdown2()">
+        <img class="profile-picture" style="display:block" src="{{ profile_pic }}" alt="">
+        <p class="accountName">{{ googleAccname }}</p>
+        <div class="dropdown">
+            <a href="/logout" class="Logout"><ion-icon name="log-out-outline"></ion-icon>Logout</a>
+        </div>
+    </div>
+
+<a href="/categoriesPage"><button class="back-arrow"> < </button></a>
+<h1 class="title">Writing</h1>
+<h3 class="subtitle">هنا يمكن للطلاب كتابة فقرات بالمساعدة من المعلم فيصل و يمكن للاساتذة اضافة أسئلة للكتابة</h3>
+
+
+
+<section class="faq">
+  <div class="container">
+    <div class="accordion">
+      <div class="accordion-item" onclick="extend()">
+        <p class="accordion-link section-title">
+          Writing Samples
+          <ion-icon name="add-outline" id="ao"
+          style="margin-left: 5.38rem;"></ion-icon>
+          <ion-icon class="remove-outline" name="remove-outline"></ion-icon>
+        </p>
+        <div class="answer" id="question1">
+          <p>
+            <a href="/WritingSample1">
+              1) Writing Sample
+            </a><br>
+            <a href="/WritingSample2">
+              2) Writing Sample
+            </a><br>
+            <a href="/WritingSample3">
+              3) Writing Sample
+            </a><br>
+          </p>
+          <button class="add-material">
+            اضافة مواد
+            <ion-icon name="add-outline"></ion-icon>
+          </button>
+        </div>
+      </div>
+      <div class="accordion-item " onclick="extend1()">
+        <p class="accordion-link section-title">
+          Unit 1 Writing Questions
+          <ion-icon name="add-outline" id="ao1"></ion-icon>
+          <ion-icon class="remove-outline" name="remove-outline"></ion-icon>
+        </p>
+        <div class="answer" id="question2">
+          <p>
+            <a href="/U1WritingQuestion1">
+              1) Writing Question 1
+            </a><br>
+          </p>
+        </div>
+      </div>
+      <div class="accordion-item" onclick="extend2()">
+        <p class="accordion-link section-title">
+            Unit 2 Writing Questions
+          <ion-icon name="add-outline" id="ao2"></ion-icon>
+          <ion-icon class="remove-outline" name="remove-outline"></ion-icon>
+        </p>
+        <div class="answer" id="question3">
+          <p>
+            Flask is generally better suited for small to medium-sized web projects. However, it can be used for large-scale projects with some modifications and additions. Flask is highly extensible and there are many third-party libraries and tools that can be used to enhance its functionality and scalability.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+

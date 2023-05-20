@@ -1,0 +1,21 @@
+import pytube
+import os
+
+# Prompt user for video URL
+video_url = input("Enter the URL of the video you want to download: ")
+
+# Create a YouTube object with the video URL
+
+yt = pytube.YouTube(video_url)
+
+# Get the stream that contains both video and audio
+stream = yt.streams.all()
+vid = list(enumerate(stream))
+for i in vid :
+    print(i)
+print()
+
+strm = int(input("enter : "))
+output_file_path = os.path.join(os.getcwd(), input("Enter the name of the output file: "))
+stream[strm].download(output_file_path)
+print('Successfully')

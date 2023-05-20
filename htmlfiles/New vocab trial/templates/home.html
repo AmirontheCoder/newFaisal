@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Vocabulary Builder</title>
+  </head>
+  <body>
+    <h1>Welcome to the Vocabulary Builder!</h1>
+    <form method="POST" action="{{ url_for('add_word') }}">
+      <label for="word">New word:</label>
+      <input type="text" id="word" name="word">
+      <button type="submit">Add word</button>
+    </form>    
+  </body>
+</html>

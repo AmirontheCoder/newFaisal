@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='style.css')}} ">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="{{ url_for('static' , filename ='script.js')}} "></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='teacherfaisalbot.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='U1-ReadingComprehension1.css')}} ">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Faisal</title>
+</head>
+<body>
+  <header>
+    <a href="who-we-are"><img class = "logo" src="{{ url_for('static', filename='1.png') }}" alt="Alt Text"></a>
+     <nav>
+         <ul class="nav_links">
+             <li><a href="vocabulary">مفردات</a></li>
+             <li><a href="dictionary">قاموس</a></li>
+             <li><a href="chatbot">تكلم مع فيصل</a></li>
+             <li><a href="who-we-are">من نحن؟</a></li>
+         </ul>
+     </nav>
+     <a class="cta" href="/base"><button>تواصل معنا</button></a>
+ </header>
+ <div class="sidebar">
+ </div>
+    {% if is_authenticated() %}
+        <style>
+            .login-button{
+                display: none;
+            }
+            .profile-details{
+                display: block;
+            }
+        </style>
+    {% endif %}
+
+    <a href="/loginPage"><button class="login-button">تسجيل الدخول</button></a>
+    <div class="profile-details" onclick="dropdown2()">
+        <img class="profile-picture" style="display:block" src="{{ profile_pic }}" alt="">
+        <p class="accountName">{{ googleAccname }}</p>
+        <div class="dropdown">
+            <a href="/logout" class="Logout"><ion-icon name="log-out-outline"></ion-icon>Logout</a>
+        </div>
+    </div>
+
+    <center>
+      <h1>
+        Teacher Faisal
+      </h1>
+    </center>
+    <div class="box"></div>
+    <div class="boxed">
+      <div>
+        <div id="chatbox">
+          <p class="botText">
+            <span>Hi! I'm Faisal, How can I help you today ? </span>
+          </p>
+        </div>
+        <div id="userInput">
+          <textarea oninput="autogrow(this) ; limitTextarea(this)" type="text" class="answer-field textarea" id="textInput" name="input-field" placeholder="Enter your message write here !" ></textarea>
+          <script type="text/javascript">
+            function autogrow(element) {
+              element.style.height = "5px";
+              element.style.height = (element.scrollHeight)+"px";
+              element.scrollTop = element.scrollHeight;
+            }
+      
+          function limitTextarea(element) {
+          var maxChar = 200;
+          var currentValue = element.value;
+          var numberOfWords = currentValue.split(/\s+/).length;
+      
+          if (numberOfWords > maxChar) {
+              element.value = currentValue.split(/\s+/, maxChar).join(" ");
+          }
+      }
+      
+          </script>
+        </div>
+      </div>
+      <script>
+        function getBotResponse() {
+          var rawText = $("#textInput").val();
+          var userHtml = '<p class="userText"><span class=userResponse style="margin : 15px auto 15px auto">' + rawText + "</span></p>";
+          $("#textInput").val("");
+          $("#chatbox").append(userHtml);
+          document
+            .getElementById("userInput")
+            .scrollIntoView({ block: "start", behavior: "smooth" });
+          $.get("/get", { msg: rawText }).done(function(data) {
+            var botHtml = '<p class="botText"><span ">' + data + "</span></p>";
+            $("#chatbox").append(botHtml);
+            document
+              .getElementById("userInput")
+              .scrollIntoView({ block: "start", behavior: "smooth" });
+          });
+        }
+        $("#textInput").keypress(function(e) {
+          if (e.which == 13) {
+            getBotResponse();
+          }
+        });
+      </script>
+    </div>
+  </body>
+</html>

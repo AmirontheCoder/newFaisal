@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='style.css')}} ">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="{{ url_for('static' , filename ='script.js')}} "></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Faisal</title>
+</head>
+<body>
+    {% block content %}
+    <header>
+       <a href="who-we-are"><img class = "logo" src="{{ url_for('static', filename='1.png') }}" alt="Alt Text"></a>
+        <nav>
+            <ul class="nav_links">
+                <li><a href="vocabulary">مفردات</a></li>
+                <li><a href="dictionary">قاموس</a></li>
+                <li><a href="chatbot">تكلم مع فيصل</a></li>
+                <li><a href="who-we-are">من نحن؟</a></li>
+            </ul>
+        </nav>
+        <a class="cta" href="/base"><button>تواصل معنا</button></a>
+    </header>
+    <div class="sidebar">
+    </div>
+    {% endblock %}
+    {% if is_authenticated() %}
+        <style>
+            .login-button{
+                display: none;
+            }
+            .profile-details{
+                display: block;
+            }
+        </style>
+    {% endif %}
+
+    <a href="/loginPage"><button class="login-button">تسجيل الدخول</button></a>
+    <div class="profile-details" onclick="dropdown2()">
+        <img class="profile-picture" style="display:block" src="{{ profile_pic }}" alt="">
+        <p class="accountName">{{ googleAccname }}</p>
+        <div class="dropdown">
+            <a href="/logout" class="Logout"><ion-icon name="log-out-outline"></ion-icon>Logout</a>
+        </div>
+    </div>
+
+    <div class="our-goals">
+        <h1>Enhance Learning with AI</h1>
+        <h1>Offering Free Comprehensive Resources</h1>
+    </div>
+
+    <div class="courses flex-container">
+        <span class="course tawjihi 3lmi flex-box">
+            <h1>توجيهي ادبي</h1>
+            <pre class="text-in-boxes">
+                -توفير اسئلة الامتحانات السابقة
+                -شرح كافي ووافي لالمادة المطلوبة
+                -امكانية التكلم مع فيصل في حال وجود أسئلة
+                -تحسين سرعة الطلاب في الجواب
+            </pre>
+        </span>
+        <span class="course tawjihi adbi flex-box">
+            <a href="/categoriesPage">
+            <h1>توجيهي علمي</h1>
+            <pre class="text-in-boxes">
+                -توفير اسئلة الامتحانات السابقة
+                -شرح كافي ووافي لالمادة المطلوبة
+                -امكانية التكلم مع فيصل في حال وجود أسئلة
+                -تحسين سرعة الطلاب في الجواب
+            </pre>
+        </a>
+        </span>
+    </div>
+    <div class="Our-tools">     
+        <h1 class="tool">ألأدوات التي نوفرها</h1>
+        <span class="vocabulary-box tool-left tool">
+            <h1>Vocabulary Builder / صندوق المعاني</h1>
+        </span>
+        <span class="tool-caption">
+            <p class="vocabulary-description">صندوق المعاني هو صندوق في الصفحة يمكنك من خلاله تصفح كل المعاني والمفردات التي بحثت عنها في القاموس و يتوقر من خلاله المعاني في كلا الللغبن العربية و الانجليزية</p>
+        </span>
+        <div class="dictionaryplace">
+        <span class="dictionary tool-right tool">
+            <h1>Dicitionary /  القاموس</h1>
+        </span>
+        <span class="dict-tool-caption">
+            <p class="vocabulary-description">هو صفحة يمكنك من خلالها البحث عن أي معنى يصعب عليك فهمه و يظهر لك في اللغتين العربية و الانجليزية
+            </p>
+        </span>
+    </div>
+    <div class="pronounciation-toolplace">
+        <span class="chatbot tool-right tool">
+            <h1>Chatbot Faisal /  المعلم فيصل</h1>
+        </span>
+        <span class="chatbot-tool-caption">
+            <p class="vocabulary-description">
+                المعلم فيصل هو اهم جزء من الصفحة يمكنه ان يشرحلك الدروس يوفر لك الفيديوهات عنها و ايضا يمكنك اختبار مهاراتك الكتابية معه
+            </p>
+        </span>
+    </div>
+    </div>
+</body>
+</html>
+

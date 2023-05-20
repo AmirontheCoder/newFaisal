@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='style.css')}}">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="{{ url_for('static' , filename ='script.js')}} "></script>
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='U1-ReadingComprehension1 copy.css')}}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Faisal</title>
+</head>
+<body>
+    <header>
+        <a href="who-we-are"><img class = "logo" src="{{ url_for('static', filename='1.png') }}" alt="Alt Text"></a>
+         <nav>
+             <ul class="nav_links">
+                 <li><a href="vocabulary">مفردات</a></li>
+                 <li><a href="dictionary">قاموس</a></li>
+                 <li><a href="chatbot">تكلم مع فيصل</a></li>
+                 <li><a href="who-we-are">من نحن؟</a></li>
+             </ul>
+         </nav>
+         <a class="cta" href="/base"><button>تواصل معنا</button></a>
+     </header>
+     <div class="sidebar">
+     </div>
+    {% if is_authenticated() %}
+        <style>
+            .login-button{
+                display: none;
+            }
+            .profile-details{
+                display: block;
+            }
+        </style>
+    {% endif %}
+
+    <a href="/loginPage"><button class="login-button">تسجيل الدخول</button></a>
+    <div class="profile-details" onclick="dropdown2()">
+        <img class="profile-picture" style="display:block" src="{{ profile_pic }}" alt="">
+        <p class="accountName">{{ googleAccname }}</p>
+        <div class="dropdown">
+            <a href="/logout" class="Logout"><ion-icon name="log-out-outline"></ion-icon>Logout</a>
+        </div>
+    </div>
+<p id="countdown"></p>
+<button id="pause-button" onclick="pause()">pause</button>
+<div id="center">
+    <h1 class="times-up">Time's up</h1>
+    <div class="Total-score">
+        <p class="times-up">Your Score is</p><p id="score">0</p><p class="exam-mark">/ 25</p>
+    </div>
+    <a href="/U2ReadingComprehension1"><button class="retry">retry</button></a>
+</div>
+<script>
+
+</script>
+<div class="ReadingComprehension">
+    <h3 class="Question">1)  Read the text and do the tasks below:</h3>
+    <p class="the-passage">
+        Do you sometimes feel that you are wasting a lot of your time and not getting enough done? Don’t worry – you are not alone . Most of us fail to manage our time effectively. There are lots of books about time management on the market, but you don’t need to waste time ( and money ) reading them. Here are some tried and tested tips for getting things done. </p>
+    <div class="question-container">
+        <span class="break"></span>
+        <input type="text" onapaste="return false" class="answer-field" id="answer-field1" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark" name="close-outline"></ion-icon>
+        <h5 class="sub-question">It’s so easy to make excuses and find ways to avoid the thing you know you should be doing. Experts advise us to break this habit by becoming aware of our own excuses. The ‘ right time ‘ to do something never arrives. The best time to do something is usually now. Once you’ve got started , you’ll probably find that it wasn’t as hard as you thought.</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : Just do it</p>
+        <span class="break"></span>
+        <span class="break"></span>
+        <input type="text" class="answer-field" id="answer-field2" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark2" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark2" name="close-outline"></ion-icon>
+        <h5 class="sub-question">It’s important to make yourself a ‘to do’ list or exam revision timetable, but remember that listing things isn’t the same as doing them. Once you’ve worked out what needs to be done, decide which tasks have the highest priority and which can be left till later. </h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer2"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : First things first</p>
+        <span class="break"></span>
+        <span class="break"></span>
+        <input type="text" class="answer-field" id="answer-field3" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark3" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark3" name="close-outline"></ion-icon>
+        <h5 class="sub-question">It’s inevitable that things don’t always go as well as you expect them to. If you find that you’ve ‘ hit a wall’, there are two things you can do. First , persevere with a bit more effort, you may find that you break through the wall. But if that doesn’t work, try having a ( short ) break. Do something completely different, and come back to the task. </h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer3"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : Keep going</p>
+        <span class="break"></span>
+        <input type="text" class="answer-field" id="answer-field4" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark4" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark4" name="close-outline"></ion-icon>
+        <h5 class="sub-question">Even if you are under stress, there is no point making yourself ill _ that will just make the pressure worse. Make sure you remember to eat regularly and healthily, and,  even though it may be hard, try to get enough sleep.</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer4"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : Look after yourself</p>
+        <span class="break"></span>
+        <input type="text" class="answer-field" id="answer-field5" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark5" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark5" name="close-outline"></ion-icon>
+        <h5 class="sub-question"> You can’t always make your brain work’ on demand’. Don’t spend too long time on one task, and learn to recognize when you’re slowing down. Divide large tasks into smaller parts that are easier to manage, and reward yourself for completing them by doing something fun.</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer5"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : One step at a time</p>
+        <span class="break"></span>
+    </div>
+    <h3 class="Question">1: Match the headings with the paragraphs above:</h3>
+    <div class="fill-in-the-blanks-container">
+        <h5 class="sub-question">A: Look after yourself</h5>
+        <h5 class="sub-question">B: Just do it</h5>
+        <h5 class="sub-question">C: Keep going</h5>
+        <span class="break"></span>
+        <h5 class="sub-question">D: First things first</h5>
+        <h5 class="sub-question">E: One step at a time</h5>
+        <span class="break"></span>
+    </div>
+    <h3 class="Question">2: Answer the questions : </h3>
+    <div class="fill-in-the-blanks-container">
+        <h5 class="sub-question">• Why is it necessary for us to arrange our time?</h5>
+        <span class="break"></span>
+        <input type="text" class="answer-field" id="answer-field6" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark6" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark6" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer6"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : In order not to waste more time</p>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer7"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer :  to get things done </p>
+        <span class="break"></span>
+        <h5 class="sub-question">• Why isn’t it always a good idea to look for books about time management? </h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers"id="correct-answer8"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : Because we may waste time reading them  and also we may waste money for getting them</p>
+        <span class="break"></span>
+        <span class="break"></span>
+        <h5 class="sub-question">3: Write what you could say to those people:</h5>
+        <span class="break"></span>
+        <table>
+            <tr>
+                <td>Problem</td>
+                <td>Tip number</td>
+                <td>What should be done</td>
+            </tr>
+            <tr>
+                <td>There is so much to do that it gets confusing and I don’t know where to start </td>
+                <td>D<br>First things first</td>
+                <td class="answer-table-fields">
+                    <h5 class="sub-question">A: </h5>
+                    <input type="text" class="answer-field" id="answer-field9" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+                    <ion-icon class="mark" id="checkmark9" name="checkmark-outline"></ion-icon>
+                    <ion-icon class="mark" id="crossmark9" name="close-outline"></ion-icon>
+                    <span class="break"></span>
+                    <p class="correct-answers" id="correct-answer9">
+                    <ion-icon name="bulb-outline"></ion-icon>
+                    Correct Answer : Make a "to do list" or exam revision timetable
+                    </p>
+                    <h5 class="sub-question">B: </h5>
+                    <input type="text" class="answer-field" id="answer-field9" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+                    <ion-icon class="mark" id="checkmark9" name="checkmark-outline"></ion-icon>
+                    <ion-icon class="mark" id="crossmark9" name="close-outline"></ion-icon>
+                    <span class="break"></span>
+                    <p class="correct-answers" id="correct-answer9">
+                    <ion-icon name="bulb-outline"></ion-icon>
+                    Correct Answer : Decide which tasks have the highest priorities
+                    </p>
+                    <h5 class="sub-question">C: </h5>
+                    <input type="text" class="answer-field" id="answer-field9" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+                    <ion-icon class="mark" id="checkmark9" name="checkmark-outline"></ion-icon>
+                    <ion-icon class="mark" id="crossmark9" name="close-outline"></ion-icon>
+                    <span class="break"></span>
+                    <p class="correct-answers" id="correct-answer9">
+                    <ion-icon name="bulb-outline"></ion-icon>
+                    Correct Answer : Decide which tasks can be left till later
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>I sometimes reach a point when I get bored and information just stops</td>
+                <td>C<br></span>Keep going</td>
+                <td class="answer-table-fields">
+                    <h5 class="sub-question">A: </h5>
+                    <input type="text" class="answer-field" id="answer-field9" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+                    <ion-icon class="mark" id="checkmark9" name="checkmark-outline"></ion-icon>
+                    <ion-icon class="mark" id="crossmark9" name="close-outline"></ion-icon>
+                    <span class="break"></span>
+                    <p class="correct-answers" id="correct-answer9">
+                    <ion-icon name="bulb-outline"></ion-icon>
+                    Correct Answer : Persevere with a bit more effort so that you might get through the wall
+                    </p>
+                    <h5 class="sub-question">B: </h5>
+                    <input type="text" class="answer-field" id="answer-field9" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+                    <ion-icon class="mark" id="checkmark9" name="checkmark-outline"></ion-icon>
+                    <ion-icon class="mark" id="crossmark9" name="close-outline"></ion-icon>
+                    <span class="break"></span>
+                    <p class="correct-answers" id="correct-answer9">
+                    <ion-icon name="bulb-outline"></ion-icon>
+                    Correct Answer : Try have a short break, do something completely different and come back to the task
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>I get worried and my head starts hurting</td>
+                <td>A<br>Look after yourself</td>
+                <td class="answer-table-fields">
+                    <h5 class="sub-question">A: </h5>
+                    <input type="text" class="answer-field" id="answer-field9" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+                    <ion-icon class="mark" id="checkmark9" name="checkmark-outline"></ion-icon>
+                    <ion-icon class="mark" id="crossmark9" name="close-outline"></ion-icon>
+                    <span class="break"></span>
+                    <p class="correct-answers" id="correct-answer9">
+                    <ion-icon name="bulb-outline"></ion-icon>
+                    Correct Answer : Eat regularly and healthily
+                    </p>
+                    <h5 class="sub-question">B: </h5>
+                    <input type="text" class="answer-field" id="answer-field9" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+                    <ion-icon class="mark" id="checkmark9" name="checkmark-outline"></ion-icon>
+                    <ion-icon class="mark" id="crossmark9" name="close-outline"></ion-icon>
+                    <span class="break"></span>
+                    <p class="correct-answers" id="correct-answer9">
+                    <ion-icon name="bulb-outline"></ion-icon>
+                    Correct Answer : Try to get enough sleep
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>I always seem to find other things to do and time just runs out </td>
+                <td>B<br>Just do it</td>
+                <td class="answer-table-fields">
+                    <h5 class="sub-question">A: </h5>
+                    <input type="text" class="answer-field" id="answer-field9" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+                    <ion-icon class="mark" id="checkmark9" name="checkmark-outline"></ion-icon>
+                    <ion-icon class="mark" id="crossmark9" name="close-outline"></ion-icon>
+                    <span class="break"></span>
+                    <p class="correct-answers" id="correct-answer9">
+                    <ion-icon name="bulb-outline"></ion-icon>
+                    Correct Answer : Break the habit of making excuses by becoming aware of your own excuses
+                    </p>
+                    <h5 class="sub-question">B: </h5>
+                    <input type="text" class="answer-field" id="answer-field9" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+                    <ion-icon class="mark" id="checkmark9" name="checkmark-outline"></ion-icon>
+                    <ion-icon class="mark" id="crossmark9" name="close-outline"></ion-icon>
+                    <span class="break"></span>
+                    <p class="correct-answers" id="correct-answer9">
+                    <ion-icon name="bulb-outline"></ion-icon>
+                    Correct Answer : Get started 
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>I sometimes think it’s all too hard and want to give up</td>
+                <td>E<br>One step at a time</td>
+                <td class="answer-table-fields">
+                    <h5 class="sub-question">A: </h5>
+                    <input type="text" class="answer-field" id="answer-field9" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+                    <ion-icon class="mark" id="checkmark9" name="checkmark-outline"></ion-icon>
+                    <ion-icon class="mark" id="crossmark9" name="close-outline"></ion-icon>
+                    <span class="break"></span>
+                    <p class="correct-answers" id="correct-answer9">
+                    <ion-icon name="bulb-outline"></ion-icon>
+                    Correct Answer : Don't spend too long on one task .
+                    </p>
+                    <h5 class="sub-question">B: </h5>
+                    <input type="text" class="answer-field" id="answer-field9" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+                    <ion-icon class="mark" id="checkmark9" name="checkmark-outline"></ion-icon>
+                    <ion-icon class="mark" id="crossmark9" name="close-outline"></ion-icon>
+                    <span class="break"></span>
+                    <p class="correct-answers" id="correct-answer9">
+                    <ion-icon name="bulb-outline"></ion-icon>
+                    Correct Answer : Divide large tasks into smaller parts .
+                    </p>
+                    <h5 class="sub-question">C: </h5>
+                    <input type="text" class="answer-field" id="answer-field9" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+                    <ion-icon class="mark" id="checkmark9" name="checkmark-outline"></ion-icon>
+                    <ion-icon class="mark" id="crossmark9" name="close-outline"></ion-icon>
+                    <span class="break"></span>
+                    <p class="correct-answers" id="correct-answer9">
+                    <ion-icon name="bulb-outline"></ion-icon>
+                    Correct Answer : Reward yourself for completing them
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <h3 class="Question">3: Write what the following words and  pronouns might refer to :</h3>
+    <div class="word-definition">
+        <h5 class="sub-question">• this habit</h5>
+        <input type="text" class="answer-field" id="answer-field12" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark12" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark12" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer12"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : Making excuses</p>
+        <span class="break"></span>
+        <h5 class="sub-question">• them</h5>
+        <input type="text" class="answer-field" id="answer-field12" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark12" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark12" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer12"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : Things you have listed</p>
+        <span class="break"></span>
+        <h5 class="sub-question">• which</h5>
+        <input type="text" class="answer-field" id="answer-field12" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark12" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark12" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer12"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : tasks</p>
+        <span class="break"></span>
+        <h5 class="sub-question">• that</h5>
+        <input type="text" class="answer-field" id="answer-field12" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark12" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark12" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer12"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : Persevering with a bit more effort</p>
+        <span class="break"></span>
+        <h5 class="sub-question">• them</h5>
+        <input type="text" class="answer-field" id="answer-field12" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark12" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark12" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer12"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : large tasks</p>
+        <span class="break"></span>
+    </div>
+    <h3 class="Question">2) Read the text and do the tasks below:</h3>
+    <p class="the-passage">
+        The results of a new poll show that financial problems have taken over from the environment as the main concern for young people. The survey asked 12.000 people aged between 14 and 18 what they were most worried about. The clear winner was "finding a job", while the environment was only the seventh greatest worry. This compares with similar polls in the last fifteen years, when environmental worries came first. One of the poll's organizers commented that the results demonstrated a clear change in attitude. " It's not just that getting a job is the main worry," he said. "Also included in the top six worries were getting into debt (6th) and passing exams (4th=).
+    </p><br>
+    <p class="the-passage">
+        I'm convinced that there's a connection. Because of changes in the job market, there is more and more pressure on young people nowadays to pass exams and go on to university in the hope of finding a good job. And rising university fees make it inevitable that many students graduate from university with huge debts. Other concerns mentioned by large numbers of young people also tended to be personal rather than social, including worries about relationships (2nd), health(3rd) and fitting in with peers(4th=)
+    </p><br>
+    <p class="the-passage">
+        Other concerns mentioned by large numbers of young people also tended to be personal rather than social, including worries about relationships (2nd), health(3rd) and fitting in with peers(4th=)
+    </p><br>
+    <p class="the-passage">
+        Annette Coleman, director of the Green Earth organization, said yesterday that she was disappointed, but not surprised, at the fall in the number of young people concerned about the environment. 'It's not that the environmental concerns are less urgent than before – quite the opposite in fact. It's just that after decades of publicity on topics like climate change, so little has actually changed. A lot of people get the feeling that there's nothing we can do about it, and young people in particular tend to be impatient. Of course, the other thing is that in times of economic difficulty people are more likely to focus on worries that are more immediate and have an impact on their daily lives.
+    </p><br>
+    <h3 class="Question">1: What do  the results of the new poll show about young people's concerns?</h3><br>
+    <h3 class="Question">Put them in order according to the text:</h3>
+    <div class="word-definition">
+        <h5 class="sub-question">1 </h5>
+        <input type="text" class="answer-field" id="answer-field12" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark12" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark12" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer12"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : Finding a job</p>
+        <span class="break"></span>
+        <h5 class="sub-question">2 </h5>
+        <input type="text" class="answer-field" id="answer-field12" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark12" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark12" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer12"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : relationships</p>
+        <span class="break"></span>
+        <h5 class="sub-question">3 </h5>
+        <input type="text" class="answer-field" id="answer-field12" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark12" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark12" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer12"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : health</p>
+        <span class="break"></span>
+        <h5 class="sub-question">4 </h5>
+        <input type="text" class="answer-field" id="answer-field12" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark12" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark12" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer12"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : Passing exams</p>
+        <span class="break"></span>
+        <h5 class="sub-question">5 </h5>
+        <input type="text" class="answer-field" id="answer-field12" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark12" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark12" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer12"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : Fitting in with peers</p>
+        <span class="break"></span>
+        <h5 class="sub-question">6 </h5>
+        <input type="text" class="answer-field" id="answer-field12" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark12" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark12" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer12"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : Getting into debt</p>
+        <span class="break"></span>
+        <h5 class="sub-question">7 </h5>
+        <input type="text" class="answer-field" id="answer-field12" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark12" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark12" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer12"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : Enviroment</p>
+        <span class="break"></span>
+    </div>
+    <h3 class="Question">2: Complete the following:</h3>
+    <div class="word-definition">
+        <h5 class="sub-question">1. Nowadays, financial problems are the </h5>
+        <input type="text" class="answer-field" id="answer-field12" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark12" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark12" name="close-outline"></ion-icon>
+        <h5 class="sub-question"> for young people.</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer12"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : main concerns</p>
+        <span class="break"></span>
+
+        <h5 class="sub-question">2. The first top worry for young people is </h5>
+        <input type="text" class="answer-field" id="answer-field12" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark12" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark12" name="close-outline"></ion-icon>
+        <p class="correct-answers" id="correct-answer12"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : main concerns</p>
+        <h5 class="sub-question">while the enviroment is</h5>
+        <input type="text" class="answer-field" id="answer-field12" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark12" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark12" name="close-outline"></ion-icon>
+        <p class="correct-answers" id="correct-answer12"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : the seventh greatest worry</p>
+        <span class="break"></span>
+
+        <h5 class="sub-question">3. For most young people,</h5>
+        <input type="text" class="answer-field" id="answer-field12" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark12" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark12" name="close-outline"></ion-icon>
+        <h5 class="sub-question">concerns are more important than social concerns. </h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer12"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : personal</p>
+        <span class="break"></span>
+        <h5 class="sub-question">4. The text mentions some personal concerns like </h5>
+        <input type="text" class="answer-field" id="answer-field12" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark12" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark12" name="close-outline"></ion-icon>
+        <p class="correct-answers" id="correct-answer12"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : health</p>
+        <h5 class="sub-question"> and </h5>
+        <input type="text" class="answer-field" id="answer-field12" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark12" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark12" name="close-outline"></ion-icon>
+        <p class="correct-answers" id="correct-answer12"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : fitting in with peers</p>
+        <span class="break"></span>
+    </div>
+    <h3 class="Question">3:  Decide whether each of the followings is TRUE (T) or FALSE (F):</h3>
+    <div class="word-definition">
+        <h5 class="sub-question">1. The environment is no longer the main concern for young people.</h5>
+        <input type="text" class="answer-field" id="answer-field12" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark12" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark12" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer12"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : T</p>
+        <span class="break"></span>
+        <h5 class="sub-question">2. The results of the survey reflect a clear change in young people's attitudes.</h5>
+        <input type="text" class="answer-field" id="answer-field12" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark12" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark12" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer12"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : T</p>
+        <span class="break"></span>
+        <h5 class="sub-question">3. The environmental concerns are not as urgent as they used to be previously.</h5>
+        <input type="text" class="answer-field" id="answer-field12" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark12" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark12" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer12"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : F</p>
+        <span class="break"></span>
+        <h5 class="sub-question">4. Nowadays, economic difficulty has  great effect on young people's concerns.</h5>
+        <input type="text" class="answer-field" id="answer-field12" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark12" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark12" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer12"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : T</p>
+        <span class="break"></span>
+        <h5 class="sub-question">5. Most young people concerns tend to be social rather than personal.</h5>
+        <input type="text" class="answer-field" id="answer-field12" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark12" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark12" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer12"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : F</p>
+        <span class="break"></span>
+    </div>
+    <h3 class="Question">4:  Answer the following questions:</h3>
+    <div class="word-definition">
+        <h5 class="sub-question">1. Why is it important for young people to pass exams and go to university?</h5>
+        <input type="text" class="answer-field" id="answer-field12" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark12" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark12" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer12"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : In the hope of finding a job</p>
+        <span class="break"></span>
+        <h5 class="sub-question">2. Why do many students graduate from university with huge debts?</h5>
+        <input type="text" class="answer-field" id="answer-field12" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark12" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark12" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer12"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : Because of rising university fees</p>
+        <span class="break"></span>
+        <h5 class="sub-question">3. Why are young people becoming less concerned about the environment?</h5>
+        <span class="break"></span>
+        <h5 class="sub-question">A: </h5>
+        <input type="text" class="answer-field" id="answer-field12" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark12" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark12" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer12"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer :  A lot of people get the feeling that there’s nothing we can do about it</p>
+        <span class="break"></span>
+        <h5 class="sub-question">B: </h5>
+        <input type="text" class="answer-field" id="answer-field12" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark12" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark12" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer12"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : In time of economic difficulty , people focus on worries that are more immediate and have an impact on their daily life</p>
+        <span class="break"></span>
+    </div>
+    <h3 class="Question">5:   Write what the following pronouns refer to:</h3>
+    <div class="word-definition">
+        <h5 class="sub-question">1. they</h5>
+        <input type="text" class="answer-field" id="answer-field12" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark12" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark12" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer12"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : Young people ( people aged between 14 &18)</p>
+        <span class="break"></span>
+        <h5 class="sub-question">2. This</h5>
+        <input type="text" class="answer-field" id="answer-field12" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark12" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark12" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer12"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : The results of the new poll </p>
+        <span class="break"></span>
+        <h5 class="sub-question">3. he</h5>
+        <input type="text" class="answer-field" id="answer-field12" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark12" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark12" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer12"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : One of the poll’s organizers</p>
+        <span class="break"></span>
+        <h5 class="sub-question">4. it</h5>
+        <input type="text" class="answer-field" id="answer-field12" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark12" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark12" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer12"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : environment</p>
+        <span class="break"></span>
+        <h5 class="sub-question">5. their</h5>
+        <input type="text" class="answer-field" id="answer-field12" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark12" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark12" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer12"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : people</p>
+        <span class="break"></span>
+    </div>
+    <h3 class="Question">3) Read the following passage then answer the questions that follow.  (External)</h3>
+    <p class="the-passage">
+        Mark Twain once said: “Eat alive frog in the morning and nothing worse will happen to you the rest of the day” . For self-help development,  this quote serves as a metaphor for effective time management.  It means simply  you should tackle the hardest and most important task on your to-do list every morning. , so you’re likely to take on a positive approach about the rest of your day.
+    </p>
+    <div class="question-container">
+        <input type="text" onapaste="return false" class="answer-field" id="answer-field1" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark" name="close-outline"></ion-icon>
+        <h5 class="sub-question"> There are lots of tasks that are most likely to be classified as “frogs” .  Some tasks are classified as difficult tasks, others as important tasks , and some others are both difficult and important.  A difficult task is that which   you keep putting off because it  would take too much of your time, or because it is simply boring. For example, this may be an extensive research for a project.   An important task  is that  which needs  you to fully focus on it  for a longer period of time like  cost and time estimates you have to set for an elusive project.  And  if you’re really out of luck, your task can be both important and difficult ,or in other words,  boring and crucial for your work like doing   200-word abstract for a 50-page project research – with the deadline being mere hours away.</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : What tasks can be frogs</p>
+        <span class="break"></span>
+        <span class="break"></span>
+        <input type="text" class="answer-field" id="answer-field2" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark2" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark2" name="close-outline"></ion-icon>
+        <h5 class="sub-question">If you have to eat two frogs, begin with the ugly frog . This is another way of saying that if you have two important tasks before you, start with the biggest, hardest, and most important task first. The gist to the “eat that frog” time management technique is simple. First, you’ll need to create a list of tasks you have to do .Then label your tasks  according to their level of importance and urgency to identify your “frog” . Work on your “frog” first thing in the morning and remember to  persist until the task is complete.  Once done, shift your focus to less crucial tasks in your schedule.</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer2"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : How to eat the frog</p>
+        <span class="break"></span>
+        <span class="break"></span>
+        <input type="text" class="answer-field" id="answer-field3" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark3" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark3" name="close-outline"></ion-icon>
+        <h5 class="sub-question"> Everyone has a certain type of tasks they don’t enjoy. Doing the most difficult or the most important task first thing in the morning will have a great positive impact on the rest of your day. 
+            This little achievement will help energize and motivate you, and you will glide through the rest of the day because you’ll know that all the other tasks that wait you are easier. It makes prioritizing easier as you’ll be more likely to recognize what tasks aren’t important, what tasks you can discard entirely and what tasks you should really focus on. It leaves you with more time for enjoyable tasks.</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer3"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : Advantages of eating the frog</p>
+        <span class="break"></span>
+    </div>
+    <h3 class="Question">1. Match the headings with the paragraphs above: 3 points</h3>
+    <div class="fill-in-the-blanks-container">
+        <h5 class="sub-question">A: How to eat the frog</h5>
+        <h5 class="sub-question">B: Advantages of eating the frog</h5>
+        <h5 class="sub-question">C: What tasks can be frogs</h5>
+        <span class="break"></span>
+    </div>
+    ----------------------------------------------------------------------
+    <h3 class="Question">2-Complete the diagram from the text: 6 points</h3>
+    <div class="fill-in-the-blanks-container">
+
+    </div>
+    ----------------------------------------------------------------------
+    <h3 class="Question">3-With reference to the text, put the  following steps in order: 4 points</h3><br>
+    <h3 class="Question">For an effective time management technique, you need to :</h3>
+    <div class="fill-in-the-blanks-container">
+        <span class="break"></span>
+        <input type="text" class="answer-field" id="answer-field3" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark3" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark3" name="close-outline"></ion-icon>
+        <h5 class="sub-question">Prioritize  your tasks</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer3"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : 2</p>
+        <span class="break"></span>
+        <span class="break"></span>
+        <input type="text" class="answer-field" id="answer-field3" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark3" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark3" name="close-outline"></ion-icon>
+        <h5 class="sub-question">Make a list of tasks you have to do</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer3"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : 1</p>
+        <span class="break"></span>
+        <span class="break"></span>
+        <input type="text" class="answer-field" id="answer-field3" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark3" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark3" name="close-outline"></ion-icon>
+        <h5 class="sub-question">Once completed, move towards the less crucial tasks</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer3"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : 4</p>
+        <span class="break"></span>
+        <span class="break"></span>
+        <input type="text" class="answer-field" id="answer-field3" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark3" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark3" name="close-outline"></ion-icon>
+        <h5 class="sub-question">Having identified your frog, work on it.</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer3"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : 3</p>
+        <span class="break"></span>
+    </div>
+    <h3 class="Question">4-Answer the questions: 4 points</h3>
+    <div class="fill-in-the-blanks-container">
+        <h5 class="sub-question">What positive effect could “ eating the frog” have on the rest of your day? 2 points</h5>
+        <span class="break"></span>
+        <input type="text" class="answer-field" id="answer-field3" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark3" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark3" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer3"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : It will help energize and motivate you and you will glide through the rest of the day because you’ll know that all other tasks that wait you are easier.</p>
+        <span class="break"></span>
+        <h5 class="sub-question">What does the writer mean by “ it makes prioritizing easier? 2 points</h5>
+        <span class="break"></span>
+        <input type="text" class="answer-field" id="answer-field3" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark" id="checkmark3" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark3" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer3"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : You’ll be more likely to recognize what tasks aren’t important ,what tasks you can discard entirely and what tasks you should really focus on.</p>
+        <span class="break"></span>
+    </div>
+    <h3 class="Question">5-Complete the following from the text: 3 points</h3>
+    <div class="word-definition">
+        <h5 class="sub-question">1 The expression ‘ eating the frog ‘ is a metaphorical expression for</h5>
+        <input type="text" class="answer-field" id="answer-field12" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark12" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark12" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer12"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : time management</p>
+        <span class="break"></span>
+
+        <h5 class="sub-question">2  A task can be described as ‘ important and difficult ‘ when it is both</h5>
+        <input type="text" class="answer-field" id="answer-field12" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark12" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark12" name="close-outline"></ion-icon>
+        <p class="correct-answers" id="correct-answer12"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : boring</p>
+        <h5 class="sub-question">and</h5>
+        <input type="text" class="answer-field" id="answer-field12" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark12" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark12" name="close-outline"></ion-icon>
+        <p class="correct-answers" id="correct-answer12"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : crucial</p>
+        <span class="break"></span>
+
+        <h5 class="sub-question">3 According to the text, labeling tasks should be based on  their levels of</h5>
+        <input type="text" class="answer-field" id="answer-field12" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark12" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark12" name="close-outline"></ion-icon>
+        <p class="correct-answers" id="correct-answer12"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : importance</p>
+        <h5 class="sub-question">and</h5>
+        <input type="text" class="answer-field" id="answer-field12" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark12" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark12" name="close-outline"></ion-icon>
+        <p class="correct-answers" id="correct-answer12"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : urgency</p>
+        <span class="break"></span>
+    </div>
+
+    <button id='submit-button' method="POST" onclick="checkAnswers()">submit</button>
+</div>
+<script>
+    const startingMinutes = 0.1;
+    let time = startingMinutes * 60;
+    let isPaused = false;
+
+    const countdownEl = document.getElementById('countdown');
+    const pauseButton = document.getElementById('pause-button');
+    const statusDiv = document.getElementById('center');
+
+
+    let timer = setInterval(updateCountdown, 1000);
+
+    function updateCountdown() {
+    if (isPaused) {
+        return;
+    }
+    const minutes = Math.floor(time / 60);
+    let seconds = time % 60;
+
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+
+    countdownEl.innerHTML = `${minutes}:${seconds}`;
+    time--;
+
+    if (time === 0){
+        pause();
+        statusDiv.style.display = 'block';
+        pauseButton.disabled = "disabled";
+        checkAnswers();
+        clearInterval(timer)
+    }
+    }
+
+    function pause() {
+    isPaused = !isPaused
+    }
+
+    function checkAnswers(){
+        const scoreElement = document.getElementById('score');
+        let score = parseInt(scoreElement.textContent);
+        const checkmark = document.getElementById('checkmark');
+        const crossmark = document.getElementById('crossmark');
+        const checkmark2 = document.getElementById('checkmark2');
+        const checkmark3 = document.getElementById('checkmark3');
+        const checkmark4 = document.getElementById('checkmark4');
+        const checkmark5 = document.getElementById('checkmark5');
+        const checkmark6 = document.getElementById('checkmark6');
+        const checkmark7 = document.getElementById('checkmark7');
+        const checkmark8 = document.getElementById('checkmark8');
+        const checkmark9 = document.getElementById('checkmark9');
+        const checkmark10 = document.getElementById('checkmark10');
+        const checkmark11 = document.getElementById('checkmark11');
+        const checkmark12 = document.getElementById('checkmark12');
+        const checkmark13 = document.getElementById('checkmark13');
+        const checkmark14 = document.getElementById('checkmark14');
+        const checkmark15 = document.getElementById('checkmark15');
+        const checkmark16 = document.getElementById('checkmark16');
+        const crossmark2 = document.getElementById('crossmark2');
+        const crossmark3 = document.getElementById('crossmark3');
+        const crossmark4 = document.getElementById('crossmark4');
+        const crossmark5 = document.getElementById('crossmark5');
+        const crossmark6 = document.getElementById('crossmark6');
+        const crossmark7 = document.getElementById('crossmark7');
+        const crossmark8 = document.getElementById('crossmark8');
+        const crossmark9 = document.getElementById('crossmark9');
+        const crossmark10 = document.getElementById('crossmark10');
+        const crossmark11 = document.getElementById('crossmark11');
+        const crossmark12 = document.getElementById('crossmark12');
+        const crossmark13 = document.getElementById('crossmark13');
+        const crossmark14 = document.getElementById('crossmark14');
+        const crossmark15 = document.getElementById('crossmark15');
+        const crossmark16 = document.getElementById('crossmark16');
+        const answerField1 = document.getElementById('answer-field1');
+        const answerField2 = document.getElementById('answer-field2');
+        const answerField3 = document.getElementById('answer-field3');
+        const answerField4 = document.getElementById('answer-field4');
+        const answerField5 = document.getElementById('answer-field5');
+        const answerField6 = document.getElementById('answer-field6');
+        const answerField7 = document.getElementById('answer-field7');
+        const answerField8 = document.getElementById('answer-field8');
+        const answerField9 = document.getElementById('answer-field9');
+        const answerField10 = document.getElementById('answer-field10');
+        const answerField11 = document.getElementById('answer-field11');
+        const answerField12 = document.getElementById('answer-field12');
+        const answerField13 = document.getElementById('answer-field13');
+        const correctAnswer = document.getElementById('correct-answer');
+        const correctAnswer2 = document.getElementById('correct-answer2');
+        const correctAnswer3 = document.getElementById('correct-answer3');
+        const correctAnswer4 = document.getElementById('correct-answer4');
+        const correctAnswer5 = document.getElementById('correct-answer5');
+        const correctAnswer6 = document.getElementById('correct-answer6');
+        const correctAnswer7 = document.getElementById('correct-answer7');
+        const correctAnswer8 = document.getElementById('correct-answer8');
+        const correctAnswer9 = document.getElementById('correct-answer9');
+        const correctAnswer10 = document.getElementById('correct-answer10');
+        const correctAnswer11 = document.getElementById('correct-answer11');
+        const correctAnswer12 = document.getElementById('correct-answer12');
+        const correctAnswer13 = document.getElementById('correct-answer13');
+        const submitButton = document.getElementById('submit-button')
+
+        statusDiv.style.display = 'block';
+        pause();
+        pauseButton.disabled = "disabled";
+
+        if (answerField1.value == "the area where you feel comfortable" || answerField1.value == "The area where you feel comfortable" || answerField1.value == "The area where you feel comfortable." || answerField1.value == "the area where you feel comfortable." || answerField1.value == "the set of routines and known abilities that make us feel safe" || answerField1.value == "The set of routines and known abilities that make us feel safe"){
+            answerField1.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField1.style.backgroundColor = '#31CD16';
+            checkmark.style.display = 'block';
+            score += 2;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField1.style.backgroundColor = '#A90305';
+            answerField1.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark.style.display = 'block';
+            correctAnswer.style.display = 'block';
+        }
+
+        if (answerField2.value == "the feeling that they are developing and making progress in their lives" || 
+        answerField2.value == "the feeling that they are developing and making progress in their lives" || 
+        answerField2.value == "When they are developing and making progress in their lives" || 
+        answerField2.value == "The feeling that they are developing and making progress in their lives" || 
+        answerField2.value == "when they are developing and making progress in their lives"){
+            answerField2.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField2.style.backgroundColor = '#31CD16';
+            checkmark2.style.display = 'block';
+            score += 2;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField2.style.backgroundColor = '#A90305';
+            answerField2.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark2.style.display = 'block';
+            correctAnswer2.style.display = 'block';
+        }
+
+        if (answerField3.value == "They may be afraid of failing" || 
+        answerField3.value == "They may be afraid of failing."){
+            answerField3.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField3.style.backgroundColor = '#31CD16';
+            checkmark3.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField3.style.backgroundColor = '#A90305';
+            answerField3.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark3.style.display = 'block';
+            correctAnswer3.style.display = 'block';
+        }
+
+        if (answerField4.value == "They are unsure how to begin" || 
+        answerField4.value == "They are unsure how to begin."){
+            answerField4.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField4.style.backgroundColor = '#31CD16';
+            checkmark4.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField4.style.backgroundColor = '#A90305';
+            answerField4.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark4.style.display = 'block';
+            correctAnswer4.style.display = 'block';
+        }
+
+        if (answerField5.value == "They make excuses like not wanting to change." || 
+        answerField5.value == "They make excuses like not wanting to change"){
+            answerField5.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField5.style.backgroundColor = '#31CD16';
+            checkmark5.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField5.style.backgroundColor = '#A90305';
+            answerField5.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark5.style.display = 'block';
+            correctAnswer5.style.display = 'block';
+        }
+
+        if (answerField6.value == "we can manage"){
+            answerField6.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField6.style.backgroundColor = '#31CD16';
+            checkmark6.style.display = 'block';
+            score += 2;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField6.style.backgroundColor = '#A90305';
+            answerField6.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark6.style.display = 'block';
+            correctAnswer6.style.display = 'block';
+        }
+
+        if (answerField7.value == "unexpected or worrying"){
+            answerField7.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField7.style.backgroundColor = '#31CD16';
+            checkmark7.style.display = 'block';
+            score += 2;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField7.style.backgroundColor = '#A90305';
+            answerField7.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark7.style.display = 'block';
+            correctAnswer7.style.display = 'block';
+        }
+
+        if (answerField8.value == "things that are outside our comfort zones"){
+            answerField8.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField8.style.backgroundColor = '#31CD16';
+            checkmark8.style.display = 'block';
+            score += 2;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField8.style.backgroundColor = '#A90305';
+            answerField8.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark8.style.display = 'block';
+            correctAnswer8.style.display = 'block';
+        }
+
+        if (answerField9.value == "learning something new"){
+            answerField9.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField9.style.backgroundColor = '#31CD16';
+            checkmark9.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField9.style.backgroundColor = '#A90305';
+            answerField9.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark9.style.display = 'block';
+            correctAnswer9.style.display = 'block';
+        }
+
+        if (answerField10.value == "becoming more creative"){
+            answerField10.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField10.style.backgroundColor = '#31CD16';
+            checkmark10.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField10.style.backgroundColor = '#A90305';
+            answerField10.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark10.style.display = 'block';
+            correctAnswer10.style.display = 'block';
+        }
+
+        if (answerField11.value == "getting fit"){
+            answerField11.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField11.style.backgroundColor = '#31CD16';
+            checkmark11.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField11.style.backgroundColor = '#A90305';
+            answerField11.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark11.style.display = 'block';
+            correctAnswer11.style.display = 'block';
+        }
+
+        if (answerField12.value == "comfort zone" || 
+        answerField12.value == "Comfort zone"
+        || answerField12.value == "comfort zone."
+        || answerField12.value == "Comfort zone." ){
+            answerField12.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField12.style.backgroundColor = '#31CD16';
+            checkmark12.style.display = 'block';
+            score += 1.5;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField12.style.backgroundColor = '#A90305';
+            answerField12.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark12.style.display = 'block';
+            correctAnswer12.style.display = 'block';
+        }
+
+        if (answerField13.value == "people" || 
+        answerField12.value == "people."
+        || answerField12.value == "People"
+        || answerField12.value == "People." ){
+            answerField12.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField13.style.backgroundColor = '#31CD16';
+            checkmark13.style.display = 'block';
+            score += 1.5;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField13.style.backgroundColor = '#A90305';
+            answerField13.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark13.style.display = 'block';
+            correctAnswer13.style.display = 'block';
+        }
+
+        document.getElementsByName('TF1')
+            .forEach(radio => {
+                if(radio.checked){
+                    if(radio.value == 'True'){
+                        submitButton.disabled = 'disabled';
+                        checkmark14.style.display = 'block';
+                        score += 2;
+                        scoreElement.textContent = score.toString();
+                    }else{
+                        submitButton.disabled = 'disabled';
+                        crossmark14.style.display = 'block';
+                    }
+
+                }
+            });
+
+        document.getElementsByName('TF2')
+        .forEach(radio => {
+            if(radio.checked){
+                if(radio.value == 'False'){
+                    submitButton.disabled = 'disabled';
+                    checkmark15.style.display = 'block';
+                    score +=2;
+                    scoreElement.textContent = score.toString();
+                }else{
+                    submitButton.disabled = 'disabled';
+                    crossmark15.style.display = 'block';
+                }
+            }
+        });
+
+        document.getElementsByName('TF3')
+        .forEach(radio => {
+            if(radio.checked){
+                if(radio.value == 'True'){
+                    submitButton.disabled = 'disabled';
+                    checkmark16.style.display = 'block';
+                    score +=2;
+                    scoreElement.textContent = score.toString();
+                }else{
+                    submitButton.disabled = 'disabled';
+                    crossmark16.style.display = 'block';
+                }
+            }
+        });
+    }
+</script>
+</body>
+<footer>
+    <a href="U1ReadingComprehension2"><button class="next">Next ></button></a>
+    <a href="/readingComprehensionPage"><button class="home">Back To Reading Comprehension Page</button></a>
+</footer>
