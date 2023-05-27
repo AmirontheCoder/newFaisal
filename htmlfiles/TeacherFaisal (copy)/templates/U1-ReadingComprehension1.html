@@ -94,6 +94,7 @@
     Unfortunately, people often get stuck in their comfort zones and don't feel able to try different things. There are various possible reasons for this. They may be afraid of failing or unsure how to begin. Many people think 'This is the way I am and I'll never change', using this as an excuse for not trying something new. Whatever the reason may be, it's sometimes necessary to force yourself to do something you'd rather not do. Once you've made the effort, though, the door to new experiences will be open and you'll probably wonder why you thought it was a problem.</p>
     <h3 class="Question">A. Answer the following questions (7 points) :</h3>
     <div class="question-container">
+        <div>
         <h5 class="sub-question">1) What does the phrase 'comfort zone' mean?</h5>
         <span class="break"></span>
         <input type="text" autocomplete="off" onapaste="return false" class="answer-field" id="answer-field1" name="input-field1" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
@@ -102,8 +103,11 @@
         <span class="break"></span>
         <p class="correct-answers" id="correct-answer"> 
             <ion-icon name="bulb-outline"></ion-icon>
-            Correct Answer : the area where you feel comfortable / the set of routines and known abilities that make us feel safe</p>
-        <span class="break"></span>
+            Correct Answer : the area where you feel comfortable / the set of routines and known abilities that make us feel safe
+        </p>
+        </div>
+            <span class="break"></span>
+        <div>
         <h5 class="sub-question">2)What helps people feel positive about themselves according to many studies?</h5>
         <span class="break"></span>
         <input type="text" autocomplete="off"  class="answer-field" id="answer-field2" autocomplete="off"  name="input-field2" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
@@ -113,7 +117,7 @@
         <p class="correct-answers" id="correct-answer2"> 
             <ion-icon name="bulb-outline"></ion-icon>
             Correct Answer : The feeling that they are developing and making progress in their lives / When they are developing and making progress in their lives</p>
-        
+        </div>
         <span class="break"></span>
         <h5 class="sub-question">3)Why do people often get stuck in their comfort zones?(3 reasons)</h5>
         <span class="break"></span>
@@ -278,30 +282,27 @@
     <p id="feedback" style="margin-top: 30px;"></p>
 </div>
 <script>
-    document.getElementById('submit-button').addEventListener('click', function() {
-    var inputs = document.querySelectorAll('input[type=text]');
-    var data = [];
+    // document.getElementById('submit-button').addEventListener('click', function() {
+    // var inputs = document.querySelectorAll('input[type=text]');
+    // var result = Array.from(inputs).map(input => ({id: input.id, value: input.value}));
 
-    inputs.forEach(function(input, index) {
-        data.push(input.value);
-    });
-    fetch('/checkAnswers', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({answers:data}),
-    })
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById('feedback').innerText = JSON.parse(data).feedback_paragraph
-        console.log('Success:',typeof data);
-    })
-    .catch((error) => {
-        document.getElementById('feedback').innerText = error.message
-        console.error('Error:', error);
-    });
-    });
+    // fetch('/checkAnswers', {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({answers:result}),
+    // })
+    // .then(response => response.text())
+    // .then(data => {
+    //     // document.getElementById('feedback').innerText = JSON.parse(data).feedback_paragraph
+    //     console.log('Success:',data);
+    // })
+    // .catch((error) => {
+    //     document.getElementById('feedback').innerText = error.message
+    //     console.error('Error:', error);
+    // });
+    // });
 
     const startingMinutes = 0.1;
     let time = startingMinutes * 60;
@@ -341,20 +342,68 @@
 
     function checkAnswers(){
         var inputs = document.querySelectorAll('input[type=text]');
-        var data = [];
-        inputs.forEach(function(input, index) {
-        data.push(input.value);
-        });
+        var result = Array.from(inputs)
+        .filter(input => input.value !== '')
+        .map(input => ({id: input.id, value: input.value}));
         fetch('/checkAnswers', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({answers:data}),
+            body: JSON.stringify({answers:result}),
         })
-        .then(response => response.text())
+        .then(response => response.json())
         .then(data => {
             console.log('Success:', data);
+            const feedback_messages = data.feedback_messages
+            if(!feedback_messages.length){
+                return;
+            }
+            
+            for(message of feedback_messages){
+                const element = document.getElementById(message.id)
+                console.log("element ", element)
+                if(message.score[0] > 0.5 ){
+                    var parent = element.parentElement;
+                    var checkmark = parent.querySelector('[id^="checkmark"]');
+                    
+                    element.disabled = "disabled";
+                    submitButton.disabled = 'disabled';
+                    element.style.backgroundColor = '#31CD16';
+                    checkmark.style.display = 'block';
+                    score += 1.5;
+                    scoreElement.textContent = score.toString();
+
+                }
+                else{
+                    var parent = element.parentElement;
+                    var checkmark = parent.querySelector('[id^="crossmark"]');
+
+                    element.disabled = "disabled";
+                    submitButton.disabled = 'disabled';
+                    element.style.backgroundColor = '#A90305';
+                    checkmark.style.display = 'block';
+                    score += 1.5;
+                    var answerEl = parent.querySelector('.correct-answers');
+                    console.log('answer el   ', answerEl)
+                    if(answerEl){
+                        answerEl.style.display='unset';
+                    }
+                    scoreElement.textContent = score.toString();
+                }
+                //     answerField12.disabled = "disabled";
+        //     submitButton.disabled = 'disabled';
+        //     answerField13.style.backgroundColor = '#31CD16';
+        //     checkmark13.style.display = 'block';
+        //     score += 1.5;
+        //     scoreElement.textContent = score.toString();
+        // }else{
+        //     answerField13.style.backgroundColor = '#A90305';
+        //     answerField13.disabled = "disabled";
+        //     submitButton.disabled = 'disabled';
+        //     crossmark13.style.display = 'block';
+        //     correctAnswer13.style.display = 'block';
+            }
         })
         .catch((error) => {
             console.error('Error:', error);
@@ -393,19 +442,19 @@
         const crossmark14 = document.getElementById('crossmark14');
         const crossmark15 = document.getElementById('crossmark15');
         const crossmark16 = document.getElementById('crossmark16');
-        const answerField1 = document.getElementById('answer-field1');
-        const answerField2 = document.getElementById('answer-field2');
-        const answerField3 = document.getElementById('answer-field3');
-        const answerField4 = document.getElementById('answer-field4');
-        const answerField5 = document.getElementById('answer-field5');
-        const answerField6 = document.getElementById('answer-field6');
-        const answerField7 = document.getElementById('answer-field7');
-        const answerField8 = document.getElementById('answer-field8');
-        const answerField9 = document.getElementById('answer-field9');
-        const answerField10 = document.getElementById('answer-field10');
-        const answerField11 = document.getElementById('answer-field11');
-        const answerField12 = document.getElementById('answer-field12');
-        const answerField13 = document.getElementById('answer-field13');
+        // const answerField1 = document.getElementById('answer-field1');
+        // const answerField2 = document.getElementById('answer-field2');
+        // const answerField3 = document.getElementById('answer-field3');
+        // const answerField4 = document.getElementById('answer-field4');
+        // const answerField5 = document.getElementById('answer-field5');
+        // const answerField6 = document.getElementById('answer-field6');
+        // const answerField7 = document.getElementById('answer-field7');
+        // const answerField8 = document.getElementById('answer-field8');
+        // const answerField9 = document.getElementById('answer-field9');
+        // const answerField10 = document.getElementById('answer-field10');
+        // const answerField11 = document.getElementById('answer-field11');
+        // const answerField12 = document.getElementById('answer-field12');
+        // const answerField13 = document.getElementById('answer-field13');
         const correctAnswer = document.getElementById('correct-answer');
         const correctAnswer2 = document.getElementById('correct-answer2');
         const correctAnswer3 = document.getElementById('correct-answer3');
@@ -425,213 +474,213 @@
         pause();
         pauseButton.disabled = "disabled";
 
-        if (answerField1.value == "the area where you feel comfortable" || answerField1.value == "The area where you feel comfortable" || answerField1.value == "The area where you feel comfortable." || answerField1.value == "the area where you feel comfortable." || answerField1.value == "the set of routines and known abilities that make us feel safe" || answerField1.value == "The set of routines and known abilities that make us feel safe"){
-            answerField1.disabled = "disabled";
-            submitButton.disabled = 'disabled';
-            answerField1.style.backgroundColor = '#31CD16';
-            checkmark.style.display = 'block';
-            score += 2;
-            scoreElement.textContent = score.toString();
-        }else{
-            answerField1.style.backgroundColor = '#A90305';
-            answerField1.disabled = "disabled";
-            submitButton.disabled = 'disabled';
-            crossmark.style.display = 'block';
-            correctAnswer.style.display = 'block';
-        }
+        // if (answerField1.value == "the area where you feel comfortable" || answerField1.value == "The area where you feel comfortable" || answerField1.value == "The area where you feel comfortable." || answerField1.value == "the area where you feel comfortable." || answerField1.value == "the set of routines and known abilities that make us feel safe" || answerField1.value == "The set of routines and known abilities that make us feel safe"){
+        //     answerField1.disabled = "disabled";
+        //     submitButton.disabled = 'disabled';
+        //     answerField1.style.backgroundColor = '#31CD16';
+        //     checkmark.style.display = 'block';
+        //     score += 2;
+        //     scoreElement.textContent = score.toString();
+        // }else{
+        //     answerField1.style.backgroundColor = '#A90305';
+        //     answerField1.disabled = "disabled";
+        //     submitButton.disabled = 'disabled';
+        //     crossmark.style.display = 'block';
+        //     correctAnswer.style.display = 'block';
+        // }
 
-        if (answerField2.value == "the feeling that they are developing and making progress in their lives" || 
-        answerField2.value == "the feeling that they are developing and making progress in their lives" || 
-        answerField2.value == "When they are developing and making progress in their lives" || 
-        answerField2.value == "The feeling that they are developing and making progress in their lives" || 
-        answerField2.value == "when they are developing and making progress in their lives"){
-            answerField2.disabled = "disabled";
-            submitButton.disabled = 'disabled';
-            answerField2.style.backgroundColor = '#31CD16';
-            checkmark2.style.display = 'block';
-            score += 2;
-            scoreElement.textContent = score.toString();
-        }else{
-            answerField2.style.backgroundColor = '#A90305';
-            answerField2.disabled = "disabled";
-            submitButton.disabled = 'disabled';
-            crossmark2.style.display = 'block';
-            correctAnswer2.style.display = 'block';
-        }
+        // if (answerField2.value == "the feeling that they are developing and making progress in their lives" || 
+        // answerField2.value == "the feeling that they are developing and making progress in their lives" || 
+        // answerField2.value == "When they are developing and making progress in their lives" || 
+        // answerField2.value == "The feeling that they are developing and making progress in their lives" || 
+        // answerField2.value == "when they are developing and making progress in their lives"){
+        //     answerField2.disabled = "disabled";
+        //     submitButton.disabled = 'disabled';
+        //     answerField2.style.backgroundColor = '#31CD16';
+        //     checkmark2.style.display = 'block';
+        //     score += 2;
+        //     scoreElement.textContent = score.toString();
+        // }else{
+        //     answerField2.style.backgroundColor = '#A90305';
+        //     answerField2.disabled = "disabled";
+        //     submitButton.disabled = 'disabled';
+        //     crossmark2.style.display = 'block';
+        //     correctAnswer2.style.display = 'block';
+        // }
 
-        if (answerField3.value == "They may be afraid of failing" || 
-        answerField3.value == "They may be afraid of failing."){
-            answerField3.disabled = "disabled";
-            submitButton.disabled = 'disabled';
-            answerField3.style.backgroundColor = '#31CD16';
-            checkmark3.style.display = 'block';
-            score ++;
-            scoreElement.textContent = score.toString();
-        }else{
-            answerField3.style.backgroundColor = '#A90305';
-            answerField3.disabled = "disabled";
-            submitButton.disabled = 'disabled';
-            crossmark3.style.display = 'block';
-            correctAnswer3.style.display = 'block';
-        }
+        // if (answerField3.value == "They may be afraid of failing" || 
+        // answerField3.value == "They may be afraid of failing."){
+        //     answerField3.disabled = "disabled";
+        //     submitButton.disabled = 'disabled';
+        //     answerField3.style.backgroundColor = '#31CD16';
+        //     checkmark3.style.display = 'block';
+        //     score ++;
+        //     scoreElement.textContent = score.toString();
+        // }else{
+        //     answerField3.style.backgroundColor = '#A90305';
+        //     answerField3.disabled = "disabled";
+        //     submitButton.disabled = 'disabled';
+        //     crossmark3.style.display = 'block';
+        //     correctAnswer3.style.display = 'block';
+        // }
 
-        if (answerField4.value == "They are unsure how to begin" || 
-        answerField4.value == "They are unsure how to begin."){
-            answerField4.disabled = "disabled";
-            submitButton.disabled = 'disabled';
-            answerField4.style.backgroundColor = '#31CD16';
-            checkmark4.style.display = 'block';
-            score ++;
-            scoreElement.textContent = score.toString();
-        }else{
-            answerField4.style.backgroundColor = '#A90305';
-            answerField4.disabled = "disabled";
-            submitButton.disabled = 'disabled';
-            crossmark4.style.display = 'block';
-            correctAnswer4.style.display = 'block';
-        }
+        // if (answerField4.value == "They are unsure how to begin" || 
+        // answerField4.value == "They are unsure how to begin."){
+        //     answerField4.disabled = "disabled";
+        //     submitButton.disabled = 'disabled';
+        //     answerField4.style.backgroundColor = '#31CD16';
+        //     checkmark4.style.display = 'block';
+        //     score ++;
+        //     scoreElement.textContent = score.toString();
+        // }else{
+        //     answerField4.style.backgroundColor = '#A90305';
+        //     answerField4.disabled = "disabled";
+        //     submitButton.disabled = 'disabled';
+        //     crossmark4.style.display = 'block';
+        //     correctAnswer4.style.display = 'block';
+        // }
 
-        if (answerField5.value == "They make excuses like not wanting to change." || 
-        answerField5.value == "They make excuses like not wanting to change"){
-            answerField5.disabled = "disabled";
-            submitButton.disabled = 'disabled';
-            answerField5.style.backgroundColor = '#31CD16';
-            checkmark5.style.display = 'block';
-            score ++;
-            scoreElement.textContent = score.toString();
-        }else{
-            answerField5.style.backgroundColor = '#A90305';
-            answerField5.disabled = "disabled";
-            submitButton.disabled = 'disabled';
-            crossmark5.style.display = 'block';
-            correctAnswer5.style.display = 'block';
-        }
+        // if (answerField5.value == "They make excuses like not wanting to change." || 
+        // answerField5.value == "They make excuses like not wanting to change"){
+        //     answerField5.disabled = "disabled";
+        //     submitButton.disabled = 'disabled';
+        //     answerField5.style.backgroundColor = '#31CD16';
+        //     checkmark5.style.display = 'block';
+        //     score ++;
+        //     scoreElement.textContent = score.toString();
+        // }else{
+        //     answerField5.style.backgroundColor = '#A90305';
+        //     answerField5.disabled = "disabled";
+        //     submitButton.disabled = 'disabled';
+        //     crossmark5.style.display = 'block';
+        //     correctAnswer5.style.display = 'block';
+        // }
 
-        if (answerField6.value == "we can manage"){
-            answerField6.disabled = "disabled";
-            submitButton.disabled = 'disabled';
-            answerField6.style.backgroundColor = '#31CD16';
-            checkmark6.style.display = 'block';
-            score += 2;
-            scoreElement.textContent = score.toString();
-        }else{
-            answerField6.style.backgroundColor = '#A90305';
-            answerField6.disabled = "disabled";
-            submitButton.disabled = 'disabled';
-            crossmark6.style.display = 'block';
-            correctAnswer6.style.display = 'block';
-        }
+        // if (answerField6.value == "we can manage"){
+        //     answerField6.disabled = "disabled";
+        //     submitButton.disabled = 'disabled';
+        //     answerField6.style.backgroundColor = '#31CD16';
+        //     checkmark6.style.display = 'block';
+        //     score += 2;
+        //     scoreElement.textContent = score.toString();
+        // }else{
+        //     answerField6.style.backgroundColor = '#A90305';
+        //     answerField6.disabled = "disabled";
+        //     submitButton.disabled = 'disabled';
+        //     crossmark6.style.display = 'block';
+        //     correctAnswer6.style.display = 'block';
+        // }
 
-        if (answerField7.value == "unexpected or worrying"){
-            answerField7.disabled = "disabled";
-            submitButton.disabled = 'disabled';
-            answerField7.style.backgroundColor = '#31CD16';
-            checkmark7.style.display = 'block';
-            score += 2;
-            scoreElement.textContent = score.toString();
-        }else{
-            answerField7.style.backgroundColor = '#A90305';
-            answerField7.disabled = "disabled";
-            submitButton.disabled = 'disabled';
-            crossmark7.style.display = 'block';
-            correctAnswer7.style.display = 'block';
-        }
+        // if (answerField7.value == "unexpected or worrying"){
+        //     answerField7.disabled = "disabled";
+        //     submitButton.disabled = 'disabled';
+        //     answerField7.style.backgroundColor = '#31CD16';
+        //     checkmark7.style.display = 'block';
+        //     score += 2;
+        //     scoreElement.textContent = score.toString();
+        // }else{
+        //     answerField7.style.backgroundColor = '#A90305';
+        //     answerField7.disabled = "disabled";
+        //     submitButton.disabled = 'disabled';
+        //     crossmark7.style.display = 'block';
+        //     correctAnswer7.style.display = 'block';
+        // }
 
-        if (answerField8.value == "things that are outside our comfort zones"){
-            answerField8.disabled = "disabled";
-            submitButton.disabled = 'disabled';
-            answerField8.style.backgroundColor = '#31CD16';
-            checkmark8.style.display = 'block';
-            score += 2;
-            scoreElement.textContent = score.toString();
-        }else{
-            answerField8.style.backgroundColor = '#A90305';
-            answerField8.disabled = "disabled";
-            submitButton.disabled = 'disabled';
-            crossmark8.style.display = 'block';
-            correctAnswer8.style.display = 'block';
-        }
+        // if (answerField8.value == "things that are outside our comfort zones"){
+        //     answerField8.disabled = "disabled";
+        //     submitButton.disabled = 'disabled';
+        //     answerField8.style.backgroundColor = '#31CD16';
+        //     checkmark8.style.display = 'block';
+        //     score += 2;
+        //     scoreElement.textContent = score.toString();
+        // }else{
+        //     answerField8.style.backgroundColor = '#A90305';
+        //     answerField8.disabled = "disabled";
+        //     submitButton.disabled = 'disabled';
+        //     crossmark8.style.display = 'block';
+        //     correctAnswer8.style.display = 'block';
+        // }
 
-        if (answerField9.value == "learning something new"){
-            answerField9.disabled = "disabled";
-            submitButton.disabled = 'disabled';
-            answerField9.style.backgroundColor = '#31CD16';
-            checkmark9.style.display = 'block';
-            score ++;
-            scoreElement.textContent = score.toString();
-        }else{
-            answerField9.style.backgroundColor = '#A90305';
-            answerField9.disabled = "disabled";
-            submitButton.disabled = 'disabled';
-            crossmark9.style.display = 'block';
-            correctAnswer9.style.display = 'block';
-        }
+        // if (answerField9.value == "learning something new"){
+        //     answerField9.disabled = "disabled";
+        //     submitButton.disabled = 'disabled';
+        //     answerField9.style.backgroundColor = '#31CD16';
+        //     checkmark9.style.display = 'block';
+        //     score ++;
+        //     scoreElement.textContent = score.toString();
+        // }else{
+        //     answerField9.style.backgroundColor = '#A90305';
+        //     answerField9.disabled = "disabled";
+        //     submitButton.disabled = 'disabled';
+        //     crossmark9.style.display = 'block';
+        //     correctAnswer9.style.display = 'block';
+        // }
 
-        if (answerField10.value == "becoming more creative"){
-            answerField10.disabled = "disabled";
-            submitButton.disabled = 'disabled';
-            answerField10.style.backgroundColor = '#31CD16';
-            checkmark10.style.display = 'block';
-            score ++;
-            scoreElement.textContent = score.toString();
-        }else{
-            answerField10.style.backgroundColor = '#A90305';
-            answerField10.disabled = "disabled";
-            submitButton.disabled = 'disabled';
-            crossmark10.style.display = 'block';
-            correctAnswer10.style.display = 'block';
-        }
+        // if (answerField10.value == "becoming more creative"){
+        //     answerField10.disabled = "disabled";
+        //     submitButton.disabled = 'disabled';
+        //     answerField10.style.backgroundColor = '#31CD16';
+        //     checkmark10.style.display = 'block';
+        //     score ++;
+        //     scoreElement.textContent = score.toString();
+        // }else{
+        //     answerField10.style.backgroundColor = '#A90305';
+        //     answerField10.disabled = "disabled";
+        //     submitButton.disabled = 'disabled';
+        //     crossmark10.style.display = 'block';
+        //     correctAnswer10.style.display = 'block';
+        // }
 
-        if (answerField11.value == "getting fit"){
-            answerField11.disabled = "disabled";
-            submitButton.disabled = 'disabled';
-            answerField11.style.backgroundColor = '#31CD16';
-            checkmark11.style.display = 'block';
-            score ++;
-            scoreElement.textContent = score.toString();
-        }else{
-            answerField11.style.backgroundColor = '#A90305';
-            answerField11.disabled = "disabled";
-            submitButton.disabled = 'disabled';
-            crossmark11.style.display = 'block';
-            correctAnswer11.style.display = 'block';
-        }
+        // if (answerField11.value == "getting fit"){
+        //     answerField11.disabled = "disabled";
+        //     submitButton.disabled = 'disabled';
+        //     answerField11.style.backgroundColor = '#31CD16';
+        //     checkmark11.style.display = 'block';
+        //     score ++;
+        //     scoreElement.textContent = score.toString();
+        // }else{
+        //     answerField11.style.backgroundColor = '#A90305';
+        //     answerField11.disabled = "disabled";
+        //     submitButton.disabled = 'disabled';
+        //     crossmark11.style.display = 'block';
+        //     correctAnswer11.style.display = 'block';
+        // }
 
-        if (answerField12.value == "comfort zone" || 
-        answerField12.value == "Comfort zone"
-        || answerField12.value == "comfort zone."
-        || answerField12.value == "Comfort zone." ){
-            answerField12.disabled = "disabled";
-            submitButton.disabled = 'disabled';
-            answerField12.style.backgroundColor = '#31CD16';
-            checkmark12.style.display = 'block';
-            score += 1.5;
-            scoreElement.textContent = score.toString();
-        }else{
-            answerField12.style.backgroundColor = '#A90305';
-            answerField12.disabled = "disabled";
-            submitButton.disabled = 'disabled';
-            crossmark12.style.display = 'block';
-            correctAnswer12.style.display = 'block';
-        }
+        // if (answerField12.value == "comfort zone" || 
+        // answerField12.value == "Comfort zone"
+        // || answerField12.value == "comfort zone."
+        // || answerField12.value == "Comfort zone." ){
+        //     answerField12.disabled = "disabled";
+        //     submitButton.disabled = 'disabled';
+        //     answerField12.style.backgroundColor = '#31CD16';
+        //     checkmark12.style.display = 'block';
+        //     score += 1.5;
+        //     scoreElement.textContent = score.toString();
+        // }else{
+        //     answerField12.style.backgroundColor = '#A90305';
+        //     answerField12.disabled = "disabled";
+        //     submitButton.disabled = 'disabled';
+        //     crossmark12.style.display = 'block';
+        //     correctAnswer12.style.display = 'block';
+        // }
 
-        if (answerField13.value == "people" || 
-        answerField12.value == "people."
-        || answerField12.value == "People"
-        || answerField12.value == "People." ){
-            answerField12.disabled = "disabled";
-            submitButton.disabled = 'disabled';
-            answerField13.style.backgroundColor = '#31CD16';
-            checkmark13.style.display = 'block';
-            score += 1.5;
-            scoreElement.textContent = score.toString();
-        }else{
-            answerField13.style.backgroundColor = '#A90305';
-            answerField13.disabled = "disabled";
-            submitButton.disabled = 'disabled';
-            crossmark13.style.display = 'block';
-            correctAnswer13.style.display = 'block';
-        }
+        // if (answerField13.value == "people" || 
+        // answerField12.value == "people."
+        // || answerField12.value == "People"
+        // || answerField12.value == "People." ){
+        //     answerField12.disabled = "disabled";
+        //     submitButton.disabled = 'disabled';
+        //     answerField13.style.backgroundColor = '#31CD16';
+        //     checkmark13.style.display = 'block';
+        //     score += 1.5;
+        //     scoreElement.textContent = score.toString();
+        // }else{
+        //     answerField13.style.backgroundColor = '#A90305';
+        //     answerField13.disabled = "disabled";
+        //     submitButton.disabled = 'disabled';
+        //     crossmark13.style.display = 'block';
+        //     correctAnswer13.style.display = 'block';
+        // }
 
         document.getElementsByName('TF1')
             .forEach(radio => {

@@ -292,13 +292,58 @@ def checkAnswers():
     answers = data['answers']  # Access the 'answers' data
 
     # Now you can work with 'answers' as a Python list
-    for answer in answers:
-        print(answer)
 
     correct_answers = [
         {
             "question": "english Teacher", "content": "You are a teacher comparing the user answer with the correct answer , accept answers that have the same meaning as the correct answer . The correct answer is the area where you feel comfortable / the set of routines and known abilities that make us feel safe",
             "correct_answer": "the area where you feel comfortable / the set of routines and known abilities that make us feel safe"
+        },{
+            "question": "english Teacher", "content": "You are a teacher comparing the user answer with the correct answer , accept answers that have the same meaning as the correct answer . The correct answer is The feeling that they are developing and making progress in their lives",
+            "correct_answer": "The feeling that they are developing and making progress in their lives"
+        },
+        {
+            "question": "english Teacher", "content": "You are a teacher comparing the user answer with the correct answer , accept answers that have the same meaning as the correct answer . The correct answer is They may be afraid of failing",
+            "correct_answer": "They may be afraid of failing"
+        },
+        {
+            "question": "english Teacher", "content": "You are a teacher comparing the user answer with the correct answer , accept answers that have the same meaning as the correct answer . The correct answer is They are unsure how to begin",
+            "correct_answer": "They are unsure how to begin"
+        },
+        {
+            "question": "english Teacher", "content": "You are a teacher comparing the user answer with the correct answer , accept answers that have the same meaning as the correct answer . The correct answer is They make excuses like not wanting to change",
+            "correct_answer": "They make excuses like not wanting to change"
+        },
+        {
+            "question": "english Teacher", "content": "You are a teacher comparing the user answer with the correct answer , accept answers that have the same meaning as the correct answer . The correct answer is we can manage",
+            "correct_answer": "we can manage"
+        },
+        {
+            "question": "english Teacher", "content": "You are a teacher comparing the user answer with the correct answer , accept answers that have the same meaning as the correct answer . The correct answer is unexpected or worrying",
+            "correct_answer": "unexpected or worrying"
+        },
+        {
+            "question": "english Teacher","content": "You are a teacher comparing the user answer with the correct answer , accept answers that have the same meaning as the correct answer . The correct answer is things that are outside our comfort zones",
+            "correct_answer": "things that are outside our comfort zones"
+        },
+        {
+            "question": "english Teacher", "content": "You are a teacher comparing the user answer with the correct answer , accept answers that have the same meaning as the correct answer . The correct answer is learning something new",
+            "correct_answer": "learning something new"
+        },
+        {
+            "question": "english Teacher", "content": "You are a teacher comparing the user answer with the correct answer , accept answers that have the same meaning as the correct answer . The correct answer is becoming more creative",
+            "correct_answer": "becoming more creative"
+        },
+        {
+            "question": "english Teacher", "content": "You are a teacher comparing the user answer with the correct answer , accept answers that have the same meaning as the correct answer . The correct answer is getting fit",
+            "correct_answer": "getting fit"
+        },
+        {
+            "question": "english Teacher", "content": "You are a teacher comparing the user answer with the correct answer , accept answers that have the same meaning as the correct answer . The correct answer comfort zone",
+            "correct_answer": "comfort zone"
+        },
+        {
+            "question": "english Teacher", "content": "You are a teacher comparing the user answer with the correct answer , accept answers that have the same meaning as the correct answer . The correct answer people",
+            "correct_answer": "people"
         }
     ]
 
@@ -310,30 +355,32 @@ def checkAnswers():
 
     feedback_messages = []
 
-    for i in range(len(correct_answers)):
+    for i in range(len(answers)):
         answer = answers[i]
+        print(answer)
         user_answer = correct_answers[i]["correct_answer"]
 
         response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages = [
         {"role": "system", "content": "You are an English teacher "},
-        {"role": "user", "content": f"The optimal answer is: {answer}"},
+        {"role": "user", "content": f"The optimal answer is: {answer['value']}"},
         {"role": "user", "content": f"The student's answer is: {user_answer}"},
         {"role": "user", "content": f"Please score the student's answer out of 1 based on the optimal answer and the \
         {passage} allow answers that are close to the optimal answers and provide a numerical score only , give your feedback explaining why in simple language and telling them what they should do instead."},
         ])
 
-        score = re.findall(r'\d+', response.choices[0].message.content)
+        score = re.findall(r'\d+\.?\d*', response.choices[0].message.content)
         print(score)
 
         feedback_message = response['choices'][0]['message']['content']
-        feedback_messages.append(feedback_message)
-        feedback_paragraph = "<br>".join(feedback_messages)
+        feedback_object = {"text":feedback_message,"id":answer["id"],"score":score}
+        feedback_messages.append(feedback_object)
+        # feedback_paragraph = "<br>".join(feedback_messages)
 
     # Return the feedback messages as a JSON object
-    
-    return jsonify({"feedback_paragraph": feedback_paragraph})
+
+    return jsonify({"feedback_messages": feedback_messages})
 
 # Now you have the feedback messages and corresponding correct answers in the `feedback_messages` list
 
