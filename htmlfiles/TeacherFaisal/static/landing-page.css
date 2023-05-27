@@ -1,0 +1,382 @@
+* {
+    margin: 0;
+    padding: 0;
+
+    text-decoration: none;
+    list-style: none;
+    font-family: "Cairo", sans-serif;
+    /* color: #fff; */
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+
+/* ::selection {
+    color: #fff;
+    background-color: #333;
+} */
+
+/************ Icons ************/
+
+.course .fa-circle-check {
+    color: green;
+    font-size: 2.5rem;
+}
+
+.tools .fa-arrow-right {
+    font-size: 2rem;
+}
+
+.logout-box .fa-caret-left {
+    display: grid;
+    justify-items: flex-end;
+}
+
+/************* NAV ******************/
+.nav {
+    font-size: 2.3rem;
+    background-color: #228be6;
+    padding: 1.5rem 4rem;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav .nav__list {
+    display: flex;
+    gap: 3rem;
+}
+
+.nav .nav__list-item {
+    color: #fff;
+    transition: all .2s;
+}
+
+.nav .nav__list-item:hover {
+    opacity: 0.8;
+}
+
+.logo__link {
+    width: 7.5rem;
+    height: 6rem;
+}
+
+.logo {
+    height: 100%;
+}
+
+
+.login-button button {
+    font-size: 2.2rem;
+    color: #fff;
+    background: none;
+    font-family: 'Cairo', sans-serif;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    height: 4.8rem;
+    padding: 0 1.7rem;
+    transition: all .2s;
+}
+
+.login-button:hover {
+    opacity: .8;
+}
+
+.profile-details {
+    line-height: 2;
+    display: none;
+
+    position: relative;
+}
+
+.accountName {
+    font-size: 1.7rem;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.accountName i {
+    font-size: 2.5rem;
+}
+
+.logout-box {
+    visibility: hidden;
+    opacity: 0;
+    background-color: #fff;
+    width: 18rem;
+    padding: 1rem 0rem;
+    z-index: 3;
+    margin-top: 1rem;
+    position: absolute;
+}
+
+.logout-box a {
+    padding: .5rem 1rem;
+}
+
+.logout-box-dropdown {
+    position: absolute;
+    top: -1rem;
+    right: 3rem;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #fff;
+}
+
+.dropdown_item {
+    color: #000;
+    font-size: 1.5rem;
+    padding: 0rem 1rem;
+    font-family: 'Cairo', sans-serif;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    transition: all .1s;
+}
+
+.dropdown_item:hover {
+    background-color: rgb(235, 235, 235)
+}
+
+.profile-details-checkbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.profile-details-checkbox:checked~.logout-box {
+    visibility: visible;
+    opacity: 1;
+    transition: all .2s;
+}
+
+/************* HERO *****************/
+.hero__box {
+    position: absolute;
+    content: '';
+    top: 35%;
+    left: 52%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.hero__box h1 {
+    font-size: 3vw;
+    margin-bottom: -2rem;
+    line-height: 1;
+    margin-bottom: 2rem;
+}
+
+.hero__box h2 {
+    font-size: 1.5vw;
+    line-height: 1;
+
+}
+
+/************ Courses ************/
+.courses {
+    height: 50rem;
+    position: relative;
+    color: #333;
+}
+
+.courses__box {
+    position: absolute;
+    content: '';
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    gap: 2rem;
+}
+
+.course {
+    height: fit-content;
+    padding: 5rem;
+    width: 70rem;
+    border: #228be6 3px dashed;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all .2s;
+}
+
+.course:hover {
+    transform: translateY(-5px);
+    border: #228be6 3px solid;
+}
+
+.course__link:link,
+.course__link:visited {
+    color: #333;
+}
+
+.course__header {
+    font-size: 4rem;
+}
+
+.course__description {
+    font-size: 2rem;
+}
+
+.course__description ul li {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+/*********** Infos ************/
+.tools {
+    color: #333;
+    height: fit-content;
+
+
+    display: grid;
+    justify-items: center;
+}
+
+.tools__title {
+    font-size: 3.5rem;
+}
+
+.tools__boxes {
+    width: fit-content;
+    margin-bottom: 10rem;
+}
+
+.tool__box {
+    width: 80rem;
+    padding: 4rem;
+
+
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.tool__box:not(:last-child) {
+    border-bottom: 1px rgba(51, 51, 51, 0.3) solid;
+}
+
+.tool__textbox {
+    width: 30rem;
+}
+
+.tool__textbox-title a,
+.tool__textbox-title a:link,
+.tool__textbox-title a:visited,
+.tool__textbox-title a:active,
+.tool__textbox-title a:hover,
+.tool__textbox-title a:focus {
+    color: #06f;
+    font-size: 3rem;
+    transition: all .2s;
+}
+
+.tool__textbox-title a:hover {
+    color: rgb(36, 123, 255);
+}
+
+.tool__textbox-description {
+    font-size: 2rem;
+}
+
+.tool__picture {
+    width: 35rem;
+    height: 24rem;
+    border-radius: 15px;
+    background-position: center;
+    background-size: cover;
+}
+
+/************ Footer *************/
+.footer {
+    color: #fff;
+    background-color: #333;
+    height: 30rem;
+    overflow: hidden;
+
+    display: grid;
+    justify-items: center;
+
+
+    position: relative;
+}
+
+.footer::after,
+.footer::before {
+    position: absolute;
+    content: '';
+    width: 50rem;
+    height: 50rem;
+    border-radius: 50%;
+    background-color: #444;
+
+}
+
+.footer::after {
+    top: -10rem;
+    left: -10rem;
+}
+
+.footer::before {
+    top: 5rem;
+    right: -10rem;
+}
+
+.footer__contact-box {
+    margin-top: 9rem;
+    text-align: center;
+    z-index: 1;
+}
+
+.footer__title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.btn__contcat {
+    font-size: 2rem;
+    color: rgba(0, 0, 0, 0.85);
+    background-color: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: .25rem;
+    font-family: 'Cairo' system-ui, sans-serif;
+    padding: .5rem 1rem;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all .2s;
+}
+
+.btn__contcat:hover,
+.btn__contcat:focus {
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+
+.btn__contcat:hover {
+    transform: translateY(-1px);
+}

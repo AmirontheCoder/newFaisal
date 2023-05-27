@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for,send_file, session, abort, flash, make_response, send_file
+from flask import Flask, render_template, request, redirect, url_for,send_file, session, abort, flash, make_response, send_file,jsonify
 from PyDictionary import PyDictionary
 from googletrans import Translator
 import mysql.connector
@@ -17,10 +17,11 @@ from io import BytesIO
 from jinja2_base64_filters import jinja2_base64_filters
 from jinja2 import Environment
 import openai
+import re
 
 api_key = "AIzaSyBKSSLUiePvvR5XRXtTjcfSpQ61E2EDavw"
 
-openai.api_key = ("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")
+openai.api_key = ("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")
 
 env = Environment(extensions=["jinja2_base64_filters.Base64Filters"])
 env.filters['b64encode'] = base64.b64encode
@@ -237,6 +238,16 @@ def categoriesPage():
         return render_template("categoriesPage.html", f="ما هي الكلمة التي تريد معرفة معناها" , googleAccname=googleAccountName, profile_pic=profile_pic_url)
     else:
         return redirect('/loginPage')
+    
+@app.route("/categoriesPage2")
+def categoriesPage2():
+    if is_authenticated():
+        googleAccountName = session['name']
+        response = requests.get(f'https://people.googleapis.com/v1/people/{session["google_id"]}?personFields=photos&key={api_key}')
+        profile_pic_url = response.json()['photos'][0]['url']
+        return render_template("categoriesPage2.html", f="ما هي الكلمة التي تريد معرفة معناها" , googleAccname=googleAccountName, profile_pic=profile_pic_url)
+    else:
+        return redirect('/loginPage')
 
 @app.route("/readingComprehensionPage")
 def readingComprehensionPages():
@@ -259,104 +270,69 @@ def U1ReadingComprehension1():
     else:
         return redirect('/loginPage')
 
-@app.route('/checkAnswers' , methods=['GET']  )
+@app.route('/checkAnswers' , methods=['POST']  )
 def checkAnswers():
-    answer_fields = [
-        request.args.get("input-field1"),
-        request.args.get("input-field2"),
-        request.args.get("input-field3"),
-        request.args.get("input-field4"),
-        request.args.get("input-field5"),
-        request.args.get("input-field6"),
-        request.args.get("input-field7"),
-        request.args.get("input-field8"),
-        request.args.get("input-field9"),
-        request.args.get("input-field10"),
-        request.args.get("input-field11"),
-        request.args.get("input-field12"),
-        request.args.get("input-field13")
-    ]
+    # answer_fields = [
+    #     request.args.get("input-field1"),
+    #     request.args.get("input-field2"),
+    #     request.args.get("input-field3"),
+    #     request.args.get("input-field4"),
+    #     request.args.get("input-field5"),
+    #     request.args.get("input-field6"),
+    #     request.args.get("input-field7"),
+    #     request.args.get("input-field8"),
+    #     request.args.get("input-field9"),
+    #     request.args.get("input-field10"),
+    #     request.args.get("input-field11"),
+    #     request.args.get("input-field12"),
+    #     request.args.get("input-field13")
+    # ]
 
-    questions = [
+    data = request.get_json()
+    answers = data['answers']  # Access the 'answers' data
+
+    # Now you can work with 'answers' as a Python list
+    for answer in answers:
+        print(answer)
+
+    correct_answers = [
         {
             "question": "english Teacher", "content": "You are a teacher comparing the user answer with the correct answer , accept answers that have the same meaning as the correct answer . The correct answer is the area where you feel comfortable / the set of routines and known abilities that make us feel safe",
             "correct_answer": "the area where you feel comfortable / the set of routines and known abilities that make us feel safe"
-        },
-        {
-            "question": "english Teacher", "content": "You are a teacher comparing the user answer with the correct answer , accept answers that have the same meaning as the correct answer . The correct answer is The feeling that they are developing and making progress in their lives",
-            "correct_answer": "The feeling that they are developing and making progress in their lives"
-        },
-        {
-            "question": "english Teacher", "content": "You are a teacher comparing the user answer with the correct answer , accept answers that have the same meaning as the correct answer . The correct answer is They may be afraid of failing",
-            "correct_answer": "They may be afraid of failing"
-        },
-        {
-            "question": "english Teacher", "content": "You are a teacher comparing the user answer with the correct answer , accept answers that have the same meaning as the correct answer . The correct answer is They are unsure how to begin",
-            "correct_answer": "They are unsure how to begin"
-        },
-        {
-            "question": "english Teacher", "content": "You are a teacher comparing the user answer with the correct answer , accept answers that have the same meaning as the correct answer . The correct answer is They make excuses like not wanting to change",
-            "correct_answer": "They make excuses like not wanting to change"
-        },
-        {
-            "question": "english Teacher", "content": "You are a teacher comparing the user answer with the correct answer , accept answers that have the same meaning as the correct answer . The correct answer is we can manage",
-            "correct_answer": "we can manage"
-        },
-        {
-            "question": "english Teacher", "content": "You are a teacher comparing the user answer with the correct answer , accept answers that have the same meaning as the correct answer . The correct answer is unexpected or worrying",
-            "correct_answer": "unexpected or worrying"
-        },
-        {
-            "question": "english Teacher","content": "You are a teacher comparing the user answer with the correct answer , accept answers that have the same meaning as the correct answer . The correct answer is things that are outside our comfort zones",
-            "correct_answer": "things that are outside our comfort zones"
-        },
-        {
-            "question": "english Teacher", "content": "You are a teacher comparing the user answer with the correct answer , accept answers that have the same meaning as the correct answer . The correct answer is learning something new",
-            "correct_answer": "learning something new"
-        },
-        {
-            "question": "english Teacher", "content": "You are a teacher comparing the user answer with the correct answer , accept answers that have the same meaning as the correct answer . The correct answer is becoming more creative",
-            "correct_answer": "becoming more creative"
-        },
-        {
-            "question": "english Teacher", "content": "You are a teacher comparing the user answer with the correct answer , accept answers that have the same meaning as the correct answer . The correct answer is getting fit",
-            "correct_answer": "getting fit"
-        },
-        {
-            "question": "english Teacher", "content": "You are a teacher comparing the user answer with the correct answer , accept answers that have the same meaning as the correct answer . The correct answer comfort zone",
-            "correct_answer": "comfort zone"
-        },
-        {
-            "question": "english Teacher", "content": "You are a teacher comparing the user answer with the correct answer , accept answers that have the same meaning as the correct answer . The correct answer people",
-            "correct_answer": "people"
         }
     ]
 
+    passage = """
+    Your comfort zone is, as the name suggests, the area where you feel comfortable. We all have one, whether we know it or not: it's the set of routines and known abilities that make us feel safe because we're confident that we can manage and are unlikely to be challenged by anything unexpected or worrying. Obviously, staying inside your comfort zone has many benefits, especially at times when you're feeling under stress.
+    On the other hand, we're often told in 'self-help' books that it's a good idea to do things that are outside our comfort zones. In fact, many studies have shown that an important factor in helping people feel positive about themselves is the feeling that they are developing and making progress in their lives. You won't reach your full potential if you only do what you know you are able to do. We all want to improve ourselves, for example by learning something new, becoming more creative or getting fit.
+    Unfortunately, people often get stuck in their comfort zones and don't feel able to try different things. There are various possible reasons for this. They may be afraid of failing or unsure how to begin. Many people think 'This is the way I am and I'll never change', using this as an excuse for not trying something new. Whatever the reason may be, it's sometimes necessary to force yourself to do something you'd rather not do. Once you've made the effort, though, the door to new experiences will be open and you'll probably wonder why you thought it was a problem.
+    """
+
     feedback_messages = []
 
-    for i in range(len(questions)):
-        question = questions[i]
-        user_answer = answer_fields[i]
+    for i in range(len(correct_answers)):
+        answer = answers[i]
+        user_answer = correct_answers[i]["correct_answer"]
 
+        response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
         messages = [
-            {"role": "english Teacher", "content": question["question"]},
-            {"role": "user", "content": user_answer}
-        ]
+        {"role": "system", "content": "You are an English teacher "},
+        {"role": "user", "content": f"The optimal answer is: {answer}"},
+        {"role": "user", "content": f"The student's answer is: {user_answer}"},
+        {"role": "user", "content": f"Please score the student's answer out of 1 based on the optimal answer and the \
+        {passage} allow answers that are close to the optimal answers and provide a numerical score only , give your feedback explaining why in simple language and telling them what they should do instead."},
+        ])
 
-        response = openai.Completion.create(
-            engine="text-davinci-003",
-            prompt_messages=messages,
-            max_tokens=100
-        )
+        score = re.findall(r'\d+', response.choices[0].message.content)
+        print(score)
 
-        feedback = response.choices[0].message.content
+        feedback_message = response['choices'][0]['message']['content']
+        feedback_messages.append(feedback_message)
+        feedback_paragraph = "<br>".join(feedback_messages)
 
-        feedback_messages.append({
-            "correct_answer": question["correct_answer"],
-            "feedback": feedback
-        })
-
-    return {"feedback_messages": feedback_messages}
+    # Return the feedback messages as a JSON object
+    return jsonify({"feedback_paragraph": feedback_paragraph})
 
 # Now you have the feedback messages and corresponding correct answers in the `feedback_messages` list
 
@@ -521,6 +497,16 @@ def SampleTestPage():
         return render_template("SampleTestPage.html", googleAccname=googleAccountName, profile_pic=profile_pic_url)
     else:
         return redirect('/loginPage')
+    
+@app.route("/LiterarySampleTest")
+def LiterarySampleTestPage():
+    if is_authenticated():
+        googleAccountName = session['name']
+        response = requests.get(f'https://people.googleapis.com/v1/people/{session["google_id"]}?personFields=photos&key={api_key}')
+        profile_pic_url = response.json()['photos'][0]['url']
+        return render_template(" LiterarySampleTests.html", googleAccname=googleAccountName, profile_pic=profile_pic_url)
+    else:
+        return redirect('/loginPage')
 
 @app.route("/SampleTest1")
 def SampleTest1():
@@ -594,11 +580,12 @@ def U9WritingQuestion1():
 
 @app.route("/ImageUpload", methods=["POST", "GET"])
 def ImageUpload():
+
+    # Check if the user is authenticated
     if is_authenticated():
         googleAccountName = session['name']
         response = requests.get(f'https://people.googleapis.com/v1/people/{session["google_id"]}?personFields=photos&key={api_key}')
-        profile_pic_url = response.json()['photos'][0]['url']
-        
+
         if request.method == 'POST':
             selected_unit = request.form['Units']
 
@@ -612,7 +599,7 @@ def ImageUpload():
                     return redirect(request.url)
 
                 file_contents = image.read()
-                #print(file_contents)
+                # print(file_contents)
                 encoded_file_contents = base64.b64encode(file_contents)
 
                 FileType = image.filename.split('.')[-1]
@@ -633,11 +620,8 @@ def ImageUpload():
                 base64img = base64.b64encode(blob).decode('utf-8')
 
                 # Create image tag
-                img_tag = f'<img src="data:image/{file_type};base64,{encoded_file_contents}" alt="image"/>'
-                return render_template('fileDisplay.html', image_id=last_id)
+                img_tag = f'<img src="data:image/{file_type};base64,{base64img}" alt="image"/>'
                 return render_template("fileDisplay.html", img_tag=img_tag, test=blob)
-        
-    return render_template("Imageupload1.html", base64 = base64, googleAccname=googleAccountName, profile_pic=profile_pic_url)
 
 
 @app.route('/image/<int:image_id>')
@@ -652,8 +636,9 @@ def serve_image(image_id):
     file_type = fetched[1]
 
     # Create a BytesIO object and send it as a file
-    
+
     return send_file(BytesIO(img_data), mimetype=f'image/{file_type}')
+
 
 @app.route('/fileDisplay')
 def fileDisplay():

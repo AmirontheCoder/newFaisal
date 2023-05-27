@@ -245,9 +245,32 @@
             Correct Answer : people</p>
         <span class="break"></span> 
     </div>
-    <button id='submit-button' method="POST">submit</button>
+    <button id='submit-button' method="POST" >submit</button>
 </div>
 <script>
+    document.getElementById('submit-button').addEventListener('click', function() {
+    var inputs = document.querySelectorAll('input[type=text]');
+    var data = [];
+
+    inputs.forEach(function(input, index) {
+        data.push(input.value);
+    });
+    fetch('/checkAnswers', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({answers:data}),
+    })
+    .then(response => response.text())
+    .then(data => {
+        console.log('Success:', data);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+    });
+
     const startingMinutes = 0.1;
     let time = startingMinutes * 60;
     let isPaused = false;
@@ -285,6 +308,25 @@
     }
 
     function checkAnswers(){
+        var inputs = document.querySelectorAll('input[type=text]');
+        var data = [];
+        inputs.forEach(function(input, index) {
+        data.push(input.value);
+        });
+        fetch('/checkAnswers', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({answers:data}),
+        })
+        .then(response => response.text())
+        .then(data => {
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
         const scoreElement = document.getElementById('score');
         let score = parseInt(scoreElement.textContent);
         const checkmark = document.getElementById('checkmark');

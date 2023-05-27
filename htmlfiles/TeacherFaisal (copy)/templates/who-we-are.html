@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='who-we-are.css')}} ">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="{{ url_for('static' , filename ='script.js')}} "></script>
+    <script defer type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script defer nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://kit.fontawesome.com/115a1d12a9.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Faisal</title>
+    {% if is_authenticated() %}
+    <style>
+        .login-button {
+            display: none;
+        }
+
+        .profile-details {
+            display: block;
+        }
+    </style>
+    {% endif %}
+    <title>Teacher Faisal</title>
+</head>
+
+<body>
+    <nav class="nav">
+        <a href="who-we-are">
+            <img class="logo" src="{{ url_for('static', filename='1.png') }}" alt="logo picture" />
+        </a>
+        <ul class="nav__list">
+            <li>
+                <a href="/" class="nav__list-item">
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="chatbot" class="nav__list-item">
+                    Speak with Faisal
+                </a>
+            </li>
+            <li>
+                <a href="vocabulary" class="nav__list-item">
+                    Vocabulary
+                </a>
+            </li>
+            <li>
+                <a href="dictionary" class="nav__list-item">
+                    Dictionary
+                </a>
+            </li>
+            <li>
+                <a href="who-we-are" class="nav__list-item">
+                    About Us
+                </a>
+            </li>
+
+        </ul>
+        <div class="profile-details">
+            <input class="profile-details-checkbox" type="checkbox">
+            <h2 class="accountName">
+                <span>
+                    {{ googleAccname }}
+                </span>
+                <i class="fa-solid fa-circle-user"></i>
+            </h2>
+            <div class="logout-box">
+                <div class="logout-box-dropdown"></div>
+                <a href="/logout" class="dropdown_item">
+                    <ion-icon name="log-out-outline" role="img" class="md hydrated"></ion-icon>
+                    Logout
+                </a>
+            </div>
+        </div>
+        <a class="login-button" href="/loginPage">
+            <button>
+                Log In
+            </button>
+        </a>
+    </nav>
+    <div class="heading">
+        <h1>About Us</h1>
+        <p>Welcome to the “Teacher Faisal” online platform.</p>
+    </div>
+    <div class="container">
+        <section class="about">
+            <div class="about-image">
+                <img src="{{ url_for('static', filename='TeacherFaisal Logo.jpg') }}" alt="">
+            </div>
+            <div class="about-content">
+                <p>Welcome to the “Teacher Faisal” online platform. 
+                    If you are a twelfth grader in Palestine ready to embark on the Tawjihi journey, this site is where you should be. 
+                    <br><br>
+                    Over the past few months, we have embarked on a transformative journey through the new AI revolution, coinciding with the widespread transition of schools to e-learning systems and resources. 
+                    Inspired by these advancements, we have innovatively combined these ideas to create a platform that addresses a major challenge in Palestine – excelling in the Tawjihi English exam. 
+                    <br><br>
+                    Our unique features 
+                    A comprehensive range of resources to help students enhance their reading comprehension, vocabulary, grammar, and writing abilities, all powered by the AI model. 
+                    The opportunity for students to engage in interactive discussions with “Teacher Faisal”, who is ready to provide clear explanations or create discussions as needed by the student. 
+                    A curated list of external resources, including an online library of documents, quizzes, and previous English Tawjihi exams to further enrich students' learning experience.
+                    A special dictionary feature allows students to search for the meaning of any unfamiliar word, providing both Arabic and English definitions. .
+                    <br><br>
+                    Best of luck and we hope that this platform can help you in the Best Possible way!
+                    <br><br>
+                    Note: Our platform Teacher Faisal is named after Faisal Abdel Al Qader Al Hussein (1940-2001), Palestinian politician, human rights defender, an intellectual and a co-founder of the Arab Studies Society.  
+                    This platform is in his memory, for his love for Jerusalem and  comprehensive vision for educated Palestinian generations to come. 
+                    </p>
+            </div>
+        </section>
+        <div class="heading">
+            <h1>Acknowledgements</h1>
+            <p>Thank you everybody for contributing for the completion of this project</p>
+        </div>
+        <div class="container" style="margin-top: 12rem;">
+            <section class="about" style="display: flex;">
+                <div class="about-content" style="flex: 1;">
+                    <p>We express our sincere gratitude to the individuals who have played a crucial role during the development of this project. Each person has contributed in their own way so that we are able to have the current features. 
+                        Some were able to offer ideas, others their times, innovation, chat, design and most of all support. We owe to each a special word of thank you!   
+                        
+                        <br><br>
+                        <ol style="list-style-type: disc;">
+                            <li>- Sireen Freij (Jerusalem), experienced educator and English teacher who provided many English resources for this project</li>
+                            <li>- Fares Khoury (Fasouta), technical expert and Google campaign advisor</li>
+                            <li>- Ramzi Asfour (Jerusalem), technical IT expert and technical advisor (Axsos)</li>
+                            <li>- Ihab Mishriqi (Jerusalem), technical IT professional advisor</li>
+                            <li>- Mohammad Tamimi (Hebron), IT expert and AI advisor</li>
+                            <li>- Suhail Qumri (Jerusalem-USA), IT expert and website design advisor</li>
+                            <li>- Salah Hussein (Zeita-Nablus), web developer and IT expert</li>
+                            <li>- Qusai Tamer (Nablus), web developer and IT technician</li>
+                            <li>- Abdelfattah Bazyan (Nablus), web designer and IT technician</li>
+                            <li>- Amer Qaysi (Jerusalem), Teacher and Mentor</li>
+                            <li>- Sami Khoury (Jerusalem), Father and supporter</li>
+                        </ol>
+                        <br>
+                        <p>
+                            Special thanks to Al Nayazak organization especially tech talent staff for the opportunity to create this innovative project.             
+                        Thank you for joining us on this educational journey. Thank you for your invaluable and unwavering support in bringing this project to fruition
+                        Together, let's strive for excellence in Tawjihi English and empower the future generation of Palestine.
+                    </p>
+                    </p>
+                </div>
+                <div class="about-image">
+                    <img class="img-right" src="{{ url_for('static', filename='Acknowledgements.jpg') }}" alt="">
+                </div>
+            </section>
+        </div>
+        <footer class="footer">
+            <div class="footer__contact-box">
+                <h3 class="footer__title">
+                    Get In Touch
+                </h3>
+                <a href="mailto:amirkhoury0806@gmail.com">
+                    <button class="btn__contcat">
+                        Contact us
+                    </button>
+                </a>
+            </div>
+        </footer>
+</body>
+</html>
