@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='U1-ReadingComprehension1.css')}} ">
+  <link rel="stylesheet" href="{{ url_for('static' , filename ='readingComprehensionPage.css')}} ">
+  <script type="text/javascript" src="{{ url_for('static', filename='dropdownanimation.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='style.css')}} ">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="{{ url_for('static' , filename ='script.js')}} "></script>
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='categoriesPage.css')}} ">
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='dictionaryst.css')}} "> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Faisal</title>
+</head>
+<body>
+    <header>
+        <a href="who-we-are"><img class = "logo" src="{{ url_for('static', filename='1.png') }}" alt="Alt Text"></a>
+         <nav>
+             <ul class="nav_links">
+                 <li><a href="vocabulary">مفردات</a></li>
+                 <li><a href="dictionary">قاموس</a></li>
+                 <li><a href="chatbot">تكلم مع فيصل</a></li>
+                 <li><a href="who-we-are">من نحن؟</a></li>
+             </ul>
+         </nav>
+         <a class="cta" href="/base"><button>تواصل معنا</button></a>
+     </header>
+     <div class="sidebar">
+     </div>
+    {% if is_authenticated() %}
+        <style>
+            .login-button{
+                display: none;
+            }
+            .profile-details{
+                display: block;
+            }
+        </style>
+    {% endif %}
+
+    <a href="/loginPage"><button class="login-button">تسجيل الدخول</button></a>
+    <div class="profile-details" onclick="dropdown2()">
+        <img class="profile-picture" style="display:block" src="{{ profile_pic }}" alt="">
+        <p class="accountName">{{ googleAccname }}</p>
+        <div class="dropdown">
+            <a href="/logout" class="Logout"><ion-icon name="log-out-outline"></ion-icon>Logout</a>
+        </div>
+    </div>
+<h3 class="Question">
+    1- Write an essay about: <br><br>
+    "Globalization and its effects on Palestine"<br><br>
+    You can use the following ideas: <br><br>
+    • Definition of globalization.<br><br>
+    • Description of the economic situation in Palestine.<br><br>
+    • Examples of positive and negative effects of globalization in Palestine.<br><br>
+<p class="the-passage">
+    Globalization is a complex idea, so before discussing this question, it is first necessary to make clear what we mean by it. One simple definition is that globalization describes the ways in which, thanks to developments in technology, the world has changed very quickly in the last forty years. It is this wider definition that will be used in this essay. It is important to understand that the effects of globalization are no limited to the areas of economics, trade and business. They are also cultural and personal. As a result of these changes, people and countries are now more connected with each other than they have ever been before.
+    There are several points about the situation in Palestine that makes it different from most other countries. First, Palestine is under occupation. The restrictions imposed by Israeli occupation make the movement of goods difficult in many cases. In addition, the internal.  Political and economic situations are instable which makes it hard to benefit from globalization fully. 
+    Globalization has had a number of positive effects on Palestine. For example, it helps the Palestinians to promote for their problem worldwide through communication technology. In addition, it plays a major role in connecting the Palestinian people inside Palestine and in diaspora. On the other hand, globalization has had a number of negative effects. For example, it has destroyed many national industries, increasing an employment among the Palestinians. For these reasons, I believe that overall the effects of globalization of Palestine have been mostly positive.
+</p>
+<footer>
+    <a href="/WritingSample2"><button class="previous"> < Previous</button></a>
+    <a href="/WritingPage"><button class="home">Back To Writing Page</button></a>
+</footer>

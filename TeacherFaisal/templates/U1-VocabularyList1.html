@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='U1-VocabularyList1.css')}} ">
+  <script type="text/javascript" src="{{ url_for('static', filename='dropdownanimation.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='style.css')}} ">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="{{ url_for('static' , filename ='script.js')}} "></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Faisal</title>
+</head>
+<body>
+    <header>
+        <a href="who-we-are"><img class = "logo" src="{{ url_for('static', filename='1.png') }}" alt="Alt Text"></a>
+         <nav>
+             <ul class="nav_links">
+                 <li><a href="vocabulary">مفردات</a></li>
+                 <li><a href="dictionary">قاموس</a></li>
+                 <li><a href="chatbot">تكلم مع فيصل</a></li>
+                 <li><a href="who-we-are">من نحن؟</a></li>
+             </ul>
+         </nav>
+         <a class="cta" href="/base"><button>تواصل معنا</button></a>
+     </header>
+     <div class="sidebar">
+     </div>
+    {% if is_authenticated() %}
+        <style>
+            .login-button{
+                display: none;
+            }
+            .profile-details{
+                display: block;
+            }
+        </style>
+    {% endif %}
+
+    <a href="/loginPage"><button class="login-button">تسجيل الدخول</button></a>
+    <div class="profile-details" onclick="dropdown2()">
+        <img class="profile-picture" style="display:block" src="{{ profile_pic }}" alt="">
+        <p class="accountName">{{ googleAccname }}</p>
+        <div class="dropdown">
+            <a href="/logout" class="Logout"><ion-icon name="log-out-outline"></ion-icon>Logout</a>
+        </div>
+    </div>
+    
+
+<div class="Vocabulary-list">
+    <table>
+        <tr>
+          <th>Word</th>
+          <th>Definition</th>
+          <th>Arabic Definition</th>
+        </tr>
+        <tr>
+            <td>be / get used to</td>
+            <td> This means getting used to doing something regularly until it feels normal or comfortable. For example, if you move to a new house, it might take some time to get used to sleeping in a new bed.</td>
+            <td> تعتاد على</td>
+        </tr>
+        <tr>
+          <td>confident</td>
+          <td>This means feeling sure of yourself and your abilities. When you are confident, you believe that you can do something well.</td>
+          <td>واثق</td>
+        </tr>
+        <tr>
+            <td>creative</td>
+            <td>This means using your imagination to make something new or come up with new ideas. When you're creative, you can use your imagination to make something unique and special.</td>
+            <td>مبدع</td>
+        </tr>
+        <tr>
+          <td>excuse</td>
+          <td>This is something you say when you need to explain why you did something wrong, or why you can't do something you're supposed to. It's like saying "I'm sorry" but with a reason why.</td>
+          <td>عذر</td>
+        </tr>
+        <tr>
+            <td>factor</td>
+            <td>This means something that is important when you're trying to figure out something. For example, when deciding what to wear, the weather can be a factor because you want to wear clothes that are appropriate for the temperature outside.</td>
+            <td>عامل</td>
+        </tr>
+        <tr>
+          <td>field</td>
+          <td>This means an area of interest or study, like math or science. It's like a subject you learn about in school.</td>
+          <td>مجال</td>
+        </tr>
+        <tr>
+            <td>foundation course</td>
+            <td>This is a special class that helps you learn the basics of a subject before you start learning more advanced things. It's like building a strong foundation before building a house.</td>
+            <td> دورة تدربية تأسيسة</td>
+        </tr>
+        <tr>
+          <td>like-minded</td>
+          <td>This means having similar ideas or opinions to someone else. It's like being on the same team or having the same favorite color.</td>
+          <td>متشابه في التفكير</td>
+        </tr>
+        <tr>
+            <td>on show</td>
+            <td>This means that something is on display for people to see, like an art exhibit or a fashion show. It's like a special event where things are shown to the public.</td>
+            <td>معروض</td>
+        </tr>
+        <tr>
+          <td>optional</td>
+          <td> This means you have a choice to do something or not. It's like when your parents ask you if you want broccoli with dinner, and you can say yes or no.</td>
+          <td>اختياري</td>
+        </tr>
+        <tr>
+            <td>participate (in)</td>
+            <td>This means to join in and take part in an activity or event. It's like being part of a game or a group project at school.</td>
+            <td>مشاركة في</td>
+        </tr>
+        <tr>
+          <td>potential</td>
+          <td>This means having the ability or possibility to do something great. It's like having a superpower that you haven't discovered yet.</td>
+          <td>إمكانية</td>
+        </tr>
+        <tr>
+            <td>routine</td>
+            <td>This means doing the same things in the same order every day. It's like having a schedule that you follow, like brushing your teeth before bed or eating breakfast in the morning.</td>
+            <td>نمط</td>
+        </tr>
+        <tr>
+          <td>set</td>
+          <td>This means a group of things that go together, like a set of crayons or a set of blocks. It's like having a special collection of things.</td>
+          <td>مجموعة</td>
+        </tr>
+        <tr>
+            <td>stuck</td>
+            <td>This means being unable to move or change something. It's like when you try to take off a shirt that's too small and you're stuck.</td>
+            <td>عالق</td>
+        </tr>
+        <tr>
+          <td>zone</td>
+          <td>This means a specific area or place, like a comfort zone or a danger zone. It's like a special area that's important for something.</td>
+          <td>منطقة</td>
+        </tr>
+    </table>
+</div>
+</body>
+<footer>
+    <a href="/U1VocabularyQuestion1"><button class="next">Next ></button></a>
+    <a href="/VocabularyPage"><button class="home">Back To Vocabulary Page</button></a>
+</footer>

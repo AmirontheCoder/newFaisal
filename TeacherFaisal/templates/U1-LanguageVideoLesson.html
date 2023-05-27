@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='U1-LanguageVideoLesson.css')}} ">
+  <link rel="stylesheet" href="{{ url_for('static' , filename ='readingComprehensionPage.css')}} ">
+  <script type="text/javascript" src="{{ url_for('static', filename='dropdownanimation.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='style.css')}} ">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="{{ url_for('static' , filename ='script.js')}} "></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Faisal</title>
+</head>
+<body>
+    <header>
+        <a href="who-we-are"><img class = "logo" src="{{ url_for('static', filename='1.png') }}" alt="Alt Text"></a>
+         <nav>
+             <ul class="nav_links">
+                 <li><a href="vocabulary">مفردات</a></li>
+                 <li><a href="dictionary">قاموس</a></li>
+                 <li><a href="chatbot">تكلم مع فيصل</a></li>
+                 <li><a href="who-we-are">من نحن؟</a></li>
+             </ul>
+         </nav>
+         <a class="cta" href="/base"><button>تواصل معنا</button></a>
+     </header>
+     <div class="sidebar">
+     </div>
+    {% if is_authenticated() %}
+        <style>
+            .login-button{
+                display: none;
+            }
+            .profile-details{
+                display: block;
+            }
+        </style>
+    {% endif %}
+
+    <a href="/loginPage"><button class="login-button">تسجيل الدخول</button></a>
+    <div class="profile-details" onclick="dropdown2()">
+        <img class="profile-picture" style="display:block" src="{{ profile_pic }}" alt="">
+        <p class="accountName">{{ googleAccname }}</p>
+        <div class="dropdown">
+            <a href="/logout" class="Logout"><ion-icon name="log-out-outline"></ion-icon>Logout</a>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="video-container">
+            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/_TUKYWPuW4g" 
+title="Learn the PRESENT TENSE in 4 minutes 📚| Learn with examples" frameborder="0" 
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; 
+picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+    </div>
+    <footer>
+        <a href="/U1LanguageSlideLesson"><button class="next">Next ></button></a>
+        <a href="/GrammarPage"><button class="home">Back To Language Page</button></a>
+    </footer>
+</body>

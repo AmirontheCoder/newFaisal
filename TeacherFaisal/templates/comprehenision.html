@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='comprehension.css')}}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+		<a href="who-we-are"><img class = "logo" src="{{ url_for('static', filename='1.png') }}" alt="Alt Text"></a>
+		 <nav>
+			 <ul class="nav_links">
+				 <li><a href="vocabulary">مفردات</a></li>
+				 <li><a href="dictionary">قاموس</a></li>
+				 <li><a href="chatbot">تكلم مع فيصل</a></li>
+				 <li><a href="who-we-are">من نحن؟</a></li>
+			 </ul>
+		 </nav>
+		 <a class="cta" href="/base"><button>تواصل معنا</button></a>
+	 </header>
+	 <div class="sidebar">
+	 </div>
+    <h5 class = "comprehension-text" >
+        Dolls have been popular toys for children for centuries. They come in different shapes, sizes, and materials. Some dolls are made of plastic, while others are made of cloth, wood, or porcelain. Dolls can be dressed up in various outfits and accessories, and they can even have their hair styled.
+
+        Playing with dolls can be beneficial for children's development. It helps in developing their imagination, creativity, and social skills. Children can use dolls to act out different scenarios, which can help them in problem-solving and critical thinking. Playing with dolls can also help children in understanding emotions and developing empathy.
+        
+        There are different types of dolls available in the market, from baby dolls to fashion dolls. Baby dolls can be used to teach children about nurturing and caring for others. Fashion dolls can help children develop an interest in fashion and design. Dolls can also be used as collectibles for adults.
+        
+        Some people believe that dolls can be haunted or possess negative energy. These beliefs have led to the creation of haunted dolls and stories about them.
+    </h5>
+    <h1>Multiple-Choice Exam</h1>
+	<form onsubmit="return false;">
+		<h3>Question 1: What can dolls be made of?</h3>
+		<input type="radio" name="q1" value="a"> Plastic<br>
+		<input type="radio" name="q1" value="b"> Cloth<br>
+		<input type="radio" name="q1" value="c"> Wood<br>
+		<input type="radio" name="q1" value="d" checked> All of the above<br><br>
+
+		<h3>Question 2: What benefits can children get from playing with dolls?</h3>
+		<input type="radio" name="q2" value="a" checked> Develop creativity and imagination<br>
+		<input type="radio" name="q2" value="b"> Develop social skills<br>
+		<input type="radio" name="q2" value="c"> Improve problem-solving and critical thinking<br>
+		<input type="radio" name="q2" value="d"> All of the above<br><br>
+
+		<h3>Question 3: What can baby dolls be used for?</h3>
+		<input type="radio" name="q3" value="a" checked> Teach children about nurturing and caring for others<br>
+		<input type="radio" name="q3" value="b"> Develop an interest in fashion and design<br>
+		<input type="radio" name="q3" value="c"> Understand emotions and develop empathy<br>
+		<input type="radio" name="q3" value="d"> None of the above<br><br>
+
+		<h3>Question 4: What are haunted dolls?</h3>
+		<input type="radio" name="q4" value="a"> Dolls made of cloth<br>
+		<input type="radio" name="q4" value="b" checked> Dolls that possess negative energy<br>
+		<input type="radio" name="q4" value="c"> Dolls with their hair styled<br>
+		<input type="radio" name="q4" value="d"> None of the above<br><br>
+
+		<h3>Question 5: Why are haunted dolls popular in some cultures?</h3>
+		<input type="radio" name="q5" value="a" checked> Because they are believed to be possessed by spirits<br>
+		<input type="radio" name="q5" value="b"> Because they are made of unique materials<br>
+		<input type="radio" name="q5" value="c"> Because they are rare and valuable<br>
+		<input type="radio" name="q5" value="d"> None of the above<br><br>
+
+		<input type="submit" value="Submit" onclick="checkAnswers();">
+	</form>
+	
+    <h1>And Your Score was : <p class="score">5</p></h1>
+</body>
+</html>

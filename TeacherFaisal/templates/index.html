@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='landing-page.css')}} ">
+    <script defer type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script defer nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://kit.fontawesome.com/115a1d12a9.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" />
+    {% if is_authenticated() %}
+    <style>
+        .login-button {
+            display: none;
+        }
+
+        .profile-details {
+            display: block;
+        }
+    </style>
+    {% endif %}
+    <style>
+        .hero {
+            color: #fff;
+            height: calc(100vh - 73px);
+            width: 100%;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-image: linear-gradient(rgba(34, 34, 34, 0.8),
+                rgba(34, 34, 34, 0.6)),
+            url("{{ url_for('static', filename='landing-page-hero.jpg') }}");
+            position: relative;
+        }
+    </style>
+    <title>Teacher Faisal</title>
+</head>
+
+<body>
+    <nav class="nav">
+        <a href="who-we-are" class="logo__link">
+            <img class="logo" src="{{ url_for('static', filename='1.png') }}" alt="logo picture" />
+        </a>
+        <ul class="nav__list">
+            <li>
+                <a href="chatbot" class="nav__list-item">
+                    Speak with Faisal
+                </a>
+            </li>
+            <li>
+                <a href="vocabulary" class="nav__list-item">
+                    Vocabulary
+                </a>
+            </li>
+            <li>
+                <a href="dictionary" class="nav__list-item">
+                    Dictionary
+                </a>
+            </li>
+            <li>
+                <a href="who-we-are" class="nav__list-item">
+                    Who we are
+                </a>
+            </li>
+        </ul>
+        <div class="profile-details">
+            <input class="profile-details-checkbox" type="checkbox">
+            <h2 class="accountName">
+                <span>
+                    {{ googleAccname }}
+                </span>
+                <i class="fa-solid fa-circle-user"></i>
+            </h2>
+            <div class="logout-box">
+                <div class="logout-box-dropdown"></div>
+                <a href="javascript:void(0);" class="dropdown_item">
+                    <i class="fa-regular fa-user"></i>
+                    My Profile
+                </a>
+                <a href="/logout" class="dropdown_item">
+                    <ion-icon name="log-out-outline" role="img" class="md hydrated"></ion-icon>
+                    Logout
+                </a>
+            </div>
+        </div>
+        <a class="login-button" href="/loginPage">
+            <button>
+                Log In
+            </button>
+        </a>
+    </nav>
+    <section class="hero">
+        <div class="hero__box">
+            <h1>Enhance Learning with AI</h1>
+            <h2>Offering Free Comprehensive Resources</h2>
+        </div>
+    </section>
+    <section class="courses">
+        <div class="courses__box">
+            <div class="course">
+                <a class="course__link" href="/categoriesPage">
+                    <div class="course__header">
+                        Scientific guideline
+                        <i class="fa-solid fa-flask"></i>
+                    </div>
+                    <div class="course__description">
+                        <ul>
+                            <li>
+                                <i class="fa-solid fa-circle-check"></i>
+                                <span>
+                                    Providing previous exam questions
+                                </span>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-circle-check"></i>
+                                <span>
+                                    Sufficient explanation of the required material
+                                </span>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-circle-check"></i>
+                                <span>
+                                    Possibility to speak with Faisal in case of questions
+                                </span>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-circle-check"></i>
+                                <span>
+                                    Improve students' speed in answering
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </a>
+            </div>
+            <div class="course">
+                <a class="course__link" href="/categoriesPage2">
+                    <div class="course__header">
+                        Literary guideline
+                        <i class="fa-solid fa-book"></i>
+                    </div>
+                    <div class="course__description">
+                        <ul>
+                            <li>
+                                <i class="fa-solid fa-circle-check"></i>
+                                <span>
+                                    Providing previous exam questions
+                                </span>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-circle-check"></i>
+                                <span>
+                                    Sufficient explanation of the required material
+                                </span>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-circle-check"></i>
+                                <span>
+                                    Possibility to speak with Faisal in case of questions
+                                </span>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-circle-check"></i>
+                                <span>
+                                    Improve students' speed in answering
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+    <section class="tools">
+        <h1 class="tools__title">Tools We Provide</h1>
+        <div class="tools__boxes">
+            <div class="tool__box">
+                <div class="tool__textbox">
+                    <h1 class="tool__textbox-title"><a href="vocabulary">
+                            Vocabulary Box
+                            <i class="fa-sharp fa-solid fa-arrow-right"></i>
+                        </a></h1>
+                    <h2 class="tool__textbox-description">The meanings box is a box on the page through which you can
+                        browse all
+                        the
+                        meanings and vocabulary that you searched for in the dictionary, and through it the meanings can
+                        be found in
+                        both Arabic and English</h2>
+                </div>
+                <div class="tool__picture__box"><img class="tool__picture"
+                        src="{{ url_for('static', filename='tool1.jpg') }}" alt="english book picture"></div>
+            </div>
+            <div class="tool__box">
+                <div class="tool__picture__box"><img class="tool__picture"
+                        src="{{ url_for('static', filename='tool2.jpg') }}" alt="english book picture"></div>
+                <div class="tool__textbox">
+                    <h1 class="tool__textbox-title">
+                        <a href="dicitionary">
+                            Dicitionary
+                            <i class="fa-sharp fa-solid fa-arrow-right"></i>
+                        </a>
+                    </h1>
+                    <h2 class="tool__textbox-description">It is a page through which you can search for any meaning that
+                        is
+                        difficult for you to understand, and it appears to you in both Arabic and English</h2>
+                </div>
+            </div>
+            <div class="tool__box">
+                <div class="tool__textbox">
+                    <h1 class="tool__textbox-title">
+                        <a href="chatbot">
+                            Chatbot Faisal
+                            <i class="fa-sharp fa-solid fa-arrow-right"></i>
+                        </a>
+                    </h1>
+                    <h2 class="tool__textbox-description">
+                        Teacher Faisal is the most important part of the page. He can explain lessons to you, provide
+                        you with
+                        videos about them, and you can also test your writing skills with him
+                    </h2>
+                </div>
+                <div class="tool__picture__box">
+                    <img class="tool__picture" src="{{ url_for('static', filename='tool3.jpg') }}"
+                        alt="open ai picture" />
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="footer__contact-box">
+            <h3 class="footer__title">
+                Get In Touch
+            </h3>
+            <a href="mailto:amirkhoury0806@gmail.com">
+                <button class="btn__contcat">
+                    Contact us
+                </button>
+            </a>
+        </div>
+    </footer>
+</body>
+
+</html>

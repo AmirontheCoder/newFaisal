@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='U1-LanguageExercise1.css')}} ">
+  <link rel="stylesheet" href="{{ url_for('static' , filename ='readingComprehensionPage.css')}} ">
+  <script type="text/javascript" src="{{ url_for('static', filename='dropdownanimation.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='style.css')}} ">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="{{ url_for('static' , filename ='script.js')}} "></script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Faisal</title>
+</head>
+<body>
+    <header>
+        <a href="who-we-are"><img class = "logo" src="{{ url_for('static', filename='1.png') }}" alt="Alt Text"></a>
+         <nav>
+             <ul class="nav_links">
+                 <li><a href="vocabulary">مفردات</a></li>
+                 <li><a href="dictionary">قاموس</a></li>
+                 <li><a href="chatbot">تكلم مع فيصل</a></li>
+                 <li><a href="who-we-are">من نحن؟</a></li>
+             </ul>
+         </nav>
+         <a class="cta" href="/base"><button>تواصل معنا</button></a>
+     </header>
+     <div class="sidebar">
+     </div>
+    {% if is_authenticated() %}
+        <style>
+            .login-button{
+                display: none;
+            }
+            .profile-details{
+                display: block;
+            }
+        </style>
+    {% endif %}
+
+    <a href="/loginPage"><button class="login-button">تسجيل الدخول</button></a>
+    <div class="profile-details" onclick="dropdown2()">
+        <img class="profile-picture" style="display:block" src="{{ profile_pic }}" alt="">
+        <p class="accountName">{{ googleAccname }}</p>
+        <div class="dropdown">
+            <a href="/logout" class="Logout"><ion-icon name="log-out-outline"></ion-icon>Logout</a>
+        </div>
+    </div>
+    
+    <p id="countdown"></p>
+    <button id="pause-button" onclick="pause()">pause</button>
+<div id="center">
+    <h1 class="times-up">Time's up</h1>
+    <p class="times-up">Your Score is</p><p id="score">0</p><p class="exam-mark">/ 25</p>
+    <a href="/U1ReadingComprehension1"><button class="retry">retry</button></a>
+</div>
+<div class="Language">
+    <h3 class="Question">1-Choose the correct option to complete the sentences::</h3>
+    <div class="fill-in-the-blanks-container">
+        <h5 class="sub-question">1)Sameera usually</h5>
+        <input type="text" class="answer-field" id="answer-field1" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark" name="close-outline"></ion-icon>
+        <h5 class="sub-question">at school late. (arrives/ is arriving)</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : arrives</p>
+        <span class="break"></span>
+        <h5 class="sub-question">2)Listen! Someone </h5>
+        <input type="text" class="answer-field" id="answer-field2" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark2" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark2" name="close-outline"></ion-icon>
+        <h5 class="sub-question">outside. (cries/is crying)</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer2">
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : is crying</p>
+        <span class="break"></span>
+        <h5 class="sub-question">3)Rania</h5>
+        <input type="text" class="answer-field" id="answer-field3" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark3" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark3" name="close-outline"></ion-icon>
+        <h5 class="sub-question">happy.She must have got good news. ( looks/ is looking)</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer3"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer :  looks</p>
+        <span class="break"></span>
+        <h5 class="sub-question">4)Why </h5>
+        <input type="text" class="answer-field" id="answer-field4" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark4" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark4" name="close-outline"></ion-icon>
+        <h5 class="sub-question">at us like that? (do you look/ are you looking)</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer4"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : are you looking</p>
+        <span class="break"></span>
+        <h5 class="sub-question">5)I </h5>
+        <input type="text" class="answer-field" id="answer-field5" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark5" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark5" name="close-outline"></ion-icon>
+        <h5 class="sub-question">you are not well today. What's wrong with you? (think/ am thinking)</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer5"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : think</p>
+        <span class="break"></span>
+        <h5 class="sub-question">6)I </h5>
+        <input type="text" class="answer-field" id="answer-field6" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark6" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark6" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer6"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : am thinking</p>
+        <h5 class="sub-question">about my sister Huda. She's very ill. (think/ am thinking)</h5>
+        <span class="break"></span>
+        <h5 class="sub-question">7)My uncle </h5>
+        <input type="text" class="answer-field" id="answer-field7" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark7" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark7" name="close-outline"></ion-icon>
+        <h5 class="sub-question">nine daughters. ( has/ is having)</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer7"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : has</p>
+        <span class="break"></span>
+        <h5 class="sub-question">8)You can't call him now. He </h5>
+        <input type="text" class="answer-field" id="answer-field8" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
+        <h5 class="sub-question">a shower.( has/ is having)</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer8"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : is having</p>
+        <span class="break"></span>
+        <h5 class="sub-question">9)I have to dress up because I</h5>
+        <input type="text" class="answer-field" id="answer-field9" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark9" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark9" name="close-outline"></ion-icon>
+        <h5 class="sub-question">an important appointment. ( have/ am having)</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer9"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : have</p>
+        <span class="break"></span>
+        <h5 class="sub-question">10)The train always</h5>
+        <input type="text" class="answer-field" id="answer-field10" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark10" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark10" name="close-outline"></ion-icon>
+        <h5 class="sub-question">at 7:30 pm.(leaves/ is leaving)</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer10"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : leaves</p>
+        <span class="break"></span>
+        <h5 class="sub-question">11)Look out! The plane</h5>
+        <input type="text" class="answer-field" id="answer-field11" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark11" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark11" name="close-outline"></ion-icon>
+        <h5 class="sub-question">(takes off/ is taking off)</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer11"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : is taking off</p>
+        <span class="break"></span>
+        <h5 class="sub-question">12)Our teacher is happy because we</h5>
+        <input type="text" class="answer-field" id="answer-field12" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark12" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark12" name="close-outline"></ion-icon>
+        <h5 class="sub-question">better quickly in English. (get / are getting )</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer12"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : are getting</p>
+    </div>
+    <span class="break"></span>
+    <h3 class="Question">Present perfect and present perfect continuous</h3>
+    <h3 class="Question">2- Choose the correct option to complete the sentences:</h3>
+    <div class="choose-the-right-answer">
+            <h5 class="sub-question">1)It is dark because the sun</h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q1" class="radio-circle" value="hasn't risen">
+        </span>
+        <p class="option">hasn't risen</p>
+        </label>
+        
+        <h5 class="sub-question"> / </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q1" class="radio-circle" value="hasn't been rising">
+        </span>
+        <p class="option">hasn't been rising</p>
+        </label>
+        <ion-icon class="mark" id="checkmark26" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark26" name="close-outline"></ion-icon>
+        <h5 class="sub-question">yet.</h5><hr>
+    <span class="break"></span>
+
+        <h5 class="sub-question">2)I can't find my wallet. Someone</h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q2" class="radio-circle" value="has stolen">
+        </span>
+        <p class="option">has stolen</p>
+        </label>
+        
+        <h5 class="sub-question"> / </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q2" class="radio-circle" value="has been stealing ">
+        </span>
+        <p class="option">has been stealing </p>
+        </label>
+        <ion-icon class="mark" id="checkmark27" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark27" name="close-outline"></ion-icon>
+        <h5 class="sub-question">it.</h5><hr>
+    <span class="break"></span>
+    <h5 class="sub-question">3)The weather is terrible outside. It</h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q3" class="radio-circle" value="has rained">
+        </span>
+        <p class="option">has rained</p>
+        </label>
+        
+        <h5 class="sub-question"> / </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q3" class="radio-circle" value="has been raining">
+        </span>
+        <p class="option">has been raining</p>
+        </label>
+        <ion-icon class="mark" id="checkmark28" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark28" name="close-outline"></ion-icon>
+        <h5 class="sub-question">for more than five hours.</h5><hr>
+
+        <span class="break"></span>
+        <h5 class="sub-question">4)I</h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q4" class="radio-circle" value="have known">
+        </span>
+        <p class="option">have known</p>
+        </label>
+        <h5 class="sub-question"> / </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q4" class="radio-circle" value="have been knowing">
+        </span>
+        <p class="option">have been knowing</p>
+        </label>
+        <ion-icon class="mark" id="checkmark29" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark29" name="close-outline"></ion-icon>
+        <h5 class="sub-question">Mona for five years and we are close friends now.</h5><hr>
+
+        <span class="break"></span>
+        <h5 class="sub-question">5)You are out of breath!</h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q5" class="radio-circle" value="Have you run">
+        </span>
+        <p class="option">Have you run</p>
+        </label>
+        <h5 class="sub-question"> / </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q5" class="radio-circle" value="Have you been running">
+        </span>
+        <p class="option">Have you been running</p>
+        </label>
+        <h5 class="sub-question">?</h5><hr>
+        <ion-icon class="mark" id="checkmark30" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark30" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <h5 class="sub-question">6)She has never </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q6" class="radio-circle" value="travelled">
+        </span>
+        <p class="option">travelled</p>
+        </label>
+        <h5 class="sub-question"> / </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q6" class="radio-circle" value="been travelling">
+        </span>
+        <p class="option">been travelling</p>
+        </label>
+        <ion-icon class="mark" id="checkmark31" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark31" name="close-outline"></ion-icon>
+        <h5 class="sub-question">by ship. She enjoys flying.</h5><hr>
+
+        <span class="break"></span>
+        <h5 class="sub-question">7)My uncle </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q7" class="radio-circle" value="has bought">
+        </span>
+        <p class="option">has bought</p>
+        </label>
+        <h5 class="sub-question"> / </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q7" class="radio-circle" value="has been buying">
+        </span>
+        <p class="option">has been buying</p>
+        </label>
+        <ion-icon class="mark" id="checkmark32" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark32" name="close-outline"></ion-icon>
+        <h5 class="sub-question">a new car recently.</h5><hr>
+        <span class="break"></span>
+
+        <h5 class="sub-question">8)She </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q8" class="radio-circle" value="has written">
+        </span>
+        <p class="option">has written</p>
+        </label>
+        <h5 class="sub-question"> / </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q8" class="radio-circle" value="has been writing">
+        </span>
+        <p class="option">has been writing</p>
+        </label>
+        <ion-icon class="mark" id="checkmark33" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark33" name="close-outline"></ion-icon>
+        <h5 class="sub-question">five poems so far.</h5><hr>
+        <span class="break"></span>
+        <h5 class="sub-question">9)I think someone</h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q9" class="radio-circle" value="has used">
+        </span>
+        <p class="option">has used</p>
+        </label>
+        <h5 class="sub-question"> / </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q9" class="radio-circle" value="has been using">
+        </span>
+        <p class="option">has been using</p><hr>
+        <span class="break"></span>
+        </label>
+        <ion-icon class="mark" id="checkmark34" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark34" name="close-outline"></ion-icon>
+        <h5 class="sub-question">my laptop. The battery is nearly dead.</h5><hr>
+        <span class="break"></span>
+        <h5 class="sub-question">10)I think someone</h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q10" class="radio-circle" value="has taken">
+        </span>
+        <p class="option">has taken</p>
+        </label>
+        <h5 class="sub-question"> / </h5>
+        <label class="circle-tag">
+        <span class="circle">
+            <input type="radio" name="q10" class="radio-circle" value="has been taking">
+        </span>
+        <p class="option">has been taking</p>
+        </label>
+        <ion-icon class="mark" id="checkmark35" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark35" name="close-outline"></ion-icon>
+        <h5 class="sub-question">my laptop. The battery is nearly dead.</h5><hr>
+        <span class="break"></span>
+    </div>
+    <span class="break"></span>
+    <h3 class="Question">3- Correct the mistakes in the following sentences:</h3>
+    <div class="correct-the-sentences">
+        <h5 class="sub-question">1)Ahmed <span class="bold-word">gets better </span> quickly. I think he will recover soon. </h5>
+        <span class="break"></span>
+        <input type="text" class="answer-field" id="answer-field13" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark13" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark13" name="close-outline"></ion-icon><br>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer13"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : Ahmed is getting better quickly. I think he will recover soon.</p>
+        <span class="break"></span>
+        
+        <h5 class="sub-question">2)I <span class="bold-word">am thinking </span> this is the right answer, but I'm not really sure.</h5>
+        <span class="break"></span>
+        <input type="text" class="answer-field" id="answer-field14" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark14" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark14" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer14"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : I think this is the right answer, but I'm not really sure.</p>
+        <span class="break"></span>
+
+        <h5 class="sub-question">3) Have you ever<span class="bold-word">been riding </span>a bike?</h5>
+        <span class="break"></span>
+        <input type="text" class="answer-field" id="answer-field15" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark15" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark15" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer15"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : Have you ever ridden a bike?</p>
+        <span class="break"></span>
+
+        <h5 class="sub-question">4) How often <span class="bold-word">are you visiting </span> your grandma?</h5>
+        <span class="break"></span>
+        <input type="text" class="answer-field" id="answer-field16" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark16" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark16" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer16"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : How often do you visit your grandma?</p>
+        <span class="break"></span>
+
+        <h5 class="sub-question">5) How many times <span class="bold-word">has he been writing </span>to his family this month? </h5>
+        <span class="break"></span>
+        <input type="text" class="answer-field" id="answer-field17" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark17" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark17" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer17"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : How many times has he written to his family this month?</p>
+        <span class="break"></span>
+
+        <h5 class="sub-question">6) What <span class="bold-word">are you usually doing </span> on Fridays? </h5>
+        <span class="break"></span>
+        <input type="text" class="answer-field" id="answer-field18" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark18" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark18" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer18"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : What do you usually do on Fridays?</p>
+        <span class="break"></span>
+
+        <h5 class="sub-question">7) Have we met before? I <span class="bold-word">am recognizing </span> your face.</h5>
+        <span class="break"></span>
+        <input type="text" class="answer-field" id="answer-field19" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark19" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark19" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer19"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : Have we met before? I recognize your face.</p>
+        <span class="break"></span>
+
+        <h5 class="sub-question">8) Freshers <span class="bold-word">gather </span>in the hall right now. </h5>
+        <span class="break"></span>
+        <input type="text" class="answer-field" id="answer-field20" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark20" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark20" name="close-outline"></ion-icon>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer20"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : Freshers are gathering in the hall right now.</p>
+        <span class="break"></span>
+    </div>
+    <h3 class="Question">4- Choose the correct answer:</h3>
+    <div class="fill-in-the-blanks-container">
+        <h5 class="sub-question">1)Dina</h5>
+        <input type="text" class="answer-field" id="answer-field21" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark21" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark21" name="close-outline"></ion-icon>
+        <h5 class="sub-question">you an email recently.( is sending / has sent )</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer21"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : has sent</p>
+        <span class="break"></span>
+        <h5 class="sub-question">2)</h5>
+        <input type="text" class="answer-field" id="answer-field22" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark22" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark22" name="close-outline"></ion-icon>
+        <h5 class="sub-question">your mobile yet?( Have you repaired / Do you repair )</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer22"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : Have you repaired</p>
+        <span class="break"></span>
+        <h5 class="sub-question">3)What</h5>
+        <input type="text" class="answer-field" id="answer-field23" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark23" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark23" name="close-outline"></ion-icon>
+        <h5 class="sub-question">next Sunday?( are you doing / have you done )</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer23"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : are you doing</p>
+        <span class="break"></span>
+        <h5 class="sub-question">4)Be careful! That car</h5>
+        <input type="text" class="answer-field" id="answer-field24" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark24" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark24" name="close-outline"></ion-icon>
+        <h5 class="sub-question">towards you.( has been coming / is coming )</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer24"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : is coming</p>
+        <span class="break"></span>
+        <h5 class="sub-question">5)Look! That man</h5>
+        <input type="text" class="answer-field" id="answer-field25" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark25" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark25" name="close-outline"></ion-icon>
+        <h5 class="sub-question">us since we got out from our house. ( has been following/follows)</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer25"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : has been following</p>
+        <span class="break"></span>
+        <h5 class="sub-question">6)We </h5>
+        <input type="text" class="answer-field" id="answer-field26" name="input-field" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
+        <ion-icon class="mark" id="checkmark36" name="checkmark-outline"></ion-icon>
+        <ion-icon class="mark" id="crossmark36" name="close-outline"></ion-icon>
+        <h5 class="sub-question">this problem will be solved very soon.( hope / have been hoping)</h5>
+        <span class="break"></span>
+        <p class="correct-answers" id="correct-answer26"> 
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer :  hope</p>
+
+    <span class="break"></span>
+    <button id='submit-button' method="POST" onclick="checkAnswers()">submit</button>
+    <footer>
+        <a href="/GrammarPage"><button class="home">Back To Language Page</button></a>
+        <a href="/U1LanguageSlideLesson"><button class="previous"> < Previous</button></a>
+    </footer>
+<script>
+    const startingMinutes = 12;
+    let time = startingMinutes * 60;
+    let isPaused = false;
+
+    const countdownEl = document.getElementById('countdown');
+    const pauseButton = document.getElementById('pause-button');
+    const statusDiv = document.getElementById('center');
+
+
+    let timer = setInterval(updateCountdown, 1000);
+
+    function updateCountdown() {
+    if (isPaused) {
+        return;
+    }
+    const minutes = Math.floor(time / 60);
+    let seconds = time % 60;
+
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+
+    countdownEl.innerHTML = `${minutes}:${seconds}`;
+    time--;
+
+    if (time === 0){
+        pause();
+        statusDiv.style.display = 'block';
+        pauseButton.disabled = "disabled";
+        checkAnswers();
+        clearInterval(timer)
+    }
+    }
+
+    function pause() {
+    isPaused = !isPaused
+    }
+
+    function checkAnswers(){
+        const scoreElement = document.getElementById('score');
+        let score = parseInt(scoreElement.textContent);
+        const checkmark = document.getElementById('checkmark');
+        const crossmark = document.getElementById('crossmark');
+        const checkmark2 = document.getElementById('checkmark2');
+        const checkmark3 = document.getElementById('checkmark3');
+        const checkmark4 = document.getElementById('checkmark4');
+        const checkmark5 = document.getElementById('checkmark5');
+        const checkmark6 = document.getElementById('checkmark6');
+        const checkmark7 = document.getElementById('checkmark7');
+        const checkmark8 = document.getElementById('checkmark8');
+        const checkmark9 = document.getElementById('checkmark9');
+        const checkmark10 = document.getElementById('checkmark10');
+        const checkmark11 = document.getElementById('checkmark11');
+        const checkmark12 = document.getElementById('checkmark12');
+        const checkmark13 = document.getElementById('checkmark13');
+        const checkmark14 = document.getElementById('checkmark14');
+        const checkmark15 = document.getElementById('checkmark15');
+        const checkmark16 = document.getElementById('checkmark16');
+        const checkmark17 = document.getElementById('checkmark17');
+        const checkmark18 = document.getElementById('checkmark18');
+        const checkmark19 = document.getElementById('checkmark19');
+        const checkmark20 = document.getElementById('checkmark20');
+        const checkmark21 = document.getElementById('checkmark21');
+        const checkmark22 = document.getElementById('checkmark22');
+        const checkmark23 = document.getElementById('checkmark23');
+        const checkmark24 = document.getElementById('checkmark24');
+        const checkmark25 = document.getElementById('checkmark25');
+        const checkmark26 = document.getElementById('checkmark26');
+        const checkmark27 = document.getElementById('checkmark27');
+        const checkmark28 = document.getElementById('checkmark28');
+        const checkmark29 = document.getElementById('checkmark29');
+        const checkmark30 = document.getElementById('checkmark30');
+        const checkmark31 = document.getElementById('checkmark31');
+        const checkmark32 = document.getElementById('checkmark32');
+        const checkmark33 = document.getElementById('checkmark33');
+        const checkmark34 = document.getElementById('checkmark34');
+        const checkmark35 = document.getElementById('checkmark35');
+        const checkmark36 = document.getElementById('checkmark36');
+        const crossmark2 = document.getElementById('crossmark2');
+        const crossmark3 = document.getElementById('crossmark3');
+        const crossmark4 = document.getElementById('crossmark4');
+        const crossmark5 = document.getElementById('crossmark5');
+        const crossmark6 = document.getElementById('crossmark6');
+        const crossmark7 = document.getElementById('crossmark7');
+        const crossmark8 = document.getElementById('crossmark8');
+        const crossmark9 = document.getElementById('crossmark9');
+        const crossmark10 = document.getElementById('crossmark10');
+        const crossmark11 = document.getElementById('crossmark11');
+        const crossmark12 = document.getElementById('crossmark12');
+        const crossmark13 = document.getElementById('crossmark13');
+        const crossmark14 = document.getElementById('crossmark14');
+        const crossmark15 = document.getElementById('crossmark15');
+        const crossmark16 = document.getElementById('crossmark16');
+        const crossmark17 = document.getElementById('crossmark17');
+        const crossmark18 = document.getElementById('crossmark18');
+        const crossmark19 = document.getElementById('crossmark19');
+        const crossmark20 = document.getElementById('crossmark20');
+        const crossmark21 = document.getElementById('crossmark21');
+        const crossmark22 = document.getElementById('crossmark22');
+        const crossmark23 = document.getElementById('crossmark23');
+        const crossmark24 = document.getElementById('crossmark24');
+        const crossmark25 = document.getElementById('crossmark25');
+        const crossmark26 = document.getElementById('crossmark26');
+        const crossmark27 = document.getElementById('crossmark27');
+        const crossmark28 = document.getElementById('crossmark28');
+        const crossmark29 = document.getElementById('crossmark29');
+        const crossmark30 = document.getElementById('crossmark30');
+        const crossmark31 = document.getElementById('crossmark31');
+        const crossmark32 = document.getElementById('crossmark32');
+        const crossmark33 = document.getElementById('crossmark33');
+        const crossmark34 = document.getElementById('crossmark34');
+        const crossmark35 = document.getElementById('crossmark35');
+        const crossmark36 = document.getElementById('crossmark36');
+        const answerField1 = document.getElementById('answer-field1');
+        const answerField2 = document.getElementById('answer-field2');
+        const answerField3 = document.getElementById('answer-field3');
+        const answerField4 = document.getElementById('answer-field4');
+        const answerField5 = document.getElementById('answer-field5');
+        const answerField6 = document.getElementById('answer-field6');
+        const answerField7 = document.getElementById('answer-field7');
+        const answerField8 = document.getElementById('answer-field8');
+        const answerField9 = document.getElementById('answer-field9');
+        const answerField10 = document.getElementById('answer-field10');
+        const answerField11 = document.getElementById('answer-field11');
+        const answerField12 = document.getElementById('answer-field12');
+        const answerField13 = document.getElementById('answer-field13');
+        const answerField14 = document.getElementById('answer-field14');
+        const answerField15 = document.getElementById('answer-field15');
+        const answerField16 = document.getElementById('answer-field16');
+        const answerField17 = document.getElementById('answer-field17');
+        const answerField18 = document.getElementById('answer-field18');
+        const answerField19 = document.getElementById('answer-field19');
+        const answerField20 = document.getElementById('answer-field20');
+        const answerField21 = document.getElementById('answer-field21');
+        const answerField22 = document.getElementById('answer-field22');
+        const answerField23 = document.getElementById('answer-field23');
+        const answerField24 = document.getElementById('answer-field24');
+        const answerField25 = document.getElementById('answer-field25');
+        const answerField26 = document.getElementById('answer-field26');
+        const correctAnswer = document.getElementById('correct-answer');
+        const correctAnswer2 = document.getElementById('correct-answer2');
+        const correctAnswer3 = document.getElementById('correct-answer3');
+        const correctAnswer4 = document.getElementById('correct-answer4');
+        const correctAnswer5 = document.getElementById('correct-answer5');
+        const correctAnswer6 = document.getElementById('correct-answer6');
+        const correctAnswer7 = document.getElementById('correct-answer7');
+        const correctAnswer8 = document.getElementById('correct-answer8');
+        const correctAnswer9 = document.getElementById('correct-answer9');
+        const correctAnswer10 = document.getElementById('correct-answer10');
+        const correctAnswer11 = document.getElementById('correct-answer11');
+        const correctAnswer12 = document.getElementById('correct-answer12');
+        const correctAnswer13 = document.getElementById('correct-answer13');
+        const correctAnswer14 = document.getElementById('correct-answer14');
+        const correctAnswer15 = document.getElementById('correct-answer15');
+        const correctAnswer16 = document.getElementById('correct-answer16');
+        const correctAnswer17 = document.getElementById('correct-answer17');
+        const correctAnswer18 = document.getElementById('correct-answer18');
+        const correctAnswer19 = document.getElementById('correct-answer19');
+        const correctAnswer20 = document.getElementById('correct-answer20');
+        const correctAnswer21 = document.getElementById('correct-answer21');
+        const correctAnswer22 = document.getElementById('correct-answer22');
+        const correctAnswer23 = document.getElementById('correct-answer23');
+        const correctAnswer24 = document.getElementById('correct-answer24');
+        const correctAnswer25 = document.getElementById('correct-answer25');
+        const correctAnswer26 = document.getElementById('correct-answer26');
+        const correctAnswer27 = document.getElementById('correct-answer27');
+        const submitButton = document.getElementById('submit-button')
+
+        statusDiv.style.display = 'block';
+        pause();
+        pauseButton.disabled = "disabled";
+
+        if (answerField1.value == "arrives"){
+            answerField1.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField1.style.backgroundColor = '#31CD16';
+            checkmark.style.display = 'block';
+            score += 0.5;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField1.style.backgroundColor = '#A90305';
+            answerField1.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark.style.display = 'block';
+            correctAnswer.style.display = 'block';
+        }
+
+        if (answerField2.value == "is crying"){
+            answerField2.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField2.style.backgroundColor = '#31CD16';
+            checkmark2.style.display = 'block';
+            score += 0.5;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField2.style.backgroundColor = '#A90305';
+            answerField2.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark2.style.display = 'block';
+            correctAnswer2.style.display = 'block';
+        }
+
+        if (answerField3.value == "looks"){
+            answerField3.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField3.style.backgroundColor = '#31CD16';
+            checkmark3.style.display = 'block';
+            score += 0.5;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField3.style.backgroundColor = '#A90305';
+            answerField3.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark3.style.display = 'block';
+            correctAnswer3.style.display = 'block';
+        }
+
+        if (answerField4.value == "are you looking"){
+            answerField4.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField4.style.backgroundColor = '#31CD16';
+            checkmark4.style.display = 'block';
+            score += 0.5;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField4.style.backgroundColor = '#A90305';
+            answerField4.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark4.style.display = 'block';
+            correctAnswer4.style.display = 'block';
+        }
+
+        if (answerField5.value == "think"){
+            answerField5.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField5.style.backgroundColor = '#31CD16';
+            checkmark5.style.display = 'block';
+            score += 0.5;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField5.style.backgroundColor = '#A90305';
+            answerField5.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark5.style.display = 'block';
+            correctAnswer5.style.display = 'block';
+        }
+
+        if (answerField6.value == "am thinking"){
+            answerField6.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField6.style.backgroundColor = '#31CD16';
+            checkmark6.style.display = 'block';
+            score += 0.5;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField6.style.backgroundColor = '#A90305';
+            answerField6.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark6.style.display = 'block';
+            correctAnswer6.style.display = 'block';
+        }
+
+        if (answerField7.value == "has"
+        ){
+            answerField7.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField7.style.backgroundColor = '#31CD16';
+            checkmark7.style.display = 'block';
+            score += 0.5;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField7.style.backgroundColor = '#A90305';
+            answerField7.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark7.style.display = 'block';
+            correctAnswer7.style.display = 'block';
+        }
+
+        if (answerField8.value == "is having"){
+            answerField8.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField8.style.backgroundColor = '#31CD16';
+            checkmark8.style.display = 'block';
+            score += 0.5;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField8.style.backgroundColor = '#A90305';
+            answerField8.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark8.style.display = 'block';
+            correctAnswer8.style.display = 'block';
+        }
+
+        if (answerField9.value == "am having"){
+            answerField9.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField9.style.backgroundColor = '#31CD16';
+            checkmark9.style.display = 'block';
+            score += 0.5;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField9.style.backgroundColor = '#A90305';
+            answerField9.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark9.style.display = 'block';
+            correctAnswer9.style.display = 'block';
+        }
+
+        if (answerField10.value == "leaves"){
+            answerField10.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField10.style.backgroundColor = '#31CD16';
+            checkmark10.style.display = 'block';
+            score += 0.5;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField10.style.backgroundColor = '#A90305';
+            answerField10.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark10.style.display = 'block';
+            correctAnswer10.style.display = 'block';
+        }
+
+        if (answerField11.value == "is taking"){
+            answerField11.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField11.style.backgroundColor = '#31CD16';
+            checkmark11.style.display = 'block';
+            score += 0.5;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField11.style.backgroundColor = '#A90305';
+            answerField11.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark11.style.display = 'block';
+            correctAnswer11.style.display = 'block';
+        }
+
+        if (answerField12.value == "are getting"){
+            answerField12.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField12.style.backgroundColor = '#31CD16';
+            checkmark12.style.display = 'block';
+            score += 0.5;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField12.style.backgroundColor = '#A90305';
+            answerField12.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark12.style.display = 'block';
+            correctAnswer12.style.display = 'block';
+        }
+
+        document.getElementsByName('q1')
+        .forEach(radio => {
+            if(radio.checked){
+                if(radio.value == "hasn't risen"){
+                    radio.disabled = "disabled"
+                    submitButton.disabled = 'disabled';
+                    checkmark26.style.display = 'block';
+                    score += 0.5;
+                    scoreElement.textContent = score.toString();
+                }else{
+                    radio.disabled = "disabled"
+                    submitButton.disabled = 'disabled';
+                    crossmark26.style.display = 'block';
+                }
+            }
+        });
+
+        document.getElementsByName('q2')
+        .forEach(radio => {
+            if(radio.checked){
+                if(radio.value == "has stolen"){
+                    radio.disabled = "disabled"
+                    submitButton.disabled = 'disabled';
+                    checkmark27.style.display = 'block';
+                    score += 0.5;
+                    scoreElement.textContent = score.toString();
+                }else{
+                    radio.disabled = "disabled"
+                    submitButton.disabled = 'disabled';
+                    crossmark27.style.display = 'block';
+                }
+            }
+        });
+
+        document.getElementsByName('q3')
+        .forEach(radio => {
+            if(radio.checked){
+                if(radio.value == "has been raining"){
+                    radio.disabled = "disabled"
+                    submitButton.disabled = 'disabled';
+                    checkmark28.style.display = 'block';
+                    score += 0.5;
+                    scoreElement.textContent = score.toString();
+                }else{
+                    radio.disabled = "disabled"
+                    submitButton.disabled = 'disabled';
+                    crossmark28.style.display = 'block';
+                }
+            }
+        });
+
+        document.getElementsByName('q4')
+        .forEach(radio => {
+            if(radio.checked){
+                if(radio.value == "have known"){
+                    radio.disabled = "disabled"
+                    submitButton.disabled = 'disabled';
+                    checkmark29.style.display = 'block';
+                    score += 0.5;
+                    scoreElement.textContent = score.toString();
+                }else{
+                    radio.disabled = "disabled"
+                    submitButton.disabled = 'disabled';
+                    crossmark29.style.display = 'block';
+                }
+            }
+        });
+
+        document.getElementsByName('q5')
+        .forEach(radio => {
+            if(radio.checked){
+                if(radio.value == "Have you been running"){
+                    radio.disabled = "disabled"
+                    submitButton.disabled = 'disabled';
+                    checkmark30.style.display = 'block';
+                    score += 0.5;
+                    scoreElement.textContent = score.toString();
+                }else{
+                    radio.disabled = "disabled"
+                    submitButton.disabled = 'disabled';
+                    crossmark30.style.display = 'block';
+                }
+            }
+        });
+
+        document.getElementsByName('q6')
+        .forEach(radio => {
+            if(radio.checked){
+                if(radio.value == "travelled"){
+                    radio.disabled = "disabled"
+                    submitButton.disabled = 'disabled';
+                    checkmark31.style.display = 'block';
+                    score += 0.5;
+                    scoreElement.textContent = score.toString();
+                }else{
+                    radio.disabled = "disabled"
+                    submitButton.disabled = 'disabled';
+                    crossmark31.style.display = 'block';
+                }
+            }
+        });
+
+        document.getElementsByName('q7')
+        .forEach(radio => {
+            if(radio.checked){
+                if(radio.value == "has bought"){
+                    radio.disabled = "disabled"
+                    submitButton.disabled = 'disabled';
+                    checkmark32.style.display = 'block';
+                    score += 0.5;
+                    scoreElement.textContent = score.toString();
+                }else{
+                    radio.disabled = "disabled"
+                    submitButton.disabled = 'disabled';
+                    crossmark32.style.display = 'block';
+                }
+            }
+        });
+
+        document.getElementsByName('q8')
+        .forEach(radio => {
+            if(radio.checked){
+                if(radio.value == "has written"){
+                    radio.disabled = "disabled"
+                    submitButton.disabled = 'disabled';
+                    checkmark33.style.display = 'block';
+                    score += 0.5;
+                    scoreElement.textContent = score.toString();
+                }else{
+                    radio.disabled = "disabled"
+                    submitButton.disabled = 'disabled';
+                    crossmark33.style.display = 'block';
+                }
+            }
+        });
+
+        document.getElementsByName('q9')
+        .forEach(radio => {
+            if(radio.checked){
+                if(radio.value == "has been using"){
+                    radio.disabled = "disabled"
+                    submitButton.disabled = 'disabled';
+                    checkmark34.style.display = 'block';
+                    score += 0.5;
+                    scoreElement.textContent = score.toString();
+                }else{
+                    radio.disabled = "disabled"
+                    submitButton.disabled = 'disabled';
+                    crossmark34.style.display = 'block';
+                }
+            }
+        });
+
+        document.getElementsByName('q10')
+        .forEach(radio => {
+            if(radio.checked){
+                if(radio.value == "has taken"){
+                    radio.disabled = "disabled"
+                    submitButton.disabled = 'disabled';
+                    checkmark35.style.display = 'block';
+                    score += 0.5;
+                    scoreElement.textContent = score.toString();
+                }else{
+                    radio.disabled = "disabled"
+                    submitButton.disabled = 'disabled';
+                    crossmark35.style.display = 'block';
+                }
+            }
+        });
+
+        if (answerField13.value == "is getting"||
+        answerField13.value == "Ahmed is getting better quickly. I think he will recover soon."||
+        answerField13.value == "Ahmed is getting better quickly. I think he will recover soon ."||
+        answerField13.value == "Ahmed is getting better quickly. I think he will recover soon"){
+            answerField13.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField13.style.backgroundColor = '#31CD16';
+            checkmark13.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField13.style.backgroundColor = '#A90305';
+            answerField13.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark13.style.display = 'block';
+            correctAnswer13.style.display = 'block';
+        }
+
+        if (answerField14.value == "think"||
+        answerField14.value == "I think this is the right answer, but I'm not really sure."||
+        answerField14.value == "I think this is the right answer, but I'm not really sure ."||
+        answerField14.value == "I think this is the right answer, but I'm not really sure"){
+            answerField14.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField14.style.backgroundColor = '#31CD16';
+            checkmark13.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField14.style.backgroundColor = '#A90305';
+            answerField14.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark14.style.display = 'block';
+            correctAnswer14.style.display = 'block';
+        }
+
+        if (answerField15.value == "Have you ever ridden a bike?" ||
+        answerField15.value == "ridden"
+        ){
+            answerField15.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField15.style.backgroundColor = '#31CD16';
+            checkmark15.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField15.style.backgroundColor = '#A90305';
+            answerField15.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark15.style.display = 'block';
+            correctAnswer15.style.display = 'block';
+        }
+
+        if (answerField16.value == "How often do you visit your grandma?"||
+        answerField16.value == "do you visit"){
+            answerField16.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField16.style.backgroundColor = '#31CD16';
+            checkmark16.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField16.style.backgroundColor = '#A90305';
+            answerField16.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark16.style.display = 'block';
+            correctAnswer16.style.display = 'block';
+        }
+
+        if (answerField17.value == "has he written"||
+        answerField17.value == "How many times has he written to his family this month?"){
+            answerField17.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField17.style.backgroundColor = '#31CD16';
+            checkmark17.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField17.style.backgroundColor = '#A90305';
+            answerField17.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark17.style.display = 'block';
+            correctAnswer17.style.display = 'block';
+        }
+
+        if (answerField18.value == "do you usually do"||
+        answerField18.value == "What do you usually do on Fridays?"){
+            answerField18.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField18.style.backgroundColor = '#31CD16';
+            checkmark18.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField18.style.backgroundColor = '#A90305';
+            answerField18.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark18.style.display = 'block';
+            correctAnswer18.style.display = 'block';
+        }
+
+        if (answerField19.value == "recognize"||
+        answerField19.value == "Have we met before? I recognize your face."||
+        answerField19.value == "Have we met before? I recognize your face ."||
+        answerField19.value == "Have we met before? I recognize your face"){
+            answerField19.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField19.style.backgroundColor = '#31CD16';
+            checkmark19.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField19.style.backgroundColor = '#A90305';
+            answerField19.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark19.style.display = 'block';
+            correctAnswer19.style.display = 'block';
+        }
+
+        if (answerField20.value == "are gathering"||
+        answerField20.value == "Freshers are gathering in the hall right now."||
+        answerField20.value == "Freshers are gathering in the hall right now ."||
+        answerField20.value == "Freshers are gathering in the hall right now"){
+            answerField20.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField20.style.backgroundColor = '#31CD16';
+            checkmark20.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField20.style.backgroundColor = '#A90305';
+            answerField20.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark20.style.display = 'block';
+            correctAnswer20.style.display = 'block';
+        }
+
+        if (answerField21.value == "has sent"){
+            answerField21.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField21.style.backgroundColor = '#31CD16';
+            checkmark21.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField21.style.backgroundColor = '#A90305';
+            answerField21.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark21.style.display = 'block';
+            correctAnswer21.style.display = 'block';
+        }
+
+        if (answerField22.value == "Have you repaired"){
+            answerField22.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField22.style.backgroundColor = '#31CD16';
+            checkmark22.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField22.style.backgroundColor = '#A90305';
+            answerField22.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark22.style.display = 'block';
+            correctAnswer22.style.display = 'block';
+        }
+
+        if (answerField23.value == "are you doing"){
+            answerField23.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField23.style.backgroundColor = '#31CD16';
+            checkmark23.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField23.style.backgroundColor = '#A90305';
+            answerField23.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark23.style.display = 'block';
+            correctAnswer23.style.display = 'block';
+        }
+
+        if (answerField24.value == "is coming"){
+            answerField24.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField24.style.backgroundColor = '#31CD16';
+            checkmark24.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField24.style.backgroundColor = '#A90305';
+            answerField24.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark24.style.display = 'block';
+            correctAnswer24.style.display = 'block';
+        }
+
+        if (answerField25.value == "has been following"){
+            answerField25.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField25.style.backgroundColor = '#31CD16';
+            checkmark25.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField25.style.backgroundColor = '#A90305';
+            answerField25.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark25.style.display = 'block';
+            correctAnswer25.style.display = 'block';
+        }
+
+        if (answerField26.value == "hope"){
+            answerField26.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            answerField26.style.backgroundColor = '#31CD16';
+            checkmark36.style.display = 'block';
+            score ++;
+            scoreElement.textContent = score.toString();
+        }else{
+            answerField26.style.backgroundColor = '#A90305';
+            answerField26.disabled = "disabled";
+            submitButton.disabled = 'disabled';
+            crossmark36.style.display = 'block';
+            correctAnswer26.style.display = 'block';
+        }
+    }
+
+    </script>
+</div>

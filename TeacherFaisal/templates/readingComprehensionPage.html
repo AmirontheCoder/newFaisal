@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="{{ url_for('static' , filename ='readingComprehensionPage.css')}} ">
+  <script type="text/javascript" src="{{ url_for('static', filename='dropdownanimation.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='style.css')}} ">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="{{ url_for('static' , filename ='script.js')}} "></script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Faisal</title>
+</head>
+<body>
+    <header>
+        
+        <img class = "logo" src="{{ url_for('static', filename='1.png') }}" alt="Alt Text">
+        <nav>
+            <ul class="nav_links">
+                <li><a href="#">تجربة مجانية</a></li>
+                <li><a href="vocabulary">مفردات</a></li>
+                <li><a href="#">قواعد</a></li>
+                <li><a href="dictionary">قاموس</a></li>
+                <li><a href="chatbot">تكلم مع فيصل</a></li>
+                <li><a href="#">معلومات عنا</a></li>
+            </ul>
+        </nav>
+        <a class="cta" href="{{ url_for('base')}}"><button>تواصل معنا</button></a>
+    </header>
+    {% if is_authenticated() %}
+        <style>
+            .login-button{
+                display: none;
+            }
+            .profile-details{
+                display: block;
+            }
+        </style>
+    {% endif %}
+
+    <a href="/loginPage"><button class="login-button">تسجيل الدخول</button></a>
+    <div class="profile-details" onclick="dropdown2()">
+        <img class="profile-picture" style="display:block" src="{{ profile_pic }}" alt="">
+        <p class="accountName">{{ googleAccname }}</p>
+        <div class="dropdown">
+            <a href="/logout" class="Logout"><ion-icon name="log-out-outline"></ion-icon>Logout</a>
+        </div>
+    </div>
+
+
+
+<h1 class="title">Reading Comprehension</h1>
+<h3 class="subtitle">هنا يمكنك التدرب على فهم القروء و يمكن للاساتذة اضافة فهم مقروء للطلاب</h3>
+
+
+
+<section class="faq">
+  <div class="container">
+    <div class="accordion">
+      <div class="accordion-item" onclick="extend()">
+        <a class="accordion-link section-title">
+          Unit 1 Reading Comprehension
+          <ion-icon id="ao" name="add-outline"></ion-icon>
+          <ion-icon class="remove-outline" name="remove-outline"></ion-icon>
+        </a>
+        <div class="answer" id="question1">
+          <p>
+            <a href="/U1ReadingComprehension1">
+              1) Reading Comprehension
+            </a><br>
+            <a href="/U1ReadingComprehension2">
+              2) Reading Comprehension
+            </a><br>
+          </p>
+          <div class="add-material" onclick="dropdown3() ; extend()">
+            اضافة مواد
+            <ion-icon id="ao3" name="add-outline"></ion-icon>
+            <div class="dropdown2">
+              <ion-icon name="image-outline"></ion-icon><a href="/ImageUpload">Image</a><br>
+              <ion-icon name="document-text-outline"></ion-icon></ion-icon><a href="/wordFileUpload">Word(.docx)</a><br>
+              <ion-icon name="newspaper-outline"></ion-icon><a href="/FormUrl">Google Forms</a><br>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item " onclick="extend1()">
+        <a class="accordion-link section-title">
+          Unit 2 Reading Comprehension
+          <ion-icon id="ao1" name="add-outline"></ion-icon>
+          <ion-icon class="remove-outline" name="remove-outline"></ion-icon>
+        </a>
+        <div class="answer" id="question2">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam quae dolor perspiciatis. Tempore, mollitia error accusantium ipsa sapiente, distinctio, officia ex laudantium aliquid neque beatae!
+          </p>
+        </div>
+      </div>
+      <div class="accordion-item" onclick="extend2()">
+        <a class="accordion-link section-title">
+          Unit 3 Reading Comprehension
+          <ion-icon id="ao2" name="add-outline"></ion-icon>
+          <ion-icon class="remove-outline" name="remove-outline"></ion-icon>
+        </a>
+        <div class="answer" id="question3">
+          <p>
+            Flask is generally better suited for small to medium-sized web projects. However, it can be used for large-scale projects with some modifications and additions. Flask is highly extensible and there are many third-party libraries and tools that can be used to enhance its functionality and scalability.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+

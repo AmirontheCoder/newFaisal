@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='U1-ReadingComprehension1.css')}} ">
+  <link rel="stylesheet" href="{{ url_for('static' , filename ='readingComprehensionPage.css')}} ">
+  <script type="text/javascript" src="{{ url_for('static', filename='dropdownanimation.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='style.css')}} ">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="{{ url_for('static' , filename ='script.js')}} "></script>
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='categoriesPage.css')}} ">
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='dictionaryst.css')}} "> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Faisal</title>
+</head>
+<body>
+    <header>
+        <a href="who-we-are"><img class = "logo" src="{{ url_for('static', filename='1.png') }}" alt="Alt Text"></a>
+         <nav>
+             <ul class="nav_links">
+                 <li><a href="vocabulary">مفردات</a></li>
+                 <li><a href="dictionary">قاموس</a></li>
+                 <li><a href="chatbot">تكلم مع فيصل</a></li>
+                 <li><a href="who-we-are">من نحن؟</a></li>
+             </ul>
+         </nav>
+         <a class="cta" href="/base"><button>تواصل معنا</button></a>
+     </header>
+     <div class="sidebar">
+     </div>
+    {% if is_authenticated() %}
+        <style>
+            .login-button{
+                display: none;
+            }
+            .profile-details{
+                display: block;
+            }
+        </style>
+    {% endif %}
+
+    <a href="/loginPage"><button class="login-button">تسجيل الدخول</button></a>
+    <div class="profile-details" onclick="dropdown2()">
+        <img class="profile-picture" style="display:block" src="{{ profile_pic }}" alt="">
+        <p class="accountName">{{ googleAccname }}</p>
+        <div class="dropdown">
+            <a href="/logout" class="Logout"><ion-icon name="log-out-outline"></ion-icon>Logout</a>
+        </div>
+    </div>
+<h3 class="Question">
+    Write a short essay about:<br><br>
+    "you have recently decided to take up a new hobby or learn a new skill and you have joined a club or group of people who are doing the same thing"<br><br>
+    You can use the following ideas: <br><br>
+    • Why you chose your new activity.<br><br>
+    • What are the benefits of doing it with other people?<br><br>
+<p class="the-passage">
+    Losing weight is considered as a necessary goal for many people. I really suffer from over – weight and I have decided to lose weight by any way. So I joined a local gym and started having exercises. Losing weight through joining a gym has many benefits.
+Socially, joining a gym makes it possible for you to meet people who share you the same interest – losing weight. In addition, people there always encourage you to achieve your goal through exchanging ideas of the best way to lose weight.
+Physically, losing weight makes you feel more energetic. You can move, play, eat and do all the activities you want more easily than you used to.
+In conclusion, joining a gym is a good way to lose weight with people who share you the same problem,  over weight.
+</p>
+<footer>
+    <a href="/WritingSample1"><button class="previous"> < Previous</button></a>
+    <a href="/WritingPage"><button class="home">Back To Writing Page</button></a>
+    <a href="/WritingSample3" style="position:relative; bottom: 2.5rem;"><button class="next">Next ></button></a>
+</footer>

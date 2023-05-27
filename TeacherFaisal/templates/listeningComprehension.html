@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='listeningcomprehension.css')}}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<body>
+    <header>
+        <img class = "logo" src="{{ url_for('static', filename='1.png') }}" alt="Alt Text">
+        <nav>
+            <ul class="nav_links">
+                <li><a href="#">تجربة مجانية</a></li>
+                <li><a href="vocabulary">مفردات</a></li>
+                <li><a href="#">قواعد</a></li>
+                <li><a href="dictionary">قاموس</a></li>
+                <li><a href="chatbot">تكلم مع فيصل</a></li>
+                <li><a href="#">معلومات عنا</a></li>
+            </ul>
+        </nav>
+        <a class="cta" href="{{ url_for('base')}}"><button>تواصل معنا</button></a>
+    </header>
+    <h1 class="audio-file-question">Below is the audio file , listen carefully and answer the questions !</h1>
+    <div class="Audio-container">
+    <audio class = "Example-Aduio" controls>
+        <source src="{{ url_for('static', filename='AudioExample.mp3') }}" type="audio/mp3">
+    </audio>
+    </div>
+    <div class="questions">
+        <!DOCTYPE html>
+<html>
+<head>
+	<title>Multiple Choice Exam</title>
+</head>
+<body>
+	<h1>Matching Exercise</h1>
+	<form action="">
+		<p><strong>Match the beginning and ending phrase:</strong></p>
+		<ol>
+			<li>
+				<p><strong>Send an email</strong></p>
+				<ol type="A">
+					<li><label><input type="radio" name="q1" value="A">To the customer</label></li>
+					<li><label><input type="radio" name="q1" value="B">To the meeting</label></li>
+					<li><label><input type="radio" name="q1" value="C">To the report</label></li>
+					<li><label><input type="radio" name="q1" value="D">To the presentation</label></li>
+				</ol>
+			</li>
+			<li>
+				<p><strong>Visit</strong></p>
+				<ol type="A">
+					<li><label><input type="radio" name="q2" value="A">The report</label></li>
+					<li><label><input type="radio" name="q2" value="B">The presentation</label></li>
+					<li><label><input type="radio" name="q2" value="C">The customer</label></li>
+					<li><label><input type="radio" name="q2" value="D">The meeting</label></li>
+				</ol>
+			</li>
+			<li>
+				<p><strong>Reserve</strong></p>
+				<ol type="A">
+					<li><label><input type="radio" name="q3" value="A">A meeting room</label></li>
+					<li><label><input type="radio" name="q3" value="B">A report</label></li>
+					<li><label><input type="radio" name="q3" value="C">A presentation</label></li>
+					<li><label><input type="radio" name="q3" value="D">A customer</label></li>
+				</ol>
+			</li>
+			<li>
+				<p><strong>Invite people</strong></p>
+				<ol type="A">
+					<li><label><input type="radio" name="q4" value="A">To the presentation</label></li>
+					<li><label><input type="radio" name="q4" value="B">To the report</label></li>
+					<li><label><input type="radio" name="q4" value="C">To the customer</label></li>
+					<li><label><input type="radio" name="q4" value="D">To the meeting</label></li>
+				</ol>
+			</li>
+    			<li>
+				<p><strong>Write</strong></p>
+				<ol type="A">
+					<li><label><input type="radio" name="q5" value="A">A customer</label></li>
+					<li><label><input type="radio" name="q5" value="B">A presentation</label></li>
+					<li><label><input type="radio" name="q5" value="C">A meeting room</label></li>
+					<li><label><input type="radio" name="q5" value="D">A report</label></li>
+                </ol>
+    </div>
+</body>
+</html>

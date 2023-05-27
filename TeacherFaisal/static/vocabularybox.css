@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@600&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+
+    text-decoration: none;
+    list-style: none;
+    font-family: "Cairo", sans-serif;
+    /* color: #fff; */
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+/************* NAV ******************/
+.nav {
+    font-size: 2.3rem;
+    background-color: #228be6;
+    padding: 1.5rem 4rem;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav .nav__list {
+    display: flex;
+    gap: 3rem;
+}
+
+.nav .nav__list-item {
+    color: #fff;
+    transition: all .2s;
+}
+
+.nav .nav__list-item:hover {
+    opacity: 0.8;
+}
+
+.logo__link {
+    width: 7.5rem;
+    height: 6rem;
+}
+
+.logo {
+    height: 100%;
+}
+
+
+.login-button button {
+    font-size: 2.2rem;
+    color: #fff;
+    background: none;
+    font-family: 'Cairo', sans-serif;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    height: 4.8rem;
+    padding: 0 1.7rem;
+    transition: all .2s;
+}
+
+.login-button:hover {
+    opacity: .8;
+}
+
+.profile-details {
+    line-height: 2;
+    display: none;
+    position: relative;
+}
+
+.accountName {
+    font-size: 1.7rem;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.accountName i {
+    font-size: 2.5rem;
+}
+
+.logout-box {
+    visibility: hidden;
+    opacity: 0;
+    background-color: #fff;
+    width: 18rem;
+    padding: 1rem 0rem;
+    z-index: 3;
+    margin-top: 1rem;
+    position: absolute;
+}
+
+.logout-box a {
+    padding: .5rem 1rem;
+    color: #000 !important;
+}
+
+.logout-box-dropdown {
+    position: absolute;
+    top: -1rem;
+    right: 3rem;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #fff;
+}
+
+.dropdown_item {
+    color: #000;
+    font-size: 1.5rem;
+    padding: 0rem 1rem;
+    font-family: 'Cairo', sans-serif;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    transition: all .1s;
+}
+
+.dropdown_item:hover {
+    background-color: rgb(235, 235, 235)
+}
+
+.profile-details-checkbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.profile-details-checkbox:checked~.logout-box {
+    visibility: visible;
+    opacity: 1;
+    transition: all .2s;
+}
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #edf0f1;
+    color: #24252a;
+}
+
+
+button {
+    color: #fff;
+    padding: 9px 25px;
+    background-color: rgba(0, 136, 196, 1);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+button:hover {
+    background-color: rgba(0, 136, 169, 0.8);
+}
+
+.vocabulary-box-title {
+    font-size: 3rem;
+    position: relative;
+    text-align: center;
+    justify-content: center;
+}
+
+
+.word-coloumn {
+    font-size: 35px;
+    width: 150px;
+    width: fit-content;
+}
+
+.definition-coloumn {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 35px;
+}
+
+.ar-definition-coloumn {
+    position: relative;
+    display: block;
+}
+
+.word {
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 1rem;
+}
+
+.word-definition {
+    display: block;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto
+}
+
+.word-arabic-defintion {
+    display: block;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.id {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.table {
+    border: #24252a 1px solid;
+    width: 90%;
+    margin: 3rem auto;
+}
