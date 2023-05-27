@@ -25,21 +25,7 @@ html {
     background-color: #333;
 } */
 
-/************ Icons ************/
 
-.course .fa-circle-check {
-    color: green;
-    font-size: 2.5rem;
-}
-
-.tools .fa-arrow-right {
-    font-size: 2rem;
-}
-
-.logout-box .fa-caret-left {
-    display: grid;
-    justify-items: flex-end;
-}
 
 /************* NAV ******************/
 .nav {
@@ -70,15 +56,6 @@ html {
 .logo__link {
     width: 7.5rem;
     height: 6rem;
-}
-
-.logo{
-    position: relative;
-    right: 50px;
-    width: 130px;
-    height: 40px;
-    cursor: pointer;
-    margin-left: 2rem;
 }
 
 .logo {
@@ -179,6 +156,24 @@ html {
     visibility: visible;
     opacity: 1;
     transition: all .2s;
+}
+
+
+
+/************ Icons ************/
+
+.course .fa-circle-check {
+    color: green;
+    font-size: 2.5rem;
+}
+
+.tools .fa-arrow-right {
+    font-size: 2rem;
+}
+
+.logout-box .fa-caret-left {
+    display: grid;
+    justify-items: flex-end;
 }
 
 /************* HERO *****************/
@@ -320,6 +315,7 @@ html {
     background-position: center;
     background-size: cover;
 }
+
 
 /************ Footer *************/
 .footer {

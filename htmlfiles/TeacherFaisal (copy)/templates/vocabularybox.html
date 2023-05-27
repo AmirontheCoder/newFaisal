@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <link rel="stylesheet" href="{{ url_for('static' , filename ='vocabularybox.css')}} "> 
-  <script type="text/javascript" src="{{ url_for('static', filename='dropdownanimation.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='vocabularybox.css')}} ">
+    <script type="text/javascript" src="{{ url_for('static', filename='dropdownanimation.js') }}"></script>
     <link rel="stylesheet" href="{{ url_for('static' , filename ='style.css')}} ">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
@@ -10,81 +11,119 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/115a1d12a9.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" />
+    {% if is_authenticated() %}
+    <style>
+        .login-button {
+            display: none;
+        }
+
+        .profile-details {
+            display: block;
+        }
+    </style>
+    {% endif %}
     <title>Teacher Faisal</title>
 </head>
-<body>
-    <header>
-        <a href="who-we-are"><img class = "logo" src="{{ url_for('static', filename='1.png') }}" alt="Alt Text"></a>
-         <nav>
-             <ul class="nav_links">
-                 <li><a href="vocabulary">مفردات</a></li>
-                 <li><a href="dictionary">قاموس</a></li>
-                 <li><a href="chatbot">تكلم مع فيصل</a></li>
-                 <li><a href="who-we-are">من نحن؟</a></li>
-             </ul>
-         </nav>
-         <a class="cta" href="/base"><button>تواصل معنا</button></a>
-     </header>
-     <div class="sidebar">
-     </div>
-    {% if is_authenticated() %}
-        <style>
-            .login-button{
-                display: none;
-            }
-            .profile-details{
-                display: block;
-            }
-        </style>
-    {% endif %}
 
-    <a href="/loginPage"><button class="login-button">تسجيل الدخول</button></a>
-    <div class="profile-details" onclick="dropdown2()">
-        <img class="profile-picture" style="display:block" src="{{ profile_pic }}" alt="">
-        <p class="accountName">{{ googleAccname }}</p>
-        <div class="dropdown">
-            <a href="/logout" class="Logout"><ion-icon name="log-out-outline"></ion-icon>Logout</a>
+<body>
+    <nav class="nav">
+        <a href="who-we-are" class="logo__link">
+            <img class="logo" src="{{ url_for('static', filename='1.png') }}" alt="logo picture" />
+        </a>
+        <ul class="nav__list">
+            <li>
+                <a href="chatbot" class="nav__list-item">
+                    Speak with Faisal
+                </a>
+            </li>
+            <li>
+                <a href="vocabulary" class="nav__list-item">
+                    Vocabulary
+                </a>
+            </li>
+            <li>
+                <a href="dictionary" class="nav__list-item">
+                    Dictionary
+                </a>
+            </li>
+            <li>
+                <a href="who-we-are" class="nav__list-item">
+                    Who we are
+                </a>
+            </li>
+        </ul>
+        <div class="profile-details">
+            <input class="profile-details-checkbox" type="checkbox">
+            <h2 class="accountName">
+                <span>
+                    {{ googleAccname }}
+                </span>
+                <i class="fa-solid fa-circle-user"></i>
+            </h2>
+            <div class="logout-box">
+                <div class="logout-box-dropdown"></div>
+                <a href="javascript:void(0);" class="dropdown_item">
+                    <i class="fa-regular fa-user"></i>
+                    My Profile
+                </a>
+                <a href="/logout" class="dropdown_item">
+                    <ion-icon name="log-out-outline" role="img" class="md hydrated"></ion-icon>
+                    Logout
+                </a>
+            </div>
         </div>
-    </div>
+        <a class="login-button" href="/loginPage">
+            <button>
+                Log In
+            </button>
+        </a>
+    </nav>
 
-<head>
-	<title>Vocabulary</title>
-	<script>
-		function toggleDef(id) {
-			var def = document.getElementById(id);
-			if (def.style.display === "none") {
-				def.style.display = "block";
-			} else {
-				def.style.display = "none";
-			}
-		}
-	</script>
-</head>
-<body>
-	<h1 class="vocabulary-box-title">Vocabulary Box</h1><br><br>
-	<table class="table">
-		<tr>
-			<th class="word-coloumn">Word</th>
-			<th class="definition-coloumn">Definition</th>
-			<th class="ar-definition-coloumn">Arabic Definition</th>
-		</tr>
-		{% for word in words %}
-		<tr>
-			<td class="word">{{ word[0] }}</td>
-			<td>
-				<button class="word-definition" onclick="toggleDef('{{ word[0] }}-def')">Show Definition</button>
-				<div id="{{ word[0] }}-def" style="display: none;">{{ word[1] }}</div>
-			</td>
-			<td><button class="word-arabic-definition" onclick="toggleDef('{{ word[0] }}-def-ar')">
-				Show Definition
-			</button>
-				<div id="{{ word[0] }}-def-ar" style="display:none">
-					{{ word[2] }}
-				</div></td>
-			</td>
-		</tr>
-		{% endfor %}
-	</table>
-</body>
+    <head>
+        <title>Vocabulary</title>
+        <script>
+            function toggleDef(id) {
+                const wordBtn = document.querySelectorAll('.word-definition')
+                var def = document.getElementById(id);
+                if (def.style.display === "none") {
+                    def.style.display = "block";
+                } else {
+                    def.style.display = "none";
+                }
+            }
+        </script>
+    </head>
+
+    <body>
+        <h1 class="vocabulary-box-title">Vocabulary Box</h1><br><br>
+        <table class="table">
+            <tr>
+                <th class="word-coloumn">Word:</th>
+                <th class="definition-coloumn">Definition</th>
+                <th class="definition-coloumn ar-definition-coloumn">Arabic Definition</th>
+            </tr>
+            {% for word in words %}
+            <tr>
+                <td class="word">{{ word[0] }}</td>
+                <td>
+                    <button class="word-definition" onclick="toggleDef('{{ word[0] }}-def')">Show Definition</button>
+                    <div id="{{ word[0] }}-def" style="display: none;" class="id">{{ word[1] }}</div>
+                </td>
+                <td><button class="word-definition word-arabic-definition" onclick="toggleDef('{{ word[0] }}-def-ar')">
+                        Show Definition
+                    </button>
+                    <div id="{{ word[0] }}-def-ar" style="display:none" class="id">
+                        {{ word[2] }}
+                    </div>
+                </td>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+
 </html>
-
