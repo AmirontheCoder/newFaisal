@@ -6,38 +6,67 @@
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="{{ url_for('static' , filename ='script.js')}} "></script>
     <link rel="stylesheet" href="{{ url_for('static' , filename ='U1-ReadingComprehension1.css')}} ">
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='style.css')}} ">
+    <link rel="stylesheet" href="{{ url_for('static' , filename ='landing-page.css')}} ">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teacher Faisal</title>
 </head>
 <body>
-    <header>
-        <a href="who-we-are"><img class = "logo" src="{{ url_for('static', filename='1.png') }}" alt="Alt Text"></a>
-         <nav>
-             <ul class="nav_links">
-                 <li><a href="vocabulary">مفردات</a></li>
-                 <li><a href="dictionary">قاموس</a></li>
-                 <li><a href="chatbot">تكلم مع فيصل</a></li>
-                 <li><a href="who-we-are">من نحن؟</a></li>
-             </ul>
-         </nav>
-         <a class="cta" href="/base"><button>تواصل معنا</button></a>
-     </header>
-     <div class="sidebar">
-     </div>
-    {% if is_authenticated() %}
-        <style>
-            .login-button{
-                display: none;
-            }
-            .profile-details{
-                display: block;
-            }
-        </style>
-    {% endif %}
+    <nav class="nav">
+        <a href="who-we-are" class="logo__link">
+            <img class="logo" src="{{ url_for('static', filename='1.png') }}" alt="logo picture" />
+        </a>
+        <ul class="nav__list">
+            <li>
+                <a href="chatbot" class="nav__list-item">
+                    Speak with Faisal
+                </a>
+            </li>
+            <li>
+                <a href="vocabulary" class="nav__list-item">
+                    Vocabulary
+                </a>
+            </li>
+            <li>
+                <a href="dictionary" class="nav__list-item">
+                    Dictionary
+                </a>
+            </li>
+            <li>
+                <a href="who-we-are" class="nav__list-item">
+                    Who we are
+                </a>
+            </li>
+        </ul>
+        <div class="profile-details">
+            <input class="profile-details-checkbox" type="checkbox">
+            <h2 class="accountName">
+                <span>
+                    {{ googleAccname }}
+                </span>
+                <i class="fa-solid fa-circle-user"></i>
+            </h2>
+            <div class="logout-box">
+                <div class="logout-box-dropdown"></div>
+                <a href="javascript:void(0);" class="dropdown_item">
+                    <i class="fa-regular fa-user"></i>
+                    My Profile
+                </a>
+                <a href="/logout" class="dropdown_item">
+                    <ion-icon name="log-out-outline" role="img" class="md hydrated"></ion-icon>
+                    Logout
+                </a>
+            </div>
+        </div>
+        <a class="login-button" href="/loginPage">
+            <button>
+                Log In
+            </button>
+        </a>
+    </nav>
 
-    <a href="/loginPage"><button class="login-button">تسجيل الدخول</button></a>
     <div class="profile-details" onclick="dropdown2()">
         <img class="profile-picture" style="display:block" src="{{ profile_pic }}" alt="">
         <p class="accountName">{{ googleAccname }}</p>
@@ -67,7 +96,7 @@
     <div class="question-container">
         <h5 class="sub-question">1) What does the phrase 'comfort zone' mean?</h5>
         <span class="break"></span>
-        <input type="text" onapaste="return false" class="answer-field" id="answer-field1" name="input-field1" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <input type="text" autocomplete="off" onapaste="return false" class="answer-field" id="answer-field1" name="input-field1" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
         <ion-icon class="mark" id="checkmark" name="checkmark-outline"></ion-icon>
         <ion-icon class="mark" id="crossmark" name="close-outline"></ion-icon>
         <span class="break"></span>
@@ -77,8 +106,8 @@
         <span class="break"></span>
         <h5 class="sub-question">2)What helps people feel positive about themselves according to many studies?</h5>
         <span class="break"></span>
-        <input type="text" class="answer-field" id="answer-field2" name="input-field2" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
-        <ion-icon class="mark" id="checkmark2" name="checkmark-outline"></ion-icon>
+        <input type="text" autocomplete="off"  class="answer-field" id="answer-field2" autocomplete="off"  name="input-field2" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <ion-icon class="mark"  id="checkmark2" name="checkmark-outline"></ion-icon>
         <ion-icon class="mark" id="crossmark2" name="close-outline"></ion-icon>
         <span class="break"></span>
         <p class="correct-answers" id="correct-answer2"> 
@@ -88,7 +117,7 @@
         <span class="break"></span>
         <h5 class="sub-question">3)Why do people often get stuck in their comfort zones?(3 reasons)</h5>
         <span class="break"></span>
-        <h5 class="sub-question">a)</h5><input type="text" class="answer-field" id="answer-field3" name="input-field3" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <h5 autocomplete="off" class="sub-question">a)</h5><input type="text" autocomplete="off"  autocomplete="off" autocomplete="off"  autocomplete="off" class="answer-field" id="answer-field3" name="input-field3" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
         <ion-icon class="mark" id="checkmark3" name="checkmark-outline"></ion-icon>
         <ion-icon class="mark" id="crossmark3" name="close-outline"></ion-icon>
         <span class="break"></span>
@@ -96,7 +125,7 @@
             <ion-icon name="bulb-outline"></ion-icon>
             Correct Answer : They may be afraid of failing</p>
         <span class="break"></span>
-        <h5 class="sub-question">b)</h5><input type="text" class="answer-field" id="answer-field4" name="input-field4" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <h5 class="sub-question">b)</h5><input type="text" autocomplete="off"  class="answer-field" id="answer-field4" name="input-field4" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
         <ion-icon class="mark" id="checkmark4" name="checkmark-outline"></ion-icon>
         <ion-icon class="mark" id="crossmark4" name="close-outline"></ion-icon>
         <span class="break"></span>
@@ -104,7 +133,7 @@
             <ion-icon name="bulb-outline"></ion-icon>
             Correct Answer : They are unsure how to begin</p>
         <span class="break"></span>
-        <h5 class="sub-question">c)</h5><input type="text" class="answer-field" id="answer-field5" name="input-field5" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <h5 class="sub-question">c)</h5><input type="text" autocomplete="off"  class="answer-field" id="answer-field5" name="input-field5" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
         <ion-icon class="mark" id="checkmark5" name="checkmark-outline"></ion-icon>
         <ion-icon class="mark" id="crossmark5" name="close-outline"></ion-icon>
         <span class="break"></span>
@@ -117,11 +146,11 @@
     <h3 class="Question">B.Complete the following sentences (9 points) :</h3>
     <div class="fill-in-the-blanks-container">
         <h5 class="sub-question">1) We feel safe in our comfort zones because we're confident that</h5>
-        <input type="text" class="answer-field" id="answer-field6" name="input-field6" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <input type="text" class="answer-field" autocomplete="off"  id="answer-field6" name="input-field6" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
         <ion-icon class="mark" id="checkmark6" name="checkmark-outline"></ion-icon>
         <ion-icon class="mark" id="crossmark6" name="close-outline"></ion-icon>
         <h5 class="sub-question">and are unlikely to be challenged by anything </h5>
-        <input type="text" class="answer-field" id="answer-field7" name="input-field7" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <input type="text" class="answer-field" autocomplete="off"  id="answer-field7" name="input-field7" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
         <ion-icon class="mark" id="checkmark7" name="checkmark-outline"></ion-icon>
         <ion-icon class="mark" id="crossmark7" name="close-outline"></ion-icon>
         <h5 class="sub-question">.</h5>
@@ -135,7 +164,7 @@
             Correct Answer : unexpected or worrying</p>
         <span class="break"></span>
         <h5 class="sub-question">2)We're often told in 'self-help' books that it's a good idea to do </h5>
-        <input type="text" class="answer-field" id="answer-field8" name="input-field8" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <input type="text" class="answer-field" autocomplete="off"  id="answer-field8" name="input-field8" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
         <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
         <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
         <h5 class="sub-question">.</h5>
@@ -146,13 +175,13 @@
         <span class="break"></span>
         <span class="break"></span>
         <h5 class="sub-question">3)We all want to improve ourselves, for example by</h5>
-        <input type="text" class="answer-field" id="answer-field9" name="input-field9" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <input type="text" class="answer-field" autocomplete="off"  id="answer-field9" name="input-field9" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
         <ion-icon class="mark" id="checkmark9" name="checkmark-outline"></ion-icon>
         <ion-icon class="mark" id="crossmark9" name="close-outline"></ion-icon>
-        <h5 class="sub-question">,</h5><input type="text" class="answer-field" id="answer-field10" name="input-field10" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
+        <h5 class="sub-question">,</h5><input type="text" autocomplete="off"  class="answer-field" id="answer-field10" name="input-field10" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
         <ion-icon class="mark" id="checkmark10" name="checkmark-outline"></ion-icon>
         <ion-icon class="mark" id="crossmark10" name="close-outline"></ion-icon>
-        <h5 class="sub-question">or</h5><input type="text" class="answer-field" id="answer-field11" name="input-field11" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"><h5 class="sub-question">.</h5>
+        <h5 class="sub-question">or</h5><input type="text" autocomplete="off"  class="answer-field" id="answer-field11" name="input-field11" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"><h5 class="sub-question">.</h5>
         <ion-icon class="mark" id="checkmark11" name="checkmark-outline"></ion-icon>
         <ion-icon class="mark" id="crossmark11" name="close-outline"></ion-icon>
         <p class="correct-answers" id="correct-answer9"> 

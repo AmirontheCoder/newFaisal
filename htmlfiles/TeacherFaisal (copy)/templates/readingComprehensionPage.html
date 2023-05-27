@@ -14,31 +14,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  {% if is_authenticated() %}
-  <style>
-      .login-button {
-          display: none;
-      }
+    {% if is_authenticated() %}
+    <style>
+        .login-button {
+            display: none;
+        }
 
-      .profile-details {
-          display: block;
-      }
-  </style>
-  {% endif %}
-  <title>Teacher Faisal</title>
+        .profile-details {
+            display: block;
+        }
+    </style>
+    {% endif %}
+    <style>
+        .hero {
+            color: #fff;
+            height: calc(100vh - 73px);
+            width: 100%;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-image: linear-gradient(rgba(34, 34, 34, 0.8),
+                rgba(34, 34, 34, 0.6)),
+            url("{{ url_for('static', filename='landing-page-hero.jpg') }}");
+            position: relative;
+        }
+    </style>
+    <title>Teacher Faisal</title>
 </head>
 
 <body>
-<nav class="nav">
-    <a href="who-we-are">
+  <nav class="nav">
+    <a href="who-we-are" class="logo__link">
         <img class="logo" src="{{ url_for('static', filename='1.png') }}" alt="logo picture" />
     </a>
     <ul class="nav__list">
-        <li>
-            <a href="/" class="nav__list-item">
-                Home
-            </a>
-        </li>
         <li>
             <a href="chatbot" class="nav__list-item">
                 Speak with Faisal
@@ -56,10 +65,9 @@
         </li>
         <li>
             <a href="who-we-are" class="nav__list-item">
-                About Us
+                Who we are
             </a>
         </li>
-
     </ul>
     <div class="profile-details">
         <input class="profile-details-checkbox" type="checkbox">
@@ -71,6 +79,10 @@
         </h2>
         <div class="logout-box">
             <div class="logout-box-dropdown"></div>
+            <a href="javascript:void(0);" class="dropdown_item">
+                <i class="fa-regular fa-user"></i>
+                My Profile
+            </a>
             <a href="/logout" class="dropdown_item">
                 <ion-icon name="log-out-outline" role="img" class="md hydrated"></ion-icon>
                 Logout
@@ -230,6 +242,7 @@
     </div>
   </div>
 </section>
+</body>
 <footer class="footer">
   <div class="footer__contact-box">
       <h3 class="footer__title">
