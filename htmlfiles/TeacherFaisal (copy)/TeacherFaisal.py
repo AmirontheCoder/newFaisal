@@ -21,7 +21,7 @@ import re
 
 api_key = "AIzaSyBKSSLUiePvvR5XRXtTjcfSpQ61E2EDavw"
 
-openai.api_key = ("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")
+openai.api_key = ("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")
 
 env = Environment(extensions=["jinja2_base64_filters.Base64Filters"])
 env.filters['b64encode'] = base64.b64encode
@@ -332,6 +332,7 @@ def checkAnswers():
         feedback_paragraph = "<br>".join(feedback_messages)
 
     # Return the feedback messages as a JSON object
+    
     return jsonify({"feedback_paragraph": feedback_paragraph})
 
 # Now you have the feedback messages and corresponding correct answers in the `feedback_messages` list

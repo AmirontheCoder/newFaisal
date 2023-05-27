@@ -246,6 +246,7 @@
         <span class="break"></span> 
     </div>
     <button id='submit-button' method="POST" >submit</button>
+    <p id="feedback" style="margin-top: 30px;"></p>
 </div>
 <script>
     document.getElementById('submit-button').addEventListener('click', function() {
@@ -264,9 +265,11 @@
     })
     .then(response => response.text())
     .then(data => {
-        console.log('Success:', data);
+        document.getElementById('feedback').innerText = JSON.parse(data).feedback_paragraph
+        console.log('Success:',typeof data);
     })
     .catch((error) => {
+        document.getElementById('feedback').innerText = error.message
         console.error('Error:', error);
     });
     });

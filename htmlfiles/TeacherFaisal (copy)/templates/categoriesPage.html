@@ -5,8 +5,9 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="{{ url_for('static' , filename ='landing-page.css')}} ">
         <link rel="stylesheet" href="{{ url_for('static' , filename ='categoriesPage.css')}} ">
+        <link rel="stylesheet" href="{{ url_for('static' , filename ='landing-page.css')}} ">
+        <link rel="stylesheet" href="{{ url_for('static' , filename ='style.css')}} ">
         <script defer type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
         <script defer nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
         <script src="https://kit.fontawesome.com/115a1d12a9.js" crossorigin="anonymous"></script>
@@ -29,15 +30,10 @@
     
     <body>
         <nav class="nav">
-            <a href="who-we-are">
+            <a href="who-we-are" class="logo__link">
                 <img class="logo" src="{{ url_for('static', filename='1.png') }}" alt="logo picture" />
             </a>
             <ul class="nav__list">
-                <li>
-                    <a href="/" class="nav__list-item">
-                        Home
-                    </a>
-                </li>
                 <li>
                     <a href="chatbot" class="nav__list-item">
                         Speak with Faisal
@@ -55,10 +51,9 @@
                 </li>
                 <li>
                     <a href="who-we-are" class="nav__list-item">
-                        About Us
+                        Who we are
                     </a>
                 </li>
-
             </ul>
             <div class="profile-details">
                 <input class="profile-details-checkbox" type="checkbox">
@@ -70,6 +65,10 @@
                 </h2>
                 <div class="logout-box">
                     <div class="logout-box-dropdown"></div>
+                    <a href="javascript:void(0);" class="dropdown_item">
+                        <i class="fa-regular fa-user"></i>
+                        My Profile
+                    </a>
                     <a href="/logout" class="dropdown_item">
                         <ion-icon name="log-out-outline" role="img" class="md hydrated"></ion-icon>
                         Logout
@@ -161,6 +160,7 @@
     
             </div>
         </div>
+    </div>
         <footer class="footer">
             <div class="footer__contact-box">
                 <h3 class="footer__title">
