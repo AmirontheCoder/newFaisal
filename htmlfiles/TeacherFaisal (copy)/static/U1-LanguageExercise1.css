@@ -4,7 +4,7 @@
     box-sizing: border-box;
     margin:0;
     padding: 0;
-    color: #edf0f1;
+    color: #000;
 }
 
 body{
@@ -25,13 +25,13 @@ header{
     height: 130px;
 }
 
-.logo{
+/* .logo{
     position: relative;
     right: 50px;
     width: 200px;
     height: 90px;
     cursor: pointer;
-}
+} */
 
 .nav_links {
     position: relative;
@@ -292,7 +292,7 @@ footer .home{
     bottom: 80px;
 }
 
-.accountName{
+/* .accountName{
     text-align: center;
     border-radius: 20px;
     background-color: #0088a9;
@@ -303,9 +303,9 @@ footer .home{
     margin-left: 50px;
     bottom: 45px;
     z-index: 1000;
-}
+} */
   
-.profile-details{
+/* .profile-details{
     background-color: green;
     display: flex;
     width: 180px;
@@ -316,7 +316,7 @@ footer .home{
     bottom: 90px;
     padding: 10px;
     border-radius: 20px;
-}
+} */
   
 .profile-details .profile-picture{
     display: block;

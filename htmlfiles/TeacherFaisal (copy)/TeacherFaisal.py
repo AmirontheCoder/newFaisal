@@ -199,7 +199,7 @@ def vocabulary():
         googleAccountName = session['name']
         response = requests.get(f'https://people.googleapis.com/v1/people/{session["google_id"]}?personFields=photos&key={api_key}')
         profile_pic_url = response.json()['photos'][0]['url']
-        return render_template("vocabularybox.html", word=rows , f="ما هي الكلمة التي تريد معرفة معناها" , googleAccname=googleAccountName, profile_pic=profile_pic_url)
+        return render_template("vocabularybox.html", words=rows , f="ما هي الكلمة التي تريد معرفة معناها" , googleAccname=googleAccountName, profile_pic=profile_pic_url)
     else:
         return redirect('/loginPage')
     
@@ -220,7 +220,7 @@ def get_bot_response():
     response = openai.Completion.create(
         engine="text-davinci-003",
         prompt=prompt,
-        max_tokens=50,
+        max_tokens= 1500,
         n=1,
         stop=None,
         temperature=0.5,

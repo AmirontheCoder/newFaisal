@@ -25,13 +25,13 @@ header{
     height: 130px;
 }
 
-.logo{
+/* .logo{
     position: relative;
     right: 50px;
     width: 200px;
     height: 90px;
     cursor: pointer;
-}
+} */
 
 .nav_links {
     position: relative;
@@ -237,7 +237,7 @@ footer .home{
     z-index: 1000;
 }
   
-.profile-details{
+/* .profile-details{
     background-color: green;
     display: flex;
     width: 180px;
@@ -248,7 +248,7 @@ footer .home{
     bottom: 90px;
     padding: 10px;
     border-radius: 20px;
-}
+} */
   
 .profile-details .profile-picture{
     display: block;

@@ -28,63 +28,64 @@
     {% endif %}
     <title>Teacher Faisal</title>
 </head>
-<nav class="nav">
-    <a href="who-we-are" class="logo__link">
-        <img class="logo" src="{{ url_for('static', filename='1.png') }}" alt="logo picture" />
-    </a>
- <!----   <a href="who-we-are" class="logo__link">
-        <img class="logo" src="1.png" alt="logo picture" />
-    </a>-->
-    <ul class="nav__list">
-        <li>
-            <a href="chatbot" class="nav__list-item">
-                Speak with Faisal
-            </a>
-        </li>
-        <li>
-            <a href="vocabulary" class="nav__list-item">
-                Vocabulary
-            </a>
-        </li>
-        <li>
-            <a href="dictionary" class="nav__list-item">
-                Dictionary
-            </a>
-        </li>
-        <li>
-            <a href="who-we-are" class="nav__list-item">
-                Who we are
-            </a>
-        </li>
-    </ul>
-    <div class="profile-details">
-        <input class="profile-details-checkbox" type="checkbox">
-        <h2 class="accountName">
-            <span>
-                {{ googleAccname }}
-            </span>
-            <i class="fa-solid fa-circle-user"></i>
-        </h2>
-        <div class="logout-box">
-            <div class="logout-box-dropdown"></div>
-            <a href="javascript:void(0);" class="dropdown_item">
-                <i class="fa-regular fa-user"></i>
-                My Profile
-            </a>
-            <a href="/logout" class="dropdown_item">
-                <ion-icon name="log-out-outline" role="img" class="md hydrated"></ion-icon>
-                Logout
-            </a>
-        </div>
-    </div>
-    <a class="login-button" href="/loginPage">
-        <button>
-            Log In
-        </button>
-    </a>
-</nav>
+
 
 <body>
+    <nav class="nav">
+        <a href="who-we-are" class="logo__link">
+            <img class="logo" src="{{ url_for('static', filename='1.png') }}" alt="logo picture" />
+        </a>
+     <!----   <a href="who-we-are" class="logo__link">
+            <img class="logo" src="1.png" alt="logo picture" />
+        </a>-->
+        <ul class="nav__list">
+            <li>
+                <a href="chatbot" class="nav__list-item">
+                    Speak with Faisal
+                </a>
+            </li>
+            <li>
+                <a href="vocabulary" class="nav__list-item">
+                    Vocabulary
+                </a>
+            </li>
+            <li>
+                <a href="dictionary" class="nav__list-item">
+                    Dictionary
+                </a>
+            </li>
+            <li>
+                <a href="who-we-are" class="nav__list-item">
+                    Who we are
+                </a>
+            </li>
+        </ul>
+        <div class="profile-details">
+            <input class="profile-details-checkbox" type="checkbox">
+            <h2 class="accountName">
+                <span>
+                    {{ googleAccname }}
+                </span>
+                <i class="fa-solid fa-circle-user"></i>
+            </h2>
+            <div class="logout-box">
+                <div class="logout-box-dropdown"></div>
+                <a href="javascript:void(0);" class="dropdown_item">
+                    <i class="fa-regular fa-user"></i>
+                    My Profile
+                </a>
+                <a href="/logout" class="dropdown_item">
+                    <ion-icon name="log-out-outline" role="img" class="md hydrated"></ion-icon>
+                    Logout
+                </a>
+            </div>
+        </div>
+        <a class="login-button" href="/loginPage">
+            <button>
+                Log In
+            </button>
+        </a>
+    </nav>
     <h1 class="Faisal-dictionary">Faisal Dictionary</h1>
     <h2 class="dictionary-introduction">
         In this page you can search for any defenition of a word that is hard for you to understand in both languages,

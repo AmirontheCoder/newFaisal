@@ -3,7 +3,7 @@
 * {
     margin: 0;
     padding: 0;
-
+    color: #000;
     text-decoration: none;
     list-style: none;
     font-family: "Cairo", sans-serif;
@@ -203,9 +203,11 @@ button:hover {
 .ar-definition-coloumn {
     position: relative;
     display: block;
+    color: #000;
 }
 
 .word {
+    color: #000;
     text-align: center;
     font-size: 2rem;
     margin-top: 1rem;
@@ -219,6 +221,7 @@ button:hover {
 }
 
 .word-arabic-defintion {
+    color: #000;
     display: block;
     align-items: center;
     justify-content: center;
