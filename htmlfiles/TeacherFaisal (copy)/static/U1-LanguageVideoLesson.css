@@ -25,13 +25,13 @@ header{
     height: 130px;
 }
 
-.logo{
+/* .logo{
     position: relative;
     right: 50px;
     width: 200px;
     height: 90px;
     cursor: pointer;
-}
+} */
 
 .nav_links {
     position: relative;

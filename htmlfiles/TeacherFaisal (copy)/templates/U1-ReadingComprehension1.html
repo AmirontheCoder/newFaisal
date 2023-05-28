@@ -626,7 +626,7 @@
         </p>
         </div>
       </div>
-      <button id="submit-button" method="POST">submit</button>
+      <button id="submit-button" method="POST" onclick="checkAnswers();">submit</button>
       <p id="feedback" style="margin-top: 30px; font-size: 30px; padding: 2rem;"></p>
     </div>
     <script>
@@ -652,7 +652,7 @@
       // });
       // });
 
-      const startingMinutes = 0.1;
+      const startingMinutes = 15;
       let time = startingMinutes * 60;
       let isPaused = false;
 

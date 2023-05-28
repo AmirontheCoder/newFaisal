@@ -297,55 +297,66 @@ def checkAnswers():
         {
             "question": "english Teacher", "content": "You are a teacher comparing the user answer with the correct answer , accept answers that have the same meaning as the correct answer . The correct answer is the area where you feel comfortable / the set of routines and known abilities that make us feel safe",
             "correct_answer": "the area where you feel comfortable / the set of routines and known abilities that make us feel safe", 
-            "full_mark": 2
+            "fullMark": 2
         },{
             "question": "english Teacher", "content": "You are a teacher comparing the user answer with the correct answer , accept answers that have the same meaning as the correct answer . The correct answer is The feeling that they are developing and making progress in their lives",
             "correct_answer": "The feeling that they are developing and making progress in their lives",
-            "full_mark": 2
+            "fullMark": 2
         },
         {
             "question": "english Teacher", "content": "You are a teacher comparing the user answer with the correct answer , accept answers that have the same meaning as the correct answer . The correct answer is They may be afraid of failing",
-            "correct_answer": "They may be afraid of failing"
+            "correct_answer": "They may be afraid of failing",
+            "fullMark": 2
         },
         {
             "question": "english Teacher", "content": "You are a teacher comparing the user answer with the correct answer , accept answers that have the same meaning as the correct answer . The correct answer is They are unsure how to begin",
-            "correct_answer": "They are unsure how to begin"
+            "correct_answer": "They are unsure how to begin",
+            "fullMark": 2
         },
         {
             "question": "english Teacher", "content": "You are a teacher comparing the user answer with the correct answer , accept answers that have the same meaning as the correct answer . The correct answer is They make excuses like not wanting to change",
-            "correct_answer": "They make excuses like not wanting to change"
+            "correct_answer": "They make excuses like not wanting to change",
+            "fullMark": 2
         },
         {
             "question": "english Teacher", "content": "You are a teacher comparing the user answer with the correct answer , accept answers that have the same meaning as the correct answer . The correct answer is we can manage",
-            "correct_answer": "we can manage"
+            "correct_answer": "we can manage",
+            "fullMark": 2
         },
         {
             "question": "english Teacher", "content": "You are a teacher comparing the user answer with the correct answer , accept answers that have the same meaning as the correct answer . The correct answer is unexpected or worrying",
-            "correct_answer": "unexpected or worrying"
+            "correct_answer": "unexpected or worrying",
+            "fullMark": 2
         },
         {
             "question": "english Teacher","content": "You are a teacher comparing the user answer with the correct answer , accept answers that have the same meaning as the correct answer . The correct answer is things that are outside our comfort zones",
-            "correct_answer": "things that are outside our comfort zones"
+            "correct_answer": "things that are outside our comfort zones",
+            "fullMark": 2
         },
         {
             "question": "english Teacher", "content": "You are a teacher comparing the user answer with the correct answer , accept answers that have the same meaning as the correct answer . The correct answer is learning something new",
-            "correct_answer": "learning something new"
+            "correct_answer": "learning something new",
+            "fullMark": 2
         },
         {
             "question": "english Teacher", "content": "You are a teacher comparing the user answer with the correct answer , accept answers that have the same meaning as the correct answer . The correct answer is becoming more creative",
-            "correct_answer": "becoming more creative"
+            "correct_answer": "becoming more creative",
+            "fullMark": 2
         },
         {
             "question": "english Teacher", "content": "You are a teacher comparing the user answer with the correct answer , accept answers that have the same meaning as the correct answer . The correct answer is getting fit",
-            "correct_answer": "getting fit"
+            "correct_answer": "getting fit",
+            "fullMark": 2
         },
         {
             "question": "english Teacher", "content": "You are a teacher comparing the user answer with the correct answer , accept answers that have the same meaning as the correct answer . The correct answer comfort zone",
-            "correct_answer": "comfort zone"
+            "correct_answer": "comfort zone",
+            "fullMark": 2
         },
         {
             "question": "english Teacher", "content": "You are a teacher comparing the user answer with the correct answer , accept answers that have the same meaning as the correct answer . The correct answer people",
-            "correct_answer": "people"
+            "correct_answer": "people",
+            "fullMark": 2
         }
     ]
 
@@ -376,7 +387,7 @@ def checkAnswers():
         print(score)
 
         feedback_message = response['choices'][0]['message']['content']
-        feedback_object = {"text":feedback_message,"id":answer["id"],"score":score,"fullMark":correct_answers[i]["full_marks"]}
+        feedback_object = {"text":feedback_message,"id":answer["id"],"score":score,"fullMark":correct_answers[i]["fullMark"]}
         feedback_messages.append(feedback_object)
         # feedback_paragraph = "<br>".join(feedback_messages)
 
