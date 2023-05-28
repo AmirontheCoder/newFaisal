@@ -1,447 +1,815 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="stylesheet" href="{{ url_for('static' , filename ='style.css')}} ">
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <head>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static' , filename ='style.css')}} "
+    />
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
     <script src="{{ url_for('static' , filename ='script.js')}} "></script>
-    <link rel="stylesheet" href="{{ url_for('static' , filename ='U1-ReadingComprehension1.css')}} ">
-    <link rel="stylesheet" href="{{ url_for('static' , filename ='style.css')}} ">
-    <link rel="stylesheet" href="{{ url_for('static' , filename ='landing-page.css')}} ">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static' , filename ='U1-ReadingComprehension1.css')}} "
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static' , filename ='style.css')}} "
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static' , filename ='landing-page.css')}} "
+    />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Teacher Faisal</title>
-</head>
-<body>
+  </head>
+  <body style="position: relative">
+    <div id="loader" class="loader">
+      <div class="spinner"></div>
+    </div>
     <nav class="nav">
-        <a href="who-we-are" class="logo__link">
-            <img class="logo" src="{{ url_for('static', filename='1.png') }}" alt="logo picture" />
-        </a>
-        <ul class="nav__list">
-            <li>
-                <a href="chatbot" class="nav__list-item">
-                    Speak with Faisal
-                </a>
-            </li>
-            <li>
-                <a href="vocabulary" class="nav__list-item">
-                    Vocabulary
-                </a>
-            </li>
-            <li>
-                <a href="dictionary" class="nav__list-item">
-                    Dictionary
-                </a>
-            </li>
-            <li>
-                <a href="who-we-are" class="nav__list-item">
-                    Who we are
-                </a>
-            </li>
-        </ul>
-        <div class="profile-details">
-            <input class="profile-details-checkbox" type="checkbox">
-            <h2 class="accountName">
-                <span>
-                    {{ googleAccname }}
-                </span>
-                <i class="fa-solid fa-circle-user"></i>
-            </h2>
-            <div class="logout-box">
-                <div class="logout-box-dropdown"></div>
-                <a href="javascript:void(0);" class="dropdown_item">
-                    <i class="fa-regular fa-user"></i>
-                    My Profile
-                </a>
-                <a href="/logout" class="dropdown_item">
-                    <ion-icon name="log-out-outline" role="img" class="md hydrated"></ion-icon>
-                    Logout
-                </a>
-            </div>
+      <a href="who-we-are" class="logo__link">
+        <img
+          class="logo"
+          src="{{ url_for('static', filename='1.png') }}"
+          alt="logo picture"
+        />
+      </a>
+      <ul class="nav__list">
+        <li>
+          <a href="chatbot" class="nav__list-item"> Speak with Faisal </a>
+        </li>
+        <li>
+          <a href="vocabulary" class="nav__list-item"> Vocabulary </a>
+        </li>
+        <li>
+          <a href="dictionary" class="nav__list-item"> Dictionary </a>
+        </li>
+        <li>
+          <a href="who-we-are" class="nav__list-item"> Who we are </a>
+        </li>
+      </ul>
+      <div class="profile-details">
+        <input class="profile-details-checkbox" type="checkbox" />
+        <h2 class="accountName">
+          <span> {{ googleAccname }} </span>
+          <i class="fa-solid fa-circle-user"></i>
+        </h2>
+        <div class="logout-box">
+          <div class="logout-box-dropdown"></div>
+          <a href="javascript:void(0);" class="dropdown_item">
+            <i class="fa-regular fa-user"></i>
+            My Profile
+          </a>
+          <a href="/logout" class="dropdown_item">
+            <ion-icon
+              name="log-out-outline"
+              role="img"
+              class="md hydrated"
+            ></ion-icon>
+            Logout
+          </a>
         </div>
-        <a class="login-button" href="/loginPage">
-            <button>
-                Log In
-            </button>
-        </a>
+      </div>
+      <a class="login-button" href="/loginPage">
+        <button>Log In</button>
+      </a>
     </nav>
 
     <div class="profile-details" onclick="dropdown2()">
-        <img class="profile-picture" style="display:block" src="{{ profile_pic }}" alt="">
-        <p class="accountName">{{ googleAccname }}</p>
-        <div class="dropdown">
-            <a href="/logout" class="Logout"><ion-icon name="log-out-outline"></ion-icon>Logout</a>
-        </div>
+      <img
+        class="profile-picture"
+        style="display: block"
+        src="{{ profile_pic }}"
+        alt=""
+      />
+      <p class="accountName">{{ googleAccname }}</p>
+      <div class="dropdown">
+        <a href="/logout" class="Logout"
+          ><ion-icon name="log-out-outline"></ion-icon>Logout</a
+        >
+      </div>
     </div>
-<p id="countdown"></p>
-<button id="pause-button" onclick="pause()">pause</button>
-<div id="center">
-    <h1 class="times-up">Time's up</h1>
-    <div class="Total-score">
-        <p class="times-up">Your Score is</p><p id="score">0</p><p class="exam-mark">/ 25</p>
+    <p id="countdown"></p>
+    <button id="pause-button" onclick="pause()">pause</button>
+    <div id="center">
+      <h1 class="times-up">Time's up</h1>
+      <div class="Total-score">
+        <p class="times-up">Your Score is</p>
+        <p id="score">0</p>
+        <p class="exam-mark">/ 25</p>
+      </div>
+      <a href="/U1ReadingComprehension1"
+        ><button class="retry">retry</button></a
+      >
     </div>
-    <a href="/U1ReadingComprehension1"><button class="retry">retry</button></a>
-</div>
-<script>
+    <script></script>
+    <div class="ReadingComprehension">
+      <h3 class="Question">
+        Question Number One: (25 points) Read the text and do the tasks below:
+      </h3>
+      <p class="the-passage">
+        Your comfort zone is, as the name suggests, the area where you feel
+        comfortable. We all have <span class="bold-word">one</span>, whether we
+        know it or not: it's the set of routines and known abilities that make
+        us feel safe because we're confident that we can manage and are unlikely
+        to be challenged by anything unexpected or worrying. Obviously, staying
+        inside your comfort zone has many benefits, especially at times when
+        you're feeling under stress. On the other hand, we're often told in
+        'self-help' books that it's a good idea to do things that are outside
+        our comfort zones. In fact, many studies have shown that an important
+        factor in helping people feel positive about themselves is the feeling
+        that <span class="bold-word">they</span> are developing and making
+        progress in their lives. You won't reach your full potential if you only
+        do what you know you are able to do. We all want to improve ourselves,
+        for example by learning something new, becoming more creative or getting
+        fit. Unfortunately, people often get stuck in their comfort zones and
+        don't feel able to try different things. There are various possible
+        reasons for this. They may be afraid of failing or unsure how to begin.
+        Many people think 'This is the way I am and I'll never change', using
+        this as an excuse for not trying something new. Whatever the reason may
+        be, it's sometimes necessary to force yourself to do something you'd
+        rather not do. Once you've made the effort, though, the door to new
+        experiences will be open and you'll probably wonder why you thought it
+        was a problem.
+      </p>
+      <h3 class="Question">A. Answer the following questions (7 points) :</h3>
+      <div class="question-container">
+        <div class="question-container">
+          <h5 class="sub-question">
+            1) What does the phrase 'comfort zone' mean?
+          </h5>
 
-</script>
-<div class="ReadingComprehension">
-    <h3 class="Question">Question Number One: (25 points) Read the text and do the tasks below:</h3>
-    <p class="the-passage">
-    Your comfort zone is, as the name suggests, the area where you feel comfortable. We all have <span class="bold-word">one</span>, whether we know it or not: it's the set of routines and known abilities that make us feel safe because we're confident that we can manage and are unlikely to be challenged by anything unexpected or worrying. Obviously, staying inside your comfort zone has many benefits, especially at times when you're feeling under stress.
-    On the other hand, we're often told in 'self-help' books that it's a good idea to do things that are outside our comfort zones. In fact, many studies have shown that an important factor in helping people feel positive about themselves is the feeling that <span class="bold-word">they</span>  are developing and making progress in their lives. You won't reach your full potential if you only do what you know you are able to do. We all want to improve ourselves, for example by learning something new, becoming more creative or getting fit.
-    Unfortunately, people often get stuck in their comfort zones and don't feel able to try different things. There are various possible reasons for this. They may be afraid of failing or unsure how to begin. Many people think 'This is the way I am and I'll never change', using this as an excuse for not trying something new. Whatever the reason may be, it's sometimes necessary to force yourself to do something you'd rather not do. Once you've made the effort, though, the door to new experiences will be open and you'll probably wonder why you thought it was a problem.</p>
-    <h3 class="Question">A. Answer the following questions (7 points) :</h3>
-    <div class="question-container">
-        <div>
-        <h5 class="sub-question">1) What does the phrase 'comfort zone' mean?</h5>
-        <span class="break"></span>
-        <input type="text" autocomplete="off" onapaste="return false" class="answer-field" id="answer-field1" name="input-field1" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
-        <ion-icon class="mark" id="checkmark" name="checkmark-outline"></ion-icon>
-        <ion-icon class="mark" id="crossmark" name="close-outline"></ion-icon>
-        <span class="break"></span>
-        <p class="correct-answers" id="correct-answer"> 
-            <ion-icon name="bulb-outline"></ion-icon>
-            Correct Answer : the area where you feel comfortable / the set of routines and known abilities that make us feel safe
-        </p>
-        </div>
-            <span class="break"></span>
-        <div>
-        <h5 class="sub-question">2)What helps people feel positive about themselves according to many studies?</h5>
-        <span class="break"></span>
-        <input type="text" autocomplete="off"  class="answer-field" id="answer-field2" autocomplete="off"  name="input-field2" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
-        <ion-icon class="mark"  id="checkmark2" name="checkmark-outline"></ion-icon>
-        <ion-icon class="mark" id="crossmark2" name="close-outline"></ion-icon>
-        <span class="break"></span>
-        <p class="correct-answers" id="correct-answer2"> 
-            <ion-icon name="bulb-outline"></ion-icon>
-            Correct Answer : The feeling that they are developing and making progress in their lives / When they are developing and making progress in their lives</p>
-        </div>
-        <span class="break"></span>
-        <h5 class="sub-question">3)Why do people often get stuck in their comfort zones?(3 reasons)</h5>
-        <span class="break"></span>
-        <h5 autocomplete="off" class="sub-question">a)</h5><input type="text" autocomplete="off"  autocomplete="off" autocomplete="off"  autocomplete="off" class="answer-field" id="answer-field3" name="input-field3" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
-        <ion-icon class="mark" id="checkmark3" name="checkmark-outline"></ion-icon>
-        <ion-icon class="mark" id="crossmark3" name="close-outline"></ion-icon>
-        <span class="break"></span>
-        <p class="correct-answers" id="correct-answer3"> 
-            <ion-icon name="bulb-outline"></ion-icon>
-            Correct Answer : They may be afraid of failing</p>
-        <span class="break"></span>
-        <h5 class="sub-question">b)</h5><input type="text" autocomplete="off"  class="answer-field" id="answer-field4" name="input-field4" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
-        <ion-icon class="mark" id="checkmark4" name="checkmark-outline"></ion-icon>
-        <ion-icon class="mark" id="crossmark4" name="close-outline"></ion-icon>
-        <span class="break"></span>
-        <p class="correct-answers" id="correct-answer4"> 
-            <ion-icon name="bulb-outline"></ion-icon>
-            Correct Answer : They are unsure how to begin</p>
-        <span class="break"></span>
-        <h5 class="sub-question">c)</h5><input type="text" autocomplete="off"  class="answer-field" id="answer-field5" name="input-field5" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
-        <ion-icon class="mark" id="checkmark5" name="checkmark-outline"></ion-icon>
-        <ion-icon class="mark" id="crossmark5" name="close-outline"></ion-icon>
-        <span class="break"></span>
-        <p class="correct-answers" id="correct-answer5"> 
-            <ion-icon name="bulb-outline"></ion-icon>
-            Correct Answer : They make excuses like not wanting to change</p>
-        <span class="break"></span>
+          <div class="answer-field-cont">
+            <input
+              type="text"
+              autocomplete="off"
+              onapaste="return false"
+              class="answer-field"
+              id="answer-field1"
+              name="input-field1"
+              placeholder="Answer"
+              onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"
+            />
+            <ion-icon
+              class="mark"
+              id="checkmark"
+              name="checkmark-outline"
+            ></ion-icon>
+            <ion-icon
+              class="mark"
+              id="crossmark"
+              name="close-outline"
+            ></ion-icon>
+          </div>
 
-    </div>
-    <h3 class="Question">B.Complete the following sentences (9 points) :</h3>
-    <div class="fill-in-the-blanks-container">
-        <h5 class="sub-question">1) We feel safe in our comfort zones because we're confident that</h5>
-        <input type="text" class="answer-field" autocomplete="off"  id="answer-field6" name="input-field6" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
-        <ion-icon class="mark" id="checkmark6" name="checkmark-outline"></ion-icon>
-        <ion-icon class="mark" id="crossmark6" name="close-outline"></ion-icon>
-        <h5 class="sub-question">and are unlikely to be challenged by anything </h5>
-        <input type="text" class="answer-field" autocomplete="off"  id="answer-field7" name="input-field7" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
-        <ion-icon class="mark" id="checkmark7" name="checkmark-outline"></ion-icon>
-        <ion-icon class="mark" id="crossmark7" name="close-outline"></ion-icon>
-        <h5 class="sub-question">.</h5>
-        <span class="break"></span>
-        <p class="correct-answers" id="correct-answer6"> 
+          <p class="correct-answers" id="correct-answer">
             <ion-icon name="bulb-outline"></ion-icon>
-            Correct Answer : we can manage</p>
-        <span class="break"></span>
-        <p class="correct-answers" id="correct-answer7"> 
+            Correct Answer : the area where you feel comfortable / the set of
+            routines and known abilities that make us feel safe
+          </p>
+        </div>
+
+        <div class="question-container">
+          <h5 class="sub-question">
+            2)What helps people feel positive about themselves according to many
+            studies?
+          </h5>
+
+          <div class="answer-field-cont">
+            <input
+              type="text"
+              autocomplete="off"
+              class="answer-field"
+              id="answer-field2"
+              autocomplete="off"
+              name="input-field2"
+              placeholder="Answer"
+              onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"
+            />
+            <ion-icon
+              class="mark"
+              id="checkmark2"
+              name="checkmark-outline"
+            ></ion-icon>
+            <ion-icon
+              class="mark"
+              id="crossmark2"
+              name="close-outline"
+            ></ion-icon>
+          </div>
+          <p class="correct-answers" id="correct-answer2">
             <ion-icon name="bulb-outline"></ion-icon>
-            Correct Answer : unexpected or worrying</p>
-        <span class="break"></span>
-        <h5 class="sub-question">2)We're often told in 'self-help' books that it's a good idea to do </h5>
-        <input type="text" class="answer-field" autocomplete="off"  id="answer-field8" name="input-field8" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
-        <ion-icon class="mark" id="checkmark8" name="checkmark-outline"></ion-icon>
-        <ion-icon class="mark" id="crossmark8" name="close-outline"></ion-icon>
-        <h5 class="sub-question">.</h5>
-        <span class="break"></span>
-        <p class="correct-answers"id="correct-answer8"> 
+            Correct Answer : The feeling that they are developing and making
+            progress in their lives / When they are developing and making
+            progress in their lives
+          </p>
+        </div>
+
+        <div class="question-container">
+          <h5 class="sub-question">
+            3)Why do people often get stuck in their comfort zones?(3 reasons)
+          </h5>
+          <div class="answer-field-cont">
+            <h5 autocomplete="off" class="sub-question">a)</h5>
+            <input
+              type="text"
+              autocomplete="off"
+              autocomplete="off"
+              autocomplete="off"
+              autocomplete="off"
+              class="answer-field"
+              id="answer-field3"
+              name="input-field3"
+              placeholder="Answer"
+              onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"
+            />
+            <ion-icon
+              class="mark"
+              id="checkmark3"
+              name="checkmark-outline"
+            ></ion-icon>
+            <ion-icon
+              class="mark"
+              id="crossmark3"
+              name="close-outline"
+            ></ion-icon>
+          </div>
+          <p class="correct-answers" id="correct-answer3">
             <ion-icon name="bulb-outline"></ion-icon>
-            Correct Answer : things that are outside our comfort zones</p>
-        <span class="break"></span>
-        <span class="break"></span>
-        <h5 class="sub-question">3)We all want to improve ourselves, for example by</h5>
-        <input type="text" class="answer-field" autocomplete="off"  id="answer-field9" name="input-field9" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
-        <ion-icon class="mark" id="checkmark9" name="checkmark-outline"></ion-icon>
-        <ion-icon class="mark" id="crossmark9" name="close-outline"></ion-icon>
-        <h5 class="sub-question">,</h5><input type="text" autocomplete="off"  class="answer-field" id="answer-field10" name="input-field10" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';">
-        <ion-icon class="mark" id="checkmark10" name="checkmark-outline"></ion-icon>
-        <ion-icon class="mark" id="crossmark10" name="close-outline"></ion-icon>
-        <h5 class="sub-question">or</h5><input type="text" autocomplete="off"  class="answer-field" id="answer-field11" name="input-field11" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"><h5 class="sub-question">.</h5>
-        <ion-icon class="mark" id="checkmark11" name="checkmark-outline"></ion-icon>
-        <ion-icon class="mark" id="crossmark11" name="close-outline"></ion-icon>
-        <p class="correct-answers" id="correct-answer9"> 
+            Correct Answer : They may be afraid of failing
+          </p>
+        </div>
+
+        <div class="question-container">
+          <div class="answer-field-cont">
+            <h5 class="sub-question">b)</h5>
+            <input
+              type="text"
+              autocomplete="off"
+              class="answer-field"
+              id="answer-field4"
+              name="input-field4"
+              placeholder="Answer"
+              onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"
+            />
+            <ion-icon
+              class="mark"
+              id="checkmark4"
+              name="checkmark-outline"
+            ></ion-icon>
+            <ion-icon
+              class="mark"
+              id="crossmark4"
+              name="close-outline"
+            ></ion-icon>
+          </div>
+          <p class="correct-answers" id="correct-answer4">
             <ion-icon name="bulb-outline"></ion-icon>
-            Correct Answer : learning something new</p>
-        <p class="correct-answers" id="correct-answer10"> 
+            Correct Answer : They are unsure how to begin
+          </p>
+        </div>
+
+        <div class="question-container">
+          <div class="answer-field-cont">
+            <h5 class="sub-question">c)</h5>
+            <input
+              type="text"
+              autocomplete="off"
+              class="answer-field"
+              id="answer-field5"
+              name="input-field5"
+              placeholder="Answer"
+              onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"
+            />
+            <ion-icon
+              class="mark"
+              id="checkmark5"
+              name="checkmark-outline"
+            ></ion-icon>
+            <ion-icon
+              class="mark"
+              id="crossmark5"
+              name="close-outline"
+            ></ion-icon>
+          </div>
+          <p class="correct-answers" id="correct-answer5">
             <ion-icon name="bulb-outline"></ion-icon>
-            Correct Answer : becoming more creative</p>
-        <p class="correct-answers" id="correct-answer11"> 
+            Correct Answer : They make excuses like not wanting to change
+          </p>
+        </div>
+      </div>
+      <h3 class="Question">B.Complete the following sentences (9 points) :</h3>
+      <div class="fill-in-the-blanks-container">
+        <div class="question-container">
+          <div class="answer-field-cont">
+            <h5 class="sub-question">
+              1) We feel safe in our comfort zones because we're confident that
+            </h5>
+            <input
+              type="text"
+              class="answer-field"
+              autocomplete="off"
+              id="answer-field6"
+              name="input-field6"
+              placeholder="Answer"
+              onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"
+            />
+            <ion-icon
+              class="mark"
+              id="checkmark6"
+              name="checkmark-outline"
+            ></ion-icon>
+            <ion-icon
+              class="mark"
+              id="crossmark6"
+              name="close-outline"
+            ></ion-icon>
+          </div>
+          <p class="correct-answers" id="correct-answer6">
             <ion-icon name="bulb-outline"></ion-icon>
-            Correct Answer : getting fit</p>
-    </div>
-    <h3 class="Question">C.Decide whether these statements are True or False : (6 points)</h3>
-    <div class="True-Or-Flase">
-        <h5 class="sub-question">1) Staying inside your comfort zone has many benefits, especially when feeling stressed. </h5>
+            Correct Answer : we can manage
+          </p>
+        </div>
+        <div class="question-container">
+          <div class="answer-field-cont">
+            <h5 class="sub-question">
+              and are unlikely to be challenged by anything
+            </h5>
+            <input
+              type="text"
+              class="answer-field"
+              autocomplete="off"
+              id="answer-field7"
+              name="input-field7"
+              placeholder="Answer"
+              onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"
+            />
+            <ion-icon
+              class="mark"
+              id="checkmark7"
+              name="checkmark-outline"
+            ></ion-icon>
+            <ion-icon
+              class="mark"
+              id="crossmark7"
+              name="close-outline"
+            ></ion-icon>
+            <h5 class="sub-question">.</h5>
+          </div>
+          <span class="break"></span>
+          <p class="correct-answers" id="correct-answer7">
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : unexpected or worrying
+          </p>
+          <span class="break"></span>
+        </div>
+        <div class="question-container">
+          <div class="answer-field-cont">
+            <h5 class="sub-question">
+              2)We're often told in 'self-help' books that it's a good idea to
+              do
+            </h5>
+            <input
+              type="text"
+              class="answer-field"
+              autocomplete="off"
+              id="answer-field8"
+              name="input-field8"
+              placeholder="Answer"
+              onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"
+            />
+            <ion-icon
+              class="mark"
+              id="checkmark8"
+              name="checkmark-outline"
+            ></ion-icon>
+            <ion-icon
+              class="mark"
+              id="crossmark8"
+              name="close-outline"
+            ></ion-icon>
+            <h5 class="sub-question">.</h5>
+          </div>
+          <span class="break"></span>
+          <p class="correct-answers" id="correct-answer8">
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : things that are outside our comfort zones
+          </p>
+        </div>
+        <div class="question-container">
+          <div class="answer-field-cont">
+            <h5 class="sub-question">
+              3)We all want to improve ourselves, for example by
+            </h5>
+            <input
+              type="text"
+              class="answer-field"
+              autocomplete="off"
+              id="answer-field9"
+              name="input-field9"
+              placeholder="Answer"
+              onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"
+            />
+            <ion-icon
+              class="mark"
+              id="checkmark9"
+              name="checkmark-outline"
+            ></ion-icon>
+            <ion-icon
+              class="mark"
+              id="crossmark9"
+              name="close-outline"
+            ></ion-icon>
+          </div>
+          <p class="correct-answers" id="correct-answer9">
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : learning something new
+          </p>
+        </div>
+        <div class="question-container">
+          <div class="answer-field-cont">
+            <h5 class="sub-question">,</h5>
+            <input
+              type="text"
+              autocomplete="off"
+              class="answer-field"
+              id="answer-field10"
+              name="input-field10"
+              placeholder="Answer"
+              onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"
+            />
+            <ion-icon
+              class="mark"
+              id="checkmark10"
+              name="checkmark-outline"
+            ></ion-icon>
+            <ion-icon
+              class="mark"
+              id="crossmark10"
+              name="close-outline"
+            ></ion-icon>
+          </div>
+          <p class="correct-answers" id="correct-answer10">
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : becoming more creative
+          </p>
+        </div>
+        <div class="question-container">
+          <div class="answer-field-cont">
+            <h5 class="sub-question">or</h5>
+            <input
+              type="text"
+              autocomplete="off"
+              class="answer-field"
+              id="answer-field11"
+              name="input-field11"
+              placeholder="Answer"
+              onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"
+            />
+            <h5 class="sub-question">.</h5>
+            <ion-icon
+              class="mark"
+              id="checkmark11"
+              name="checkmark-outline"
+            ></ion-icon>
+            <ion-icon
+              class="mark"
+              id="crossmark11"
+              name="close-outline"
+            ></ion-icon>
+          </div>
+          <p class="correct-answers" id="correct-answer11">
+            <ion-icon name="bulb-outline"></ion-icon>
+            Correct Answer : getting fit
+          </p>
+        </div>
+      </div>
+      <h3 class="Question">
+        C.Decide whether these statements are True or False : (6 points)
+      </h3>
+      <div class="True-Or-Flase">
+        <h5 class="sub-question">
+          1) Staying inside your comfort zone has many benefits, especially when
+          feeling stressed.
+        </h5>
         <h5 class="sub-question" id="bracket">(</h5>
         <label class="circle-tag False">
-        <span class="circle">
-            <input type="radio" id="False1" value="False" name="TF1" >
-        </span>
-        <p class="option">False</p>
+          <span class="circle">
+            <input type="radio" id="False1" value="False" name="TF1" />
+          </span>
+          <p class="option">False</p>
         </label>
         <label class="circle-tag True">
-        <span class="circle">
-            <input type="radio" id="True1" value="True" name="TF1" >
-        </span>
-        <p class="option">True</p>
+          <span class="circle">
+            <input type="radio" id="True1" value="True" name="TF1" />
+          </span>
+          <p class="option">True</p>
         </label>
         <h5 class="sub-question" id="bracket">)</h5>
-        <ion-icon class="mark" id="checkmark14" name="checkmark-outline"></ion-icon>
+        <ion-icon
+          class="mark"
+          id="checkmark14"
+          name="checkmark-outline"
+        ></ion-icon>
         <ion-icon class="mark" id="crossmark14" name="close-outline"></ion-icon>
         <span class="break"></span>
-        <h5 class="sub-question">2) You will reach your full potential if you only do what you know you are able to do. </h5>
+        <h5 class="sub-question">
+          2) You will reach your full potential if you only do what you know you
+          are able to do.
+        </h5>
         <h5 class="sub-question" id="bracket">(</h5>
         <label class="circle-tag False">
-        <span class="circle">
-            <input type="radio" id="False2" value="False" name="TF2" >
-        </span>
-        <p class="option">False</p>
+          <span class="circle">
+            <input type="radio" id="False2" value="False" name="TF2" />
+          </span>
+          <p class="option">False</p>
         </label>
         <label class="circle-tag True">
-        <span class="circle">
-            <input type="radio" id="True2" value="True" name="TF2" >
-        </span>
-        <p class="option">True</p>
+          <span class="circle">
+            <input type="radio" id="True2" value="True" name="TF2" />
+          </span>
+          <p class="option">True</p>
         </label>
         <h5 class="sub-question" id="bracket">)</h5>
-        <ion-icon class="mark" id="checkmark15" name="checkmark-outline"></ion-icon>
+        <ion-icon
+          class="mark"
+          id="checkmark15"
+          name="checkmark-outline"
+        ></ion-icon>
         <ion-icon class="mark" id="crossmark15" name="close-outline"></ion-icon>
         <span class="break"></span>
         <span class="break"></span>
-        <h5 class="sub-question">3) It's sometimes necessary to force yourself to do something you'd rather not do. </h5>
+        <h5 class="sub-question">
+          3) It's sometimes necessary to force yourself to do something you'd
+          rather not do.
+        </h5>
         <h5 class="sub-question" id="bracket">(</h5>
         <label class="circle-tag False">
-        <span class="circle">
-            <input type="radio" id="False3" value="False" name="TF3" >
-        </span>
-        <p class="option">False</p>
+          <span class="circle">
+            <input type="radio" id="False3" value="False" name="TF3" />
+          </span>
+          <p class="option">False</p>
         </label>
         <label class="circle-tag True">
-        <span class="circle">
-            <input type="radio" id="True3" value="True" name="TF3">
-        </span>
-        <p class="option">True</p>
+          <span class="circle">
+            <input type="radio" id="True3" value="True" name="TF3" />
+          </span>
+          <p class="option">True</p>
         </label>
         <h5 class="sub-question" id="bracket">)</h5>
-        <ion-icon class="mark" id="checkmark16" name="checkmark-outline"></ion-icon>
+        <ion-icon
+          class="mark"
+          id="checkmark16"
+          name="checkmark-outline"
+        ></ion-icon>
         <ion-icon class="mark" id="crossmark16" name="close-outline"></ion-icon>
         <span class="break"></span>
-    </div>
-    <h3 class="Question">D. Write what the following words might refer to: (3 points)</h3>
-    <div class="word-definition">
+      </div>
+      <h3 class="Question">
+        D. Write what the following words might refer to: (3 points)
+      </h3>
+      <div class="word-definition">
+        <div class="question-container">
+          <div class="answer-field-cont">
         <h5 class="sub-question">1) One (line 1)</h5>
-        <input type="text" class="answer-field" id="answer-field12" name="input-field12" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
-        <ion-icon class="mark" id="checkmark12" name="checkmark-outline"></ion-icon>
+        <input
+          type="text"
+          class="answer-field"
+          id="answer-field12"
+          name="input-field12"
+          placeholder="Answer"
+          onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"
+        />
+        <ion-icon
+          class="mark"
+          id="checkmark12"
+          name="checkmark-outline"
+        ></ion-icon>
         <ion-icon class="mark" id="crossmark12" name="close-outline"></ion-icon>
-        <span class="break"></span>
-        <p class="correct-answers" id="correct-answer12"> 
-            <ion-icon name="bulb-outline"></ion-icon>
-            Correct Answer : comfort zone</p>
-        <span class="break"></span>
-        <span class="break"></span>
+            </div>
+        <p class="correct-answers" id="correct-answer12">
+          <ion-icon name="bulb-outline"></ion-icon>
+          Correct Answer : comfort zone
+        </p>
+        </div>
+        <div class="question-container">
+          <div class="answer-field-cont">
         <h5 class="sub-question">2) They (line 5)</h5>
-        <input type="text" class="answer-field" id="answer-field13" name="input-field13" placeholder="Answer" onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"> 
-        <ion-icon class="mark" id="checkmark13" name="checkmark-outline"></ion-icon>
+        <input
+          type="text"
+          class="answer-field"
+          id="answer-field13"
+          name="input-field13"
+          placeholder="Answer"
+          onkeypress="this.style.width = ((this.value.length + 5) * 10) + 'px';"
+        />
+        <ion-icon
+          class="mark"
+          id="checkmark13"
+          name="checkmark-outline"
+        ></ion-icon>
         <ion-icon class="mark" id="crossmark13" name="close-outline"></ion-icon>
+          </div>
         <span class="break"></span>
-        <p class="correct-answers" id="correct-answer13"> 
-            <ion-icon name="bulb-outline"></ion-icon>
-            Correct Answer : people</p>
-        <span class="break"></span> 
+        <p class="correct-answers" id="correct-answer13">
+          <ion-icon name="bulb-outline"></ion-icon>
+          Correct Answer : people
+        </p>
+        </div>
+      </div>
+      <button id="submit-button" method="POST">submit</button>
+      <p id="feedback" style="margin-top: 30px; font-size: 30px; padding: 2rem;"></p>
     </div>
-    <button id='submit-button' method="POST" >submit</button>
-    <p id="feedback" style="margin-top: 30px;"></p>
-</div>
-<script>
-    // document.getElementById('submit-button').addEventListener('click', function() {
-    // var inputs = document.querySelectorAll('input[type=text]');
-    // var result = Array.from(inputs).map(input => ({id: input.id, value: input.value}));
+    <script>
+      // document.getElementById('submit-button').addEventListener('click', function() {
+      // var inputs = document.querySelectorAll('input[type=text]');
+      // var result = Array.from(inputs).map(input => ({id: input.id, value: input.value}));
 
-    // fetch('/checkAnswers', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify({answers:result}),
-    // })
-    // .then(response => response.text())
-    // .then(data => {
-    //     // document.getElementById('feedback').innerText = JSON.parse(data).feedback_paragraph
-    //     console.log('Success:',data);
-    // })
-    // .catch((error) => {
-    //     document.getElementById('feedback').innerText = error.message
-    //     console.error('Error:', error);
-    // });
-    // });
+      // fetch('/checkAnswers', {
+      //     method: 'POST',
+      //     headers: {
+      //         'Content-Type': 'application/json',
+      //     },
+      //     body: JSON.stringify({answers:result}),
+      // })
+      // .then(response => response.text())
+      // .then(data => {
+      //     // document.getElementById('feedback').innerText = JSON.parse(data).feedback_paragraph
+      //     console.log('Success:',data);
+      // })
+      // .catch((error) => {
+      //     document.getElementById('feedback').innerText = error.message
+      //     console.error('Error:', error);
+      // });
+      // });
 
-    const startingMinutes = 0.1;
-    let time = startingMinutes * 60;
-    let isPaused = false;
+      const startingMinutes = 0.1;
+      let time = startingMinutes * 60;
+      let isPaused = false;
 
-    const countdownEl = document.getElementById('countdown');
-    const pauseButton = document.getElementById('pause-button');
-    const statusDiv = document.getElementById('center');
+      const countdownEl = document.getElementById("countdown");
+      const pauseButton = document.getElementById("pause-button");
+      const statusDiv = document.getElementById("center");
 
+      let timer = setInterval(updateCountdown, 1000);
 
-    let timer = setInterval(updateCountdown, 1000);
+      function updateCountdown() {
+        if (isPaused) {
+          return;
+        }
+        const minutes = Math.floor(time / 60);
+        let seconds = time % 60;
 
-    function updateCountdown() {
-    if (isPaused) {
-        return;
-    }
-    const minutes = Math.floor(time / 60);
-    let seconds = time % 60;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
 
-    seconds = seconds < 10 ? '0' + seconds : seconds;
+        countdownEl.innerHTML = `${minutes}:${seconds}`;
+        time--;
 
-    countdownEl.innerHTML = `${minutes}:${seconds}`;
-    time--;
+        if (time === 0) {
+          pause();
+          statusDiv.style.display = "block";
+          pauseButton.disabled = "disabled";
+          checkAnswers();
+          clearInterval(timer);
+        }
+      }
 
-    if (time === 0){
-        pause();
-        statusDiv.style.display = 'block';
-        pauseButton.disabled = "disabled";
-        checkAnswers();
-        clearInterval(timer)
-    }
-    }
+      function pause() {
+        isPaused = !isPaused;
+      }
 
-    function pause() {
-    isPaused = !isPaused
-    }
+      function showloader(show) {
+        if (show) {
+          document.getElementById("loader").style.display = "flex";
+          document.body.style.overflow = "hidden";
+          window.scrollTo(0, 0);
+          window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "smooth",
+          });
+          return;
+        }
+        document.getElementById("loader").style.display = "none";
+        document.body.style.overflow = "unset";
+      }
 
-    function checkAnswers(){
-        var inputs = document.querySelectorAll('input[type=text]');
+      function checkAnswers() {
+        showloader(true);
+        var inputs = document.querySelectorAll("input[type=text]");
         var result = Array.from(inputs)
-        .filter(input => input.value !== '')
-        .map(input => ({id: input.id, value: input.value}));
-        fetch('/checkAnswers', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({answers:result}),
+          .filter((input) => input.value !== "")
+          .map((input) => ({ id: input.id, value: input.value }));
+        fetch("/checkAnswers", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ answers: result }),
         })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Success:', data);
-            const feedback_messages = data.feedback_messages
-            if(!feedback_messages.length){
-                return;
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Success:", data);
+            const feedback_messages = data.feedback_messages;
+            if (!feedback_messages.length) {
+              return;
             }
-            
-            for(message of feedback_messages){
-                const element = document.getElementById(message.id)
-                console.log("element ", element)
-                if(message.score[0] > 0.5 ){
-                    var parent = element.parentElement;
-                    var checkmark = parent.querySelector('[id^="checkmark"]');
-                    
-                    element.disabled = "disabled";
-                    submitButton.disabled = 'disabled';
-                    element.style.backgroundColor = '#31CD16';
-                    checkmark.style.display = 'block';
-                    score += 1.5;
-                    scoreElement.textContent = score.toString();
 
-                }
-                else{
-                    var parent = element.parentElement;
-                    var checkmark = parent.querySelector('[id^="crossmark"]');
+            for (message of feedback_messages) {
+              const element = document.getElementById(message.id);
+              console.log("element ", element);
+              if (message.score[0] > 0.5) {
+                var parent = element.parentElement;
+                var checkmark = parent.querySelector('[id^="checkmark"]');
 
-                    element.disabled = "disabled";
-                    submitButton.disabled = 'disabled';
-                    element.style.backgroundColor = '#A90305';
-                    checkmark.style.display = 'block';
-                    score += 1.5;
-                    var answerEl = parent.querySelector('.correct-answers');
-                    console.log('answer el   ', answerEl)
-                    if(answerEl){
-                        answerEl.style.display='unset';
-                    }
-                    scoreElement.textContent = score.toString();
+                element.disabled = "disabled";
+                submitButton.disabled = "disabled";
+                element.style.backgroundColor = "#31CD16";
+                checkmark.style.display = "block";
+                score += (+message.score[0])*(+message.fullMark || 1);
+                scoreElement.textContent = score.toString();
+              } else {
+                var parent = element.parentElement;
+                var mainParent = parent.parentElement;
+                var checkmark = parent.querySelector('[id^="crossmark"]');
+
+                element.disabled = "disabled";
+                submitButton.disabled = "disabled";
+                element.style.backgroundColor = "#A90305";
+                checkmark.style.display = "block";
+                var answerEl = mainParent.querySelector(".correct-answers");
+                console.log("answer el   ", answerEl);
+                if (answerEl) {
+                  answerEl.style.display = "unset";
                 }
-                //     answerField12.disabled = "disabled";
-        //     submitButton.disabled = 'disabled';
-        //     answerField13.style.backgroundColor = '#31CD16';
-        //     checkmark13.style.display = 'block';
-        //     score += 1.5;
-        //     scoreElement.textContent = score.toString();
-        // }else{
-        //     answerField13.style.backgroundColor = '#A90305';
-        //     answerField13.disabled = "disabled";
-        //     submitButton.disabled = 'disabled';
-        //     crossmark13.style.display = 'block';
-        //     correctAnswer13.style.display = 'block';
+                scoreElement.textContent = score.toString();
+              }
+              document.getElementById("feedback").innerText = feedback_messages
+                .map((m) => `${m.text}`)
+                .join("<br/>");
+              //     console.log('Success:',data);
+              //     answerField12.disabled = "disabled";
+              //     submitButton.disabled = 'disabled';
+              //     answerField13.style.backgroundColor = '#31CD16';
+              //     checkmark13.style.display = 'block';
+              //     score += 1.5;
+              //     scoreElement.textContent = score.toString();
+              // }else{
+              //     answerField13.style.backgroundColor = '#A90305';
+              //     answerField13.disabled = "disabled";
+              //     submitButton.disabled = 'disabled';
+              //     crossmark13.style.display = 'block';
+              //     correctAnswer13.style.display = 'block';
             }
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
-        const scoreElement = document.getElementById('score');
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          })
+          .finally(() => showloader(false));
+
+        const scoreElement = document.getElementById("score");
         let score = parseInt(scoreElement.textContent);
-        const checkmark = document.getElementById('checkmark');
-        const crossmark = document.getElementById('crossmark');
-        const checkmark2 = document.getElementById('checkmark2');
-        const checkmark3 = document.getElementById('checkmark3');
-        const checkmark4 = document.getElementById('checkmark4');
-        const checkmark5 = document.getElementById('checkmark5');
-        const checkmark6 = document.getElementById('checkmark6');
-        const checkmark7 = document.getElementById('checkmark7');
-        const checkmark8 = document.getElementById('checkmark8');
-        const checkmark9 = document.getElementById('checkmark9');
-        const checkmark10 = document.getElementById('checkmark10');
-        const checkmark11 = document.getElementById('checkmark11');
-        const checkmark12 = document.getElementById('checkmark12');
-        const checkmark13 = document.getElementById('checkmark13');
-        const checkmark14 = document.getElementById('checkmark14');
-        const checkmark15 = document.getElementById('checkmark15');
-        const checkmark16 = document.getElementById('checkmark16');
-        const crossmark2 = document.getElementById('crossmark2');
-        const crossmark3 = document.getElementById('crossmark3');
-        const crossmark4 = document.getElementById('crossmark4');
-        const crossmark5 = document.getElementById('crossmark5');
-        const crossmark6 = document.getElementById('crossmark6');
-        const crossmark7 = document.getElementById('crossmark7');
-        const crossmark8 = document.getElementById('crossmark8');
-        const crossmark9 = document.getElementById('crossmark9');
-        const crossmark10 = document.getElementById('crossmark10');
-        const crossmark11 = document.getElementById('crossmark11');
-        const crossmark12 = document.getElementById('crossmark12');
-        const crossmark13 = document.getElementById('crossmark13');
-        const crossmark14 = document.getElementById('crossmark14');
-        const crossmark15 = document.getElementById('crossmark15');
-        const crossmark16 = document.getElementById('crossmark16');
+        const checkmark = document.getElementById("checkmark");
+        const crossmark = document.getElementById("crossmark");
+        const checkmark2 = document.getElementById("checkmark2");
+        const checkmark3 = document.getElementById("checkmark3");
+        const checkmark4 = document.getElementById("checkmark4");
+        const checkmark5 = document.getElementById("checkmark5");
+        const checkmark6 = document.getElementById("checkmark6");
+        const checkmark7 = document.getElementById("checkmark7");
+        const checkmark8 = document.getElementById("checkmark8");
+        const checkmark9 = document.getElementById("checkmark9");
+        const checkmark10 = document.getElementById("checkmark10");
+        const checkmark11 = document.getElementById("checkmark11");
+        const checkmark12 = document.getElementById("checkmark12");
+        const checkmark13 = document.getElementById("checkmark13");
+        const checkmark14 = document.getElementById("checkmark14");
+        const checkmark15 = document.getElementById("checkmark15");
+        const checkmark16 = document.getElementById("checkmark16");
+        const crossmark2 = document.getElementById("crossmark2");
+        const crossmark3 = document.getElementById("crossmark3");
+        const crossmark4 = document.getElementById("crossmark4");
+        const crossmark5 = document.getElementById("crossmark5");
+        const crossmark6 = document.getElementById("crossmark6");
+        const crossmark7 = document.getElementById("crossmark7");
+        const crossmark8 = document.getElementById("crossmark8");
+        const crossmark9 = document.getElementById("crossmark9");
+        const crossmark10 = document.getElementById("crossmark10");
+        const crossmark11 = document.getElementById("crossmark11");
+        const crossmark12 = document.getElementById("crossmark12");
+        const crossmark13 = document.getElementById("crossmark13");
+        const crossmark14 = document.getElementById("crossmark14");
+        const crossmark15 = document.getElementById("crossmark15");
+        const crossmark16 = document.getElementById("crossmark16");
         // const answerField1 = document.getElementById('answer-field1');
         // const answerField2 = document.getElementById('answer-field2');
         // const answerField3 = document.getElementById('answer-field3');
@@ -455,22 +823,22 @@
         // const answerField11 = document.getElementById('answer-field11');
         // const answerField12 = document.getElementById('answer-field12');
         // const answerField13 = document.getElementById('answer-field13');
-        const correctAnswer = document.getElementById('correct-answer');
-        const correctAnswer2 = document.getElementById('correct-answer2');
-        const correctAnswer3 = document.getElementById('correct-answer3');
-        const correctAnswer4 = document.getElementById('correct-answer4');
-        const correctAnswer5 = document.getElementById('correct-answer5');
-        const correctAnswer6 = document.getElementById('correct-answer6');
-        const correctAnswer7 = document.getElementById('correct-answer7');
-        const correctAnswer8 = document.getElementById('correct-answer8');
-        const correctAnswer9 = document.getElementById('correct-answer9');
-        const correctAnswer10 = document.getElementById('correct-answer10');
-        const correctAnswer11 = document.getElementById('correct-answer11');
-        const correctAnswer12 = document.getElementById('correct-answer12');
-        const correctAnswer13 = document.getElementById('correct-answer13');
-        const submitButton = document.getElementById('submit-button')
+        const correctAnswer = document.getElementById("correct-answer");
+        const correctAnswer2 = document.getElementById("correct-answer2");
+        const correctAnswer3 = document.getElementById("correct-answer3");
+        const correctAnswer4 = document.getElementById("correct-answer4");
+        const correctAnswer5 = document.getElementById("correct-answer5");
+        const correctAnswer6 = document.getElementById("correct-answer6");
+        const correctAnswer7 = document.getElementById("correct-answer7");
+        const correctAnswer8 = document.getElementById("correct-answer8");
+        const correctAnswer9 = document.getElementById("correct-answer9");
+        const correctAnswer10 = document.getElementById("correct-answer10");
+        const correctAnswer11 = document.getElementById("correct-answer11");
+        const correctAnswer12 = document.getElementById("correct-answer12");
+        const correctAnswer13 = document.getElementById("correct-answer13");
+        const submitButton = document.getElementById("submit-button");
 
-        statusDiv.style.display = 'block';
+        statusDiv.style.display = "block";
         pause();
         pauseButton.disabled = "disabled";
 
@@ -489,10 +857,10 @@
         //     correctAnswer.style.display = 'block';
         // }
 
-        // if (answerField2.value == "the feeling that they are developing and making progress in their lives" || 
-        // answerField2.value == "the feeling that they are developing and making progress in their lives" || 
-        // answerField2.value == "When they are developing and making progress in their lives" || 
-        // answerField2.value == "The feeling that they are developing and making progress in their lives" || 
+        // if (answerField2.value == "the feeling that they are developing and making progress in their lives" ||
+        // answerField2.value == "the feeling that they are developing and making progress in their lives" ||
+        // answerField2.value == "When they are developing and making progress in their lives" ||
+        // answerField2.value == "The feeling that they are developing and making progress in their lives" ||
         // answerField2.value == "when they are developing and making progress in their lives"){
         //     answerField2.disabled = "disabled";
         //     submitButton.disabled = 'disabled';
@@ -508,7 +876,7 @@
         //     correctAnswer2.style.display = 'block';
         // }
 
-        // if (answerField3.value == "They may be afraid of failing" || 
+        // if (answerField3.value == "They may be afraid of failing" ||
         // answerField3.value == "They may be afraid of failing."){
         //     answerField3.disabled = "disabled";
         //     submitButton.disabled = 'disabled';
@@ -524,7 +892,7 @@
         //     correctAnswer3.style.display = 'block';
         // }
 
-        // if (answerField4.value == "They are unsure how to begin" || 
+        // if (answerField4.value == "They are unsure how to begin" ||
         // answerField4.value == "They are unsure how to begin."){
         //     answerField4.disabled = "disabled";
         //     submitButton.disabled = 'disabled';
@@ -540,7 +908,7 @@
         //     correctAnswer4.style.display = 'block';
         // }
 
-        // if (answerField5.value == "They make excuses like not wanting to change." || 
+        // if (answerField5.value == "They make excuses like not wanting to change." ||
         // answerField5.value == "They make excuses like not wanting to change"){
         //     answerField5.disabled = "disabled";
         //     submitButton.disabled = 'disabled';
@@ -646,7 +1014,7 @@
         //     correctAnswer11.style.display = 'block';
         // }
 
-        // if (answerField12.value == "comfort zone" || 
+        // if (answerField12.value == "comfort zone" ||
         // answerField12.value == "Comfort zone"
         // || answerField12.value == "comfort zone."
         // || answerField12.value == "Comfort zone." ){
@@ -664,7 +1032,7 @@
         //     correctAnswer12.style.display = 'block';
         // }
 
-        // if (answerField13.value == "people" || 
+        // if (answerField13.value == "people" ||
         // answerField12.value == "people."
         // || answerField12.value == "People"
         // || answerField12.value == "People." ){
@@ -682,55 +1050,54 @@
         //     correctAnswer13.style.display = 'block';
         // }
 
-        document.getElementsByName('TF1')
-            .forEach(radio => {
-                if(radio.checked){
-                    if(radio.value == 'True'){
-                        submitButton.disabled = 'disabled';
-                        checkmark14.style.display = 'block';
-                        score += 2;
-                        scoreElement.textContent = score.toString();
-                    }else{
-                        submitButton.disabled = 'disabled';
-                        crossmark14.style.display = 'block';
-                    }
-
-                }
-            });
-
-        document.getElementsByName('TF2')
-        .forEach(radio => {
-            if(radio.checked){
-                if(radio.value == 'False'){
-                    submitButton.disabled = 'disabled';
-                    checkmark15.style.display = 'block';
-                    score +=2;
-                    scoreElement.textContent = score.toString();
-                }else{
-                    submitButton.disabled = 'disabled';
-                    crossmark15.style.display = 'block';
-                }
+        document.getElementsByName("TF1").forEach((radio) => {
+          if (radio.checked) {
+            if (radio.value == "True") {
+              submitButton.disabled = "disabled";
+              checkmark14.style.display = "block";
+              score += 2;
+              scoreElement.textContent = score.toString();
+            } else {
+              submitButton.disabled = "disabled";
+              crossmark14.style.display = "block";
             }
+          }
         });
 
-        document.getElementsByName('TF3')
-        .forEach(radio => {
-            if(radio.checked){
-                if(radio.value == 'True'){
-                    submitButton.disabled = 'disabled';
-                    checkmark16.style.display = 'block';
-                    score +=2;
-                    scoreElement.textContent = score.toString();
-                }else{
-                    submitButton.disabled = 'disabled';
-                    crossmark16.style.display = 'block';
-                }
+        document.getElementsByName("TF2").forEach((radio) => {
+          if (radio.checked) {
+            if (radio.value == "False") {
+              submitButton.disabled = "disabled";
+              checkmark15.style.display = "block";
+              score += 2;
+              scoreElement.textContent = score.toString();
+            } else {
+              submitButton.disabled = "disabled";
+              crossmark15.style.display = "block";
             }
+          }
         });
-    }
-</script>
-</body>
-<footer>
+
+        document.getElementsByName("TF3").forEach((radio) => {
+          if (radio.checked) {
+            if (radio.value == "True") {
+              submitButton.disabled = "disabled";
+              checkmark16.style.display = "block";
+              score += 2;
+              scoreElement.textContent = score.toString();
+            } else {
+              submitButton.disabled = "disabled";
+              crossmark16.style.display = "block";
+            }
+          }
+        });
+      }
+    </script>
+  </body>
+  <footer>
     <a href="U1ReadingComprehension2"><button class="next">Next ></button></a>
-    <a href="/readingComprehensionPage"><button class="home">Back To Reading Comprehension Page</button></a>
-</footer>
+    <a href="/readingComprehensionPage"
+      ><button class="home">Back To Reading Comprehension Page</button></a
+    >
+  </footer>
+</html>

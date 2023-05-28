@@ -296,10 +296,12 @@ def checkAnswers():
     correct_answers = [
         {
             "question": "english Teacher", "content": "You are a teacher comparing the user answer with the correct answer , accept answers that have the same meaning as the correct answer . The correct answer is the area where you feel comfortable / the set of routines and known abilities that make us feel safe",
-            "correct_answer": "the area where you feel comfortable / the set of routines and known abilities that make us feel safe"
+            "correct_answer": "the area where you feel comfortable / the set of routines and known abilities that make us feel safe", 
+            "full_mark": 2
         },{
             "question": "english Teacher", "content": "You are a teacher comparing the user answer with the correct answer , accept answers that have the same meaning as the correct answer . The correct answer is The feeling that they are developing and making progress in their lives",
-            "correct_answer": "The feeling that they are developing and making progress in their lives"
+            "correct_answer": "The feeling that they are developing and making progress in their lives",
+            "full_mark": 2
         },
         {
             "question": "english Teacher", "content": "You are a teacher comparing the user answer with the correct answer , accept answers that have the same meaning as the correct answer . The correct answer is They may be afraid of failing",
@@ -374,7 +376,7 @@ def checkAnswers():
         print(score)
 
         feedback_message = response['choices'][0]['message']['content']
-        feedback_object = {"text":feedback_message,"id":answer["id"],"score":score}
+        feedback_object = {"text":feedback_message,"id":answer["id"],"score":score,"fullMark":correct_answers[i]["full_marks"]}
         feedback_messages.append(feedback_object)
         # feedback_paragraph = "<br>".join(feedback_messages)
 
